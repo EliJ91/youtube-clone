@@ -1,0 +1,108 @@
+.header{
+    position: relative;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    padding-top: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+.header__logo{
+    height: 24px;
+    width: 80px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+
+.header__input{
+    display: flex;
+    align-items: center;
+    width: 30%;
+    border: 1px solid rgba(128, 128, 128, 0.425);
+}
+.header__input > input:focus{
+    outline: none;
+}
+
+.header__input > input{
+    flex: 1;
+    border: none;
+    padding-left: 10px;
+}
+
+.header__icons{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.header__icon{
+    margin-right: 30px;
+    cursor: pointer;
+    max-height: 35px;
+    max-width: 35px;
+}
+.header__menuIcon{
+    color: grey;
+}
+
+
+.header__inputButton{
+    width: 50px !important;
+    height: 20px !important;
+    padding: 5px;
+    background-color: #fafafa;
+    border-left: 1px solid lightgray;
+    color: grey;
+}
+
+.header__uploadMenu{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    top:3.1em;
+    right: 5em;
+    background-color: white;
+    border: 1px solid lightgrey;
+    z-index: 100;
+    border-top: none;
+}
+.header__uploadMenu > h1{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 10px;;
+    
+}
+
+.header__uploadVideoIcon{
+    height: 2rem !important;
+}
+
+.header__uploadVideo:active{
+        border-radius: 50%;
+        background-color: grey;
+}
+
+.header__uploadVideo:hover + .header__uploadVideo_tooltip{
+    visibility: visible;
+}
+.header__uploadVideo_tooltip{
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.432);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 6%;
+    margin-left: -60px;
+    
+}

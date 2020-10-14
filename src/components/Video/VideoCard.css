@@ -1,0 +1,35 @@
+.videoCard__videoDataContainer{
+    display: flex;
+    align-items: top;
+}
+
+.videoCard__videoStats{
+    display: flex;
+    align-items: center;
+}
+
+.videoCard__videoData > h2{
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(133, 133, 133);
+}
+
+.videoCard__videoStats > h2{
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(133, 133, 133);
+}
+
+.videoCard__videoData > h1{
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    max-height: 4.4rem;
+}
+.videoCard__avatar{
+    margin-right: 10px;
+}
+
+.videoCard__thumbnail{
+    max-height: 200px;
+}

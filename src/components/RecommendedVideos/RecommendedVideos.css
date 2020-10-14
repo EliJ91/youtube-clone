@@ -1,0 +1,12 @@
+.recommendedVideos{
+    flex: 1;
+    background: ghostwhite;
+    padding: 40px 20px;
+    padding-bottom: 0;
+    height: 100vh;
+    padding-left: 75px;
+}
+.recommendedVideos > h2{
+    margin-left: 5px;
+    margin-bottom: 20px;
+}

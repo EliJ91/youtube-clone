@@ -1,0 +1,9 @@
+.sidebar{
+    flex: 0.15;
+    border-bottom: 1.5px solid rgb(209, 209, 209);
+}
+ hr{
+    border:thin solid #ebebeb ;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
