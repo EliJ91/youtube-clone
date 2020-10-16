@@ -10,30 +10,22 @@ import axios from 'axios'
  
 function MyDropzone() {
 
-  const [movie, setMovie] = useState()
-  const [AUTH_TOKEN, setAUTH_TOKEN]=useState()
-  const onDrop = useCallback(acceptedFiles => {
+  const [movie, setMovie] = useState() 
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+
+
+ const onDrop = useCallback(acceptedFiles => {
     setMovie(acceptedFiles)
-    let API_AUTH_TOKEN = ""
-    axios.post('https://sandbox.api.video/auth/api-key', {
-      apiKey: "SkGQnAbt0xEwWBiglfTPtITEMQYY7fUZ8bQ95mfHKz"
-      })
-      .then(function (response) {
-          setAUTH_TOKEN(response.data.access_token)
-          console.log(AUTH_TOKEN)
-      })
-      .catch(function (error) {
-          console.log(error);
-          console.log('ERROR')
-      })
-      
     console.log(acceptedFiles)
+    
     // Do something with the files
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
  
 function logMovie(e){
   e.preventDefault()
+  axios.post("http://localhost:5000/api/video/upload", {movie,title,description})
   console.log(movie)
 }
 
@@ -46,10 +38,10 @@ function logMovie(e){
         }
       </div>
       <div className="mydropzone__inputContainer">
-        <p className="mydropzone__inputTitle">Title</p><input className="mydropzone__input" type="text"/>
+        <p className="mydropzone__inputTitle">Title</p><input onChange={(e)=>setTitle(e.target.value)} className="mydropzone__input" type="text"/>
       </div>
       <div className="mydropzone__inputContainer">
-        <p className="mydropzone__inputTitle" >Description</p><textarea rows="5" className="mydropzone__input mydropzone__description" type="text"/>
+        <p className="mydropzone__inputTitle" >Description</p><textarea onChange={(e)=>setDescription(e.target.value)} rows="5" className="mydropzone__input mydropzone__description" type="text"/>
       </div>
       <div className="mydropzone__inputContainer">
         <p className="mydropzone__inputTitle">Hashtags <span>(Separate by commas)</span></p><input className="mydropzone__input" type="text"/>
