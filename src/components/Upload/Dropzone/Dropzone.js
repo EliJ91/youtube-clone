@@ -9,14 +9,13 @@ import axios from 'axios'
  
 function MyDropzone() {
 
-  var freader = new FileReader()
-
   const [videoForm, setVideoForm] =useState({
     title:"",
-    description:"",
-    file:null
+    description:""
   })
+
   const [movie, setMovie] = useState({}) 
+  const [uploadedFile, setUploadedFile]=useState({})
   
 
   function prepareFile(e){
@@ -24,19 +23,13 @@ function MyDropzone() {
     e.preventDefault()
     e.persist()
    }
+
  function loadFile(e){
   e.stopPropagation()
   e.preventDefault()
   var dt = e.dataTransfer;
-  setVideoForm({
-    ...videoForm,
-    file : dt.files[0]
-    }) 
-  // freader.onload=function(){
-  //   setMovie(freader.result)
-  // }
-  // console.log(movie)
-  // alert(JSON.stringify(movie))
+  var vid = dt.files[0]
+  setMovie(vid)    
  }
 
 
@@ -52,10 +45,25 @@ function MyDropzone() {
    })
  }
 
-function logMovie(event){
+async function uploadMovie(event){
   event.preventDefault()
-  console.log({videoForm})
-  axios.post("http://localhost:5000/api/video/upload", {videoForm})
+  const formData = new FormData()
+  formData.append('file',movie)
+  //formData.append('videoForm',videoForm)
+
+  try{
+    const res = await axios.post("http://localhost:5000/api/video/upload", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    const {fileName, filePath} =res.data
+    setUploadedFile({fileName, filePath})
+  }catch(error){
+    console.log(error)
+  }
+  //axios.post("http://localhost:5000/api/video/upload", {videoForm})
+  console.log(uploadedFile)
 }
 
   return (
@@ -74,7 +82,7 @@ function logMovie(event){
       <div className="mydropzone__inputContainer">
         <p className="mydropzone__inputTitle">Hashtags <span>(Separate by commas)</span></p><input className="mydropzone__input" type="text"/>
       </div>
-      <button onClick={logMovie} className="mydropzone__button">Upload</button>
+      <button onClick={uploadMovie} className="mydropzone__button">Upload</button>
     </div>
     
   )
