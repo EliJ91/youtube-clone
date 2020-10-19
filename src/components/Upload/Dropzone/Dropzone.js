@@ -2,7 +2,6 @@ import React, { useState} from 'react'
 import './Dropzone.css'
 import PublishIcon from '@material-ui/icons/Publish';
 import axios from 'axios'
-import { TrainRounded } from '@material-ui/icons';
 
 
 
@@ -16,7 +15,6 @@ function MyDropzone() {
 
   const [movie, setMovie] = useState({}) 
   
-  let fileName = movie.name
 
   function prepareFile(e){
     e.stopPropagation()
