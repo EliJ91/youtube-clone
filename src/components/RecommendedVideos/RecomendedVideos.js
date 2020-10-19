@@ -2,7 +2,16 @@ import React from 'react'
 import './RecommendedVideos.css'
 import VideoCard from '../Video/VideoCard'
 import AvatarImg from '../Header/img/avatar.jpg'
+import axios from 'axios'
 
+function logout(e){
+    e.preventDefault()
+    axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/deletecookie")
+}
+function log(e){
+    e.preventDefault()
+    axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/testcookie",{})
+}
 
 
 
@@ -13,6 +22,8 @@ function RecomendedVideos() {
             <div className="recommendedVideos__videos">
                 <VideoCard title= "YouTube Clone" id = "0" author="Eli Jernigan" views= "489" authorImg={AvatarImg} thumbnail="https://drive.google.com/file/d/0B7DRRtZ2o-RsMHh5WU5RbTVpSTA/preview" date="2 days"/>
             </div>
+            <button onClick={(e)=>{logout(e)}}> logout</button>
+            <button onClick={(e)=>{log(e)}}> logt</button>
 
             <video 
             controls preload="auto" width="640" height="480"

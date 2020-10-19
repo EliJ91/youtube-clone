@@ -21,11 +21,12 @@
     overflow: visible;
     white-space: nowrap; 
     position: relative;
+
+    &:active{
+        border: 3px solid black;
+        margin-bottom: 0;
+    }
     
-}
-.mydropzone__dropzoneContainer:active{
-    border: 3px solid black;
-    margin-bottom: 0;
 }
 
 
@@ -37,11 +38,12 @@
     font-weight: bold;
     color: rgb(53, 53, 53);
     margin-right: 10px;
-}
-.mydropzone__inputTitle span{
-    color: lightgrey;
-    font-size: 12px;
-    font-weight: 500;
+
+    &span{
+        color: lightgrey;
+        font-size: 12px;
+        font-weight: 500;
+    }
 }
 
 .mydropzone__input{
@@ -59,14 +61,17 @@
     background-color: #FF0000;
     color: white;
     outline: none;
-}
-.uploaded{
-    background-color: green;
+    cursor: pointer;
+
+    &:active{
+        transform: scale(0.95)
+    }
+
+    &.uploaded{
+        background-color: green;
+    }
 }
 
-.mydropzone__button:active{
-    transform: scale(0.95)
-}
 
 .mydropzone__publishIcon{
     font-size: 100px !important;

@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import './Dropzone.css'
+import './Dropzone.scss'
 import PublishIcon from '@material-ui/icons/Publish';
 import axios from 'axios'
 

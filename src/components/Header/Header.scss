@@ -5,7 +5,7 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
     background-color: white;
 }
 .header__logo{
@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    margin: 3px;
     
 }
 .header__icon{
@@ -47,6 +48,25 @@
 }
 .header__menuIcon{
     color: grey;
+}
+
+.header__loginText{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 30px;
+    cursor: pointer;
+    max-height: 35px;
+    padding: 10px 15px;
+
+    &:hover{
+        transition-duration: 0.5s;
+        transition-property: background-color;
+        background-color:rgb(207, 207, 207);
+        border-radius: 10px;
+    }
+    &:active{
+        color: white;
+    }
 }
 
 
@@ -61,17 +81,17 @@
 
 
 .header__uploadVideo{
-    background-color: rgb(165, 99, 99);
     border-radius: 50%;
-    transition: border 3s ;
+    
+    
     &:hover{
-        border-radius: 20%;
+        transition-duration: 0.5s;
+        transition-property: background-color;
+        background-color:rgb(207, 207, 207);
+        border-radius: 50%;
     }
-
     &:active{
-        background-color: grey;
-        border-radius: 20%;
-        overflow: visible;
+        color: white;
     }
     &:hover + .header__uploadVideo_tooltip{
         visibility: visible;

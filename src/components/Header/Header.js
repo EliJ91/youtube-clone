@@ -10,14 +10,16 @@ import Logo from './img/logo.svg'
 import AvatarImg from './img/avatar.jpg'
 import {useState} from 'react';
 import Upload from '../Upload/Upload'
+import Login from '../Login/Login'
 
 
 function Header() {
 
-    const [uploadVideo, setUploadVideo] = useState(true)
+    const [uploadVideo, setUploadVideo] = useState(false)
+    const [login, setLogin] = useState(true)
 
    
-
+    const loggedIn = false;
     
 
     return (
@@ -39,11 +41,16 @@ function Header() {
                 <span className="header__uploadVideo_tooltip">Upload Video</span>
                 <AppsIcons className="header__icon"/>
                 <NotificationsIcon className="header__icon"/>
-                <Avatar className="header__icon" src={AvatarImg}/>
+
+                {loggedIn ? 
+                <Avatar className="header__icon" src={AvatarImg}/>:
+                <p className="header__loginText" onClick={()=>setLogin(true)}>Log in</p>
+                
+                }   
             </div>            
         </div> 
         <Upload open={uploadVideo} onClose={()=>setUploadVideo(false)}/>
-        
+        <Login open={login} onClose={()=>setLogin(false)}/>
         </>       
     )
 }

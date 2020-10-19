@@ -6,8 +6,6 @@ import MyDropzone from './Dropzone/Dropzone'
 export default function Upload({ open, onClose, data }) {
   if (!open) return null
 
-
-
   return ReactDom.createPortal(
 
     <>
@@ -16,7 +14,6 @@ export default function Upload({ open, onClose, data }) {
       <MyDropzone/>
     </div>
       
-    
     </>,
     document.getElementById('portal')
   )
