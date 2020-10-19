@@ -8,9 +8,7 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
         <div>
             {/* <video className="videoCard__thumbnail" controls src="{thumbnail}"></video> */}
 
-            <video src="https://drive.google.com/u/0/vt?authuser=0&id=0B7DRRtZ2o-RsMHh5WU5RbTVpSTA&s=AMedNnoAAAAAX4TO73H_y0jCwSHKYoXgQo_G78hE2co6" controls>
-                <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.webm">link to the video</a> instead.</p> 
-            </video>
+            <img className="videoCard__thumbnail" src="https://i.ytimg.com/vi/duJNVv9m2NY/maxresdefault.jpg"></img>
 
             <div className="videoCard__videoDataContainer">    
                 <Avatar className="videoCard__avatar"src={authorImg}/>

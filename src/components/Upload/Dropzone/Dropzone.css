@@ -1,7 +1,7 @@
 .mydropzone__container{
     display: grid;
     align-items: center;
-    grid-template-rows: 1fr 50px 100px 50px .5fr;
+    grid-template-rows: 1fr 10px 50px 100px 50px .5fr;
 }
 
 
@@ -60,6 +60,9 @@
     color: white;
     outline: none;
 }
+.uploaded{
+    background-color: green;
+}
 
 .mydropzone__button:active{
     transform: scale(0.95)
@@ -71,4 +74,18 @@
     color: #FF0000;
     right: 30%;
     top: 23%;
+}
+
+.mydropzone__inputFile{
+    margin: 0;
+    padding: 0;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+.mydropzone__inputFileLabel{
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
