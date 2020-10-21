@@ -26,6 +26,8 @@ function Header() {
     const loggedIn = useSelector(store=>store.username)
     const avatar = useSelector(store=>store.avatar)
 
+    let width = window.innerWidth
+console.log(width)
     useEffect(()=>{
         async function fetchData(){
             const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{}, {withCredentials: true}) 
@@ -46,7 +48,6 @@ function Header() {
         <div className="header">
 
             <div className="header__left">
-                <MenuIcon className="header__menuIcon"/>
                 <img className = "header__logo" src={Logo} alt=""/>
             </div>
 
@@ -54,8 +55,8 @@ function Header() {
                 <input placeholder="Search" type="text"></input>
                 <SearchIcon className="header__inputButton"/>
             </div>
-
-            <div className="header__icons">
+            
+            {width < 400 ? <MenuIcon className="header__menuIcon"/>:<div className="header__icons">
                 <VideoCallIcon className="header__icon header__uploadVideo" onClick={()=>setUploadVideo(true)}/>
                 <span className="header__uploadVideo_tooltip">Upload Video</span>
                 <AppsIcons className="header__icon"/>
@@ -65,9 +66,9 @@ function Header() {
                 <><Avatar onClick={logout} className="header__avatar" src={avatar !== null ? avatar : null} />
                 <span className="header__logout_tooltip">Log Out</span></>:
                 <p className="header__loginText" onClick={()=>setLogin(true)}>Log in</p>
-                
                 }   
-            </div>            
+            </div>}
+                        
         </div> 
         <Upload open={uploadVideo} onClose={()=>setUploadVideo(false)}/>
         <Login open={login} onClose={()=>setLogin(false)} test={setLogin}/>

@@ -27,8 +27,10 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
 
     return (
         <div>
-
-            <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"></img>
+            <div className="videoCard__thumbnailContainer">
+                <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"/>
+            </div>
+            
 
             <div className="videoCard__videoDataContainer">    
                 <Avatar className="videoCard__avatar"src={authorImg}/>

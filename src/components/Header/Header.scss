@@ -140,3 +140,29 @@
     visibility: visible;
 }
 }
+
+@media only screen and (max-width: 400px) {
+    .sidebar {
+      display: none;
+    }
+    .header{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+    .header__menuIcon{
+        justify-content: center;
+    }
+    .header__logo{
+        margin: 3px;
+    }
+    .header__input{
+        width: 100%;
+        margin: 2px 5px;
+        & > input{
+            padding: 0;
+            margin: 0;
+        }
+    }
+  }
