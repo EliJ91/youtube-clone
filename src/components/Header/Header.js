@@ -22,8 +22,6 @@ function Header() {
     const [login, setLogin] = useState(false)
     const dispatch = useDispatch()
 
-    const state = useSelector(state=>state)
-
    
     const loggedIn = useSelector(store=>store.username)
     const avatar = useSelector(store=>store.avatar)
