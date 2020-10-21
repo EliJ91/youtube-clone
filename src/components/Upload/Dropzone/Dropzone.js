@@ -13,7 +13,7 @@ function MyDropzone(props) {
   const [videoGenre, setVideoGenre] =useState("Comedy")
   const [videoThumbnail, setVideoThumbnail] =useState("")
 
-  const [loading, setLoading]=useState('false')
+  const [loading, setLoading]=useState(false)
   
 
   const userId = useSelector(state=>state._id)
@@ -125,7 +125,7 @@ async function uploadMovie(event){
       </div>
       {uploaded ? 
       <button className="mydropzone__button uploaded">Uploaded</button> : 
-      <button onClick={uploadMovie} className="mydropzone__button">{loading ? "Upload":"Loading..."}</button> }
+      <button onClick={uploadMovie} className="mydropzone__button">{!loading ? "Upload":"Loading..."}</button> }
       
     </div>
     
