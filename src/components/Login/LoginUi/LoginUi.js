@@ -75,7 +75,7 @@ function LoginUi(props) {
     {
       username,
       password
-    },{withCredentials: true})
+    })
     .then(function (response) {
       console.log(response.status)
       if(response.status === 201){
