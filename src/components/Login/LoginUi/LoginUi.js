@@ -1,22 +1,31 @@
 import React, { useState} from 'react'
 import './LoginUi.scss'
-
 import axios from 'axios'
+
+import {useDispatch} from 'react-redux'
+import {LOGGED_IN} from '../../../redux/actions'
+
+// const axios = Axios.create({
+//   withCredentials: true
+// })
 
 
 
 
  
-function LoginUi() {
+function LoginUi(props) {
+  const dispatch= useDispatch()
 
   const [username, setUsername] =useState("")
   const [password, setPassword] =useState("")
   const [password2, setPassword2] =useState("")
+  const [avatarImg, setAvatarImg] =useState("")
 
   const [createAccount, setCreateAccount]=useState(false)
   const [accountCreated, setAccountCreated]=useState(false)
 
-  function newAccount(username, password, password2){
+  //================================================CREATE ACCOUNT=============================//
+  function newAccount(username, password, password2, avatar){
     if(username === "" ){
       alert("username cannot be blank")
       return
@@ -32,7 +41,8 @@ function LoginUi() {
     axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/create",
     {
       username,
-      password
+      password,
+      avatar
     })
     .then(function (response) {
       if(response.status === 201){
@@ -41,6 +51,7 @@ function LoginUi() {
         setUsername("")
         setPassword("")
         setPassword2("")
+        
       }
       console.log(response);
     }) 
@@ -49,7 +60,7 @@ function LoginUi() {
       console.log(error);
     });
   }
-  
+//==============================================LOG IN========================================//
   function login(username, password){
     if(password === ""){
       alert("Password cannot be blank")
@@ -59,25 +70,24 @@ function LoginUi() {
       alert("Username cannot be blank")
       return
     }
+    
     axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/login",
     {
       username,
       password
-    })
+    },{withCredentials: true})
     .then(function (response) {
+      console.log(response.status)
       if(response.status === 201){
-        setUsername("")
-        setPassword("")
-        setPassword2("")
+        dispatch(LOGGED_IN(response.data))
+        props.test(false)
       }
-      
-      console.log(response);
     }) 
     .catch(function (error) {
       if(error.response.status === 401){alert("Password is incorrect.")}
       if(error.response.status === 422){alert("Username does not exist.")}
       console.log(error);
-    });
+    })
   }
 
  
@@ -98,14 +108,14 @@ function LoginUi() {
         
 
         
-          <input className="" type="text" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"/>
+          <input className="" type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"/>
         
         
-          {!createAccount  ? <div></div> : <input type="text" value={password2}  onChange={(e)=>setPassword2(e.target.value)} placeholder="Re-type password"/>}
-        
-          {!createAccount ?
+        {!createAccount  ? <div></div> : <input type="password" value={password2}  onChange={(e)=>setPassword2(e.target.value)} placeholder="Re-type password"/>}
+        {!createAccount  ? <div></div> : <input type="text" value={avatarImg}  onChange={(e)=>setAvatarImg(e.target.value)} placeholder="Avatar URL"/>}
+        {!createAccount ?
         <button onClick={()=>login(username,password)} className="loginUi__button">Login</button>:
-        <button onClick={()=>newAccount(username,password,password2)} className="loginUi__button create">Create Account</button> }
+        <button onClick={()=>newAccount(username,password,password2,avatarImg)} className="loginUi__button create">Create Account</button> }
         
       </div>
     </div>

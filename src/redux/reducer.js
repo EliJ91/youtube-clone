@@ -1,7 +1,14 @@
+export const defaultState={
+      username: null,
+      password: null,
+      recentMetaData: {},
+      subscribers: {},
+      subscribedTo: {},
+      avatar:null     
+    }
 
 
-
-export default function userData(state = {}, action){
+export function userData(state = defaultState, action){
 
     switch (action.type){
         case "LOGGED_IN":
@@ -12,11 +19,12 @@ export default function userData(state = {}, action){
     
 }
 
-export default function videoData(state = {}, action){
+export function videoData(state, action){
 
     switch (action.type){
-        case "LOGGED_IN":
-            return action.payload
+        case "ALL_VIDEOS":
+            return {...state,
+                videos:action.payload}
         default:
             return state 
     }    

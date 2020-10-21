@@ -33,6 +33,12 @@
 .mydropzone__inputContainer{
     margin: 0;
     padding: 0;
+
+    &.flex{
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
 }
 .mydropzone__inputTitle{
     font-weight: bold;

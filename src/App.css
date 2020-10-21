@@ -1,3 +1,20 @@
 .app__page{
     display: flex;
 }
+
+.dev{
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    background-color: aqua;
+    z-index: 9999;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dev>button{
+    font-size: 10px;
+}

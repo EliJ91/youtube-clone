@@ -1,6 +1,8 @@
 .videoCard__videoDataContainer{
     display: flex;
     align-items: top;
+    margin-top: 1em;;
+    
 }
 
 .videoCard__videoStats{
@@ -32,4 +34,5 @@
 
 .videoCard__thumbnail{
     max-height: 200px;
+    box-shadow: 0px 0px 10px 1px black;
 }

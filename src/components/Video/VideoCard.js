@@ -3,12 +3,34 @@ import './VideoCard.css'
 import Avatar from '@material-ui/core/Avatar'
 
 function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
-    //let videoId = id;
+    var today = new Date().getTime()
+    var posted = new Date(date).getTime()
+    var res = Math.abs(today - posted) / 1000;
+    var days = Math.ceil(res / 86400);
+    var hours = Math.ceil(res / 3600);
+
+    var unit = "hour";
+
+    function checkValues(days, hours){
+        if(hours>=24){
+            unit = "days"
+            return days
+        }
+        return hours
+    }
+
+    let leDays = checkValues(days, hours)
+
+    if(leDays>1){
+        var plural = true;
+    }
+
+    console.log(leDays)
+
     return (
         <div>
-            {/* <video className="videoCard__thumbnail" controls src="{thumbnail}"></video> */}
 
-            <img className="videoCard__thumbnail" src="https://i.ytimg.com/vi/duJNVv9m2NY/maxresdefault.jpg"></img>
+            <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"></img>
 
             <div className="videoCard__videoDataContainer">    
                 <Avatar className="videoCard__avatar"src={authorImg}/>
@@ -17,7 +39,7 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
                 <h2>{author}</h2>
                 <div className="videoCard__videoStats">
                     <h2>{views} views •&nbsp;</h2>
-                    <h2> {date}</h2>
+                    <h2> {leDays} {unit}{plural && "s"} ago</h2>
                 </div>                
             </div>
             
