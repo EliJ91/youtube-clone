@@ -14,6 +14,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {LOGGED_IN} from '../../redux/actions'
 import {defaultState} from '../../redux/reducer'
 import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 
 
 function Header() {
@@ -21,13 +22,13 @@ function Header() {
     const [uploadVideo, setUploadVideo] = useState(false)
     const [login, setLogin] = useState(false)
     const dispatch = useDispatch()
+    let history = useHistory()
 
    
     const loggedIn = useSelector(store=>store.username)
     const avatar = useSelector(store=>store.avatar)
 
     let width = window.innerWidth
-console.log(width)
     useEffect(()=>{
         async function fetchData(){
             const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{}, {withCredentials: true}) 
@@ -43,12 +44,16 @@ console.log(width)
         
       }
 
+    function redirectHome(){
+        history.push('/')
+    }
+
     return (
         <>
         <div className="header">
 
             <div className="header__left">
-                <img className = "header__logo" src={Logo} alt=""/>
+                <img onClick={redirectHome} className = "header__logo" src={Logo} alt=""/>
             </div>
 
             <div className="header__input">

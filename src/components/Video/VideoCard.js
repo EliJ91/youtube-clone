@@ -26,7 +26,7 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
     }
 
     return (
-        <div>
+        <div className="videoCard">
             <div className="videoCard__thumbnailContainer">
                 <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"/>
             </div>

@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import './App.css';
 import RecomendedVideos from './components/RecommendedVideos/RecomendedVideos';
+import VideoPage from './components/VideoPage/VideoPage'
 import {BrowserRouter as Router,  Route} from "react-router-dom"
 
 
@@ -25,9 +26,11 @@ function App() {
 
   return (
     <div className="app">   
-      <Header/>
+
       <Router>
-        <Route path="/" component={appContainer} />
+      <Header/>
+        <Route path="/" exact component={appContainer} />
+        <Route path="/watch" component={VideoPage} />
       </Router>
       
     </div>
