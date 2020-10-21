@@ -11,7 +11,7 @@ export default function Upload({ open, onClose, data }) {
     <>
     <div onClick={onClose} className="upload__overlayStyles"/>
     <div className="upload__modalStyles">
-      <LoginUi test={onClose} />
+      <LoginUi willClose={onClose} />
     </div>
       
     </>,

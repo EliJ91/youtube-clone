@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Header.scss'
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search'
@@ -26,10 +26,18 @@ function Header() {
     const loggedIn = useSelector(store=>store.username)
     const avatar = useSelector(store=>store.avatar)
 
+    useEffect(()=>{
+        async function fetchData(){
+            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{},{withCredentials: true}) 
+            dispatch(LOGGED_IN(user.data))          
+        }
+        fetchData()                       
+    },[])
+
     function logout(e){
         e.preventDefault()
         dispatch(LOGGED_IN(defaultState))
-        axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/deletecookie",{},{withCredentials: true})
+        axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/logout",{},{withCredentials: true})
       }
 
     return (

@@ -3,11 +3,10 @@ import './Dropzone.scss'
 import PublishIcon from '@material-ui/icons/Publish';
 import axios from 'axios'
 import {useSelector} from 'react-redux';
-
-
+import  { Redirect } from 'react-router-dom'
 
  
-function MyDropzone() {
+function MyDropzone(props) {
 
   const [videoTitle, setVideoTitle] =useState("")
   const [videoDescription, setVideoDescription] =useState("")
@@ -66,6 +65,8 @@ async function uploadMovie(event){
     if(res.status === 200){
       setUploaded(true)
       console.log(res.data)
+      props.willClose(false)
+      return <Redirect to='/'  />  
     }
   }catch(error){
     if(error.response.status === 500){

@@ -5,16 +5,15 @@ import axios from 'axios'
 
 
 
-
 function RecomendedVideos() {
     const [allVideos, setAllVideos]=useState([])
-
+    
+    
+              
     useEffect(()=>{
         async function fetchData(){
-            const request = await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos")
-            console.log(request)  
-            setAllVideos(request.data)
-                       
+            const request = await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos")  
+            setAllVideos(request.data)     
         }
         fetchData()                       
     },[])
@@ -36,7 +35,6 @@ function RecomendedVideos() {
             poster="https://lh6.googleusercontent.com/proxy/b2bX46nG0Xrb7zmSjz8bK2o9TfDem6yYDTMQH8-7yN2FFbSHooKBS1zbORhsgJJzkv_s7bd825ThIxsu2YDKbXBD76SOiR-A=s0-d">
             <source src="https://youtube-clone-storage-ej.s3.amazonaws.com/e8eae8bb-000d-43a5-9c07-18e4eb33e797.mp4" type='video/mp4' />            
             </video> */}
-            
         </div>
     )
 }

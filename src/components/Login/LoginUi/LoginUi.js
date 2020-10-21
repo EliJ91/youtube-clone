@@ -80,7 +80,7 @@ function LoginUi(props) {
       console.log(response.status)
       if(response.status === 201){
         dispatch(LOGGED_IN(response.data))
-        props.test(false)
+        props.willClose(false)
       }
     }) 
     .catch(function (error) {
