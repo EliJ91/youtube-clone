@@ -69,8 +69,8 @@ async function uploadMovie(event){
       return <Redirect to='/'  />  
     }
   }catch(error){
-    if(error.response.status === 500){
-      alert("Please log in before your upload")
+    if(error){
+      alert("Please log in before you upload")
     }
     console.log(error)
   }
