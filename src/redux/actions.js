@@ -5,9 +5,3 @@ export const LOGGED_IN = data => {
     };
 };
 
-export const ALL_VIDEOS = data => {
-    return{
-        type: 'ALL_VIDEOS',
-        payload: data
-    };
-};

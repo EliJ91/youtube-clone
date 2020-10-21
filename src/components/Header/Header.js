@@ -32,7 +32,7 @@ function Header() {
             dispatch(LOGGED_IN(user.data))          
         }
         fetchData()                       
-    },[])
+    },[dispatch])
 
     function logout(e){
         e.preventDefault()

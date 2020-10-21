@@ -18,15 +18,3 @@ export function userData(state = defaultState, action){
     }    
     
 }
-
-export function videoData(state, action){
-
-    switch (action.type){
-        case "ALL_VIDEOS":
-            return {...state,
-                videos:action.payload}
-        default:
-            return state 
-    }    
-    
-}
