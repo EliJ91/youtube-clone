@@ -13,8 +13,10 @@ function RecomendedVideos() {
     useEffect(()=>{
         async function fetchData(){
             const request = await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos")  
+            if(request){
             setAllVideos(request.data)   
             console.log(request)  
+            }
         }
         fetchData()                       
     },[])
