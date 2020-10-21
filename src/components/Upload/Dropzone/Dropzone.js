@@ -12,6 +12,8 @@ function MyDropzone(props) {
   const [videoDescription, setVideoDescription] =useState("")
   const [videoGenre, setVideoGenre] =useState("Comedy")
   const [videoThumbnail, setVideoThumbnail] =useState("")
+
+  const [loading, setLoading]=useState('false')
   
 
   const userId = useSelector(state=>state._id)
@@ -45,6 +47,7 @@ function MyDropzone(props) {
 
 
 async function uploadMovie(event){
+  setLoading(true)
   event.preventDefault()
   const formData = new FormData()
   formData.append('file',movie)
@@ -72,6 +75,7 @@ async function uploadMovie(event){
     if(error){
       alert("Please log in before you upload")
     }
+    setLoading(false)
     console.log(error)
   }
   
@@ -121,7 +125,7 @@ async function uploadMovie(event){
       </div>
       {uploaded ? 
       <button className="mydropzone__button uploaded">Uploaded</button> : 
-      <button onClick={uploadMovie} className="mydropzone__button">Upload</button> }
+      <button onClick={uploadMovie} className="mydropzone__button">{loading ? "Upload":"Loading..."}</button> }
       
     </div>
     
