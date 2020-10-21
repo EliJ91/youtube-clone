@@ -28,7 +28,7 @@ function Header() {
 
     useEffect(()=>{
         async function fetchData(){
-            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{},{withCredentials: true}) 
+            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{},{headers: {'Access-Control-Allow-Origin':'*'}, withCredentials: true}) 
             dispatch(LOGGED_IN(user.data))          
         }
         fetchData()                       
