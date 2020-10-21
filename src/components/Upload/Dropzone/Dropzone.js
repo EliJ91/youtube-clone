@@ -63,7 +63,7 @@ async function uploadMovie(event){
   
 
   try{
-    const res = await axios.post("http://localhost:5000/api/video/upload", formData,{withCredentials: true})
+    const res = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/upload", formData,{withCredentials: true})
     console.log(res)
     if(res.status === 200){
       setUploaded(true)
