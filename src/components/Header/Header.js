@@ -22,14 +22,18 @@ function Header() {
     const [login, setLogin] = useState(false)
     const dispatch = useDispatch()
 
+    const state = useSelector(state=>state)
+
    
     const loggedIn = useSelector(store=>store.username)
     const avatar = useSelector(store=>store.avatar)
 
     useEffect(()=>{
         async function fetchData(){
-            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{},{headers: {'Access-Control-Allow-Origin':'*'}, withCredentials: true}) 
-            dispatch(LOGGED_IN(user.data))          
+            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{}, {withCredentials: true}) 
+            dispatch(LOGGED_IN(user.data))  
+            console.log("CHECKING FOR USER ALREADY LOGGED IN")  
+            console.log(user)      
         }
         fetchData()                       
     },[dispatch])
@@ -38,6 +42,8 @@ function Header() {
         e.preventDefault()
         dispatch(LOGGED_IN(defaultState))
         axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/logout",{},{withCredentials: true})
+        console.log("User State after Logout")
+        console.log(state)
       }
 
     return (
