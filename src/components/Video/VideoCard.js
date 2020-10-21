@@ -25,8 +25,6 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
         var plural = true;
     }
 
-    console.log(leDays)
-
     return (
         <div>
 
