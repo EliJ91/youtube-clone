@@ -81,7 +81,6 @@ function LoginUi(props) {
       if(response.status === 201){
         dispatch(LOGGED_IN(response.data))
         props.willClose(false)
-        console.log(response)
       }
     }) 
     .catch(function (error) {
