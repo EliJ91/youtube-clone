@@ -12,11 +12,15 @@ function RecomendedVideos() {
               
     useEffect(()=>{
         async function fetchData(){
-            const request = await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos")  
-            if(request){
-            setAllVideos(request.data)   
-            console.log(request)  
-            }
+            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos") 
+            .then(function (response) {
+                setAllVideos(response.data)   
+                console.log(response) 
+              })
+              .catch(function (error) {
+                console.log(error);
+              })             
+            
         }
         fetchData()                       
     },[])
