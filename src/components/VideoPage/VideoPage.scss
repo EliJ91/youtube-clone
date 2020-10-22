@@ -1,7 +1,6 @@
 .video{
     min-width: 100%;
     padding: 0;
-    margin: 20px;
     border: 1px solid black;
     min-width: 100%;
     margin-right: 20px;
@@ -9,8 +8,7 @@
 
 
 .videoPage{
-    margin-left: 74px;
-    margin-right: 74px;
+    padding: 20px 74px;
     background: ghostwhite;
     display: grid;
     grid-gap: 20px;
@@ -18,7 +16,41 @@
 }
 .background{
     background: ghostwhite;
+    margin: 0;
 }
+
+.videoPage__videoData{
+
+    & > h1{
+        font-size: 1.3em;
+        font-weight: 500;
+    }
+}
+.videoPage__vidDataContainer{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(145, 145, 145);
+    margin-top: 10px;
+    padding-bottom: 20px;
+    & > h1{
+        font-size: 1em;
+        vertical-align: middle;
+        color: rgb(145, 145, 145);
+    }
+    & > h2{
+        display: flex;
+        font-size: 1em !important;
+        align-items: center;
+        color: rgb(145, 145, 145);
+        
+        &>span{
+            margin-right: 30px;
+        }
+        
+        
+    }
+}
+
 
 @media only screen and (max-width: 800px) {
     .videoPage__upNext{
