@@ -1,0 +1,51 @@
+.videoCard{
+    cursor: pointer;
+}
+
+.videoCard__videoDataContainer{
+    display: flex;
+    align-items: top;
+    margin-top: 1em;
+    
+}
+
+.videoCard__videoStats{
+    display: flex;
+    align-items: center;
+}
+
+.videoCard__videoData > h2{
+    font-weight: 500;
+    font-size: .8rem;
+    color: rgb(133, 133, 133);
+}
+
+.videoCard__videoStats > h2{
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(133, 133, 133);
+}
+
+.videoCard__videoData > h1{
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 2.2rem;
+    max-height: 4.4rem;
+
+}
+.videoCard__avatar{
+    margin-right: 10px;
+}
+
+.videoCard__thumbnail{
+    max-width: 100%;
+    max-height: 200px;
+}
+.videoCard__thumbnailContainer{
+    text-align: center;
+    max-height: 200px;
+    max-width: 355.55px;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 1px black;
+}

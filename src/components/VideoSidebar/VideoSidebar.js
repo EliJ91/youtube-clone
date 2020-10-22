@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import './RecommendedVideos.css'
-import VideoCard from '../VideoCard/VideoCard'
+import './VideoSidebar.css'
+import VideoSidecard from '../VideoSidecard/VideoSidecard'
 import axios from 'axios'
 
 
 
-function RecomendedVideos() {
+function VideoSidebar() {
     const [allVideos, setAllVideos]=useState([])
     let history = useHistory()
     
@@ -38,11 +38,11 @@ function RecomendedVideos() {
 
     return (
         <div className="recommendedVideos">
-            <h2>Recomended</h2>
+            <h2>Up Next</h2>
         <div className="recommendedVideos__videosContainer">
             {allVideos.map((v)=>
             <div onClick={()=>directToVideo(v)} className="recommendedVideos__videos">
-                <VideoCard  title= {v.title} author={v.username} views={v.views} authorImg={v.userAvatar} thumbnail={v.thumbnail} date={v.uploadDate}/>
+                <VideoSidecard  title= {v.title} author={v.username} views={v.views} authorImg={v.userAvatar} thumbnail={v.thumbnail} date={v.uploadDate}/>
             </div>
             )}
         </div>
@@ -52,4 +52,4 @@ function RecomendedVideos() {
     )
 }
 
-export default RecomendedVideos
+export default VideoSidebar

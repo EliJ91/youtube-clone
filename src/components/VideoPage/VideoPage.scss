@@ -1,12 +1,25 @@
 .video{
-    margin: 10px;
-    width: 1280px !important;
-    max-width: 1280px;
-    margin: 24px;
-    margin-left: 74px;
-    padding-top: 10px;
+    min-width: 100%;
+    padding: 0;
+    margin: 20px;
+    border: 1px solid black;
+    min-width: 100%;
+    margin-right: 20px;
 }
+
+.body{    
+    background: ghostwhite;
+}
+
+
 .videoPage{
-background: ghostwhite;
-margin-top: 0;
+    margin-left: 74px;
+    margin-right: 74px;
+    background: ghostwhite;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 4fr 1.5fr;
+}
+.background{
+    background: ghostwhite;
 }
