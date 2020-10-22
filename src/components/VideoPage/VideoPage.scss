@@ -7,10 +7,6 @@
     margin-right: 20px;
 }
 
-.body{    
-    background: ghostwhite;
-}
-
 
 .videoPage{
     margin-left: 74px;
@@ -22,4 +18,10 @@
 }
 .background{
     background: ghostwhite;
+}
+
+@media only screen and (max-width: 800px) {
+    .videoPage__upNext{
+        display: none;        
+    }
 }

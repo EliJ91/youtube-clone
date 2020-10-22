@@ -25,17 +25,17 @@ function VideoSidecard({id, title, author, authorImg, views, thumbnail, date}) {
     }
 
     return (
-        <div className="videoCard">
-            <div className="videoCard__thumbnailContainer">
-                <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"/>
+        <div className="videoSidecard">
+            <div className="videoSidecard__thumbnailContainer">
+                <img className="videoSidecard__thumbnail" src={thumbnail} alt="video thumbnail"/>
             </div>
             
 
-            <div className="videoCard__videoDataContainer">    
-                <div className="videoCard__videoData">
+            <div className="videoSidecard__videoDataContainer">    
+                <div className="videoSidecard__videoData">
                     <h1>{title}</h1>
                     <h2>{author}</h2>
-                <div className="videoCard__videoStats">
+                <div className="videoSidecard__videoStats">
                     <h2>{views} views •&nbsp;</h2>
                     <h2> {leDays} {unit}{plural && "s"} ago</h2>
                 </div>                

@@ -37,15 +37,15 @@ function VideoSidebar() {
 
 
     return (
-        <div className="recommendedVideos">
+        <div className="videoSideBar">
             <h2>Up Next</h2>
-        <div className="recommendedVideos__videosContainer">
-            {allVideos.map((v)=>
-            <div onClick={()=>directToVideo(v)} className="recommendedVideos__videos">
-                <VideoSidecard  title= {v.title} author={v.username} views={v.views} authorImg={v.userAvatar} thumbnail={v.thumbnail} date={v.uploadDate}/>
+            <div className="videoSideBar__videosContainer">
+                {allVideos.map((v)=>
+                <div onClick={()=>directToVideo(v)} className="videoSideBar__videos">
+                    <VideoSidecard  title= {v.title} author={v.username} views={v.views} authorImg={v.userAvatar} thumbnail={v.thumbnail} date={v.uploadDate}/>
+                </div>
+                )}
             </div>
-            )}
-        </div>
 
             
         </div>
