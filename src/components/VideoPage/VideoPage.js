@@ -14,7 +14,6 @@ function VideoPage(props) {
 
     const video = props.location.state.videoObject.video
     const author = props.location.state.videoObject.author
-    const comments = props.location.state.videoObject.comments
 
     console.log(author.subscribers)
 
