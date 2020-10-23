@@ -7,6 +7,7 @@
     top: 0;
     z-index: 10;
     background-color: white;
+    width: 100%;
 }
 .header__logo{
     height: 24px;
@@ -150,6 +151,7 @@
         justify-content: space-between;
         grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
+        background-size: auto;
     }
     .header__menuIcon{
         justify-content: center;
@@ -164,5 +166,8 @@
             padding: 0;
             margin: 0;
         }
+    }
+    .header__loginText{
+        white-space: nowrap;
     }
   }

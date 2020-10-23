@@ -9,15 +9,11 @@
 
 .videoPage{
     padding: 20px 74px;
-    background: ghostwhite;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 4fr 1.5fr;
 }
-.background{
-    background: ghostwhite;
-    margin: 0;
-}
+
 
 .videoPage__videoData{
 
@@ -52,8 +48,44 @@
 }
 
 
+
+.switch{
+    background-color: red;
+    width: 35px;
+    height: 13px;
+    border-radius: 34px;
+    overflow: visible;
+    position: relative;
+    & .checkbox{
+        position: absolute;
+        visibility: hidden;
+        :before{
+            content: "\00a0";
+            height: 30px;
+            width: 30px;
+            background-color: blue;
+            display: inline-block;
+        }
+        &:focus{
+            right: 0;
+            left: -10px;
+            transition: all 5s;
+        }
+    }
+}
+
+.MuiSwitch-track{
+    background-color: rgb(181, 180, 180) !important;
+}
+
+
+
 @media only screen and (max-width: 800px) {
     .videoPage__upNext{
-        display: none;        
+        display: none;  
+        padding: 0;      
+    }
+    .video{
+        margin: 0;
     }
 }

@@ -17,7 +17,7 @@ function VideoPage(props) {
     var dd = date.getDate()
     var yyyy = date.getFullYear()
     return (
-        <div className="background">
+        
             <div className="videoPage">
                 <div className="videoPage__videoData">   
                     <video className="video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
@@ -37,7 +37,7 @@ function VideoPage(props) {
                     <VideoSidebar/>
                 </div>
             </div>            
-        </div>
+        
     )
 }
 

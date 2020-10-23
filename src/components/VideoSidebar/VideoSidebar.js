@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import './VideoSidebar.css'
 import VideoSidecard from '../VideoSidecard/VideoSidecard'
 import axios from 'axios'
+import Switch from '@material-ui/core/Switch';
 
 
 
@@ -35,10 +36,16 @@ function VideoSidebar() {
         }})
     }
 
-
+const [button,setButton]=useState(true)
     return (
         <div className="videoSideBar">
             <h2>Up Next</h2>
+            <Switch
+            checked={button}
+            onChange={(e)=>{setButton(!button)}}
+            style={{color:"blue"}}
+            name="checkedB"
+            inputProps={{ 'aria-label': 'primary checkbox' }}/>
             <div className="videoSideBar__videosContainer">
                 {allVideos.map((v)=>
                 <div onClick={()=>directToVideo(v)} className="videoSideBar__videos">

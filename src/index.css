@@ -1,6 +1,10 @@
 *{
   margin:0;
 }
+html{
+  width: 100%;
+  background: ghostwhite;
+}
 
 body {
   margin: 0;

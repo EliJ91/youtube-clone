@@ -24,7 +24,7 @@
     
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 720px) {
     .recommendedVideos__videosContainer{
         display: grid;
         grid-template-columns: repeat( 1,1fr );
