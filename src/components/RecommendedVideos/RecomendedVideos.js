@@ -26,12 +26,12 @@ function RecomendedVideos() {
         fetchData()                       
     },[])
 
-    function directToVideo(v){
+    function directToVideo(videoObject){
         
         history.push({
             pathname: "/watch",
             state: { 
-                v
+                videoObject
         }})
     }
 
@@ -40,9 +40,9 @@ function RecomendedVideos() {
         <div className="recommendedVideos">
             <h2>Recomended</h2>
         <div className="recommendedVideos__videosContainer">
-            {allVideos.map((v)=>
-            <div onClick={()=>directToVideo(v)} className="recommendedVideos__videos">
-                <VideoCard  title= {v.title} author={v.username} views={v.views} authorImg={v.userAvatar} thumbnail={v.thumbnail} date={v.uploadDate}/>
+            {allVideos.map((videoObject)=>
+            <div key={videoObject._id} onClick={()=>directToVideo(videoObject)} className="recommendedVideos__videos">
+                <VideoCard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
             </div>
             )}
         </div>

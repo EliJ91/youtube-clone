@@ -19,6 +19,7 @@ function MyDropzone(props) {
   const userId = useSelector(state=>state._id)
   const userAvatar = useSelector(state=>state.avatar)
   const userName = useSelector(state=>state.username)
+  const subscribers = useSelector(state=>state.subscribers)
 
   const [uploaded, setUploaded]=useState(false)
 
@@ -58,6 +59,7 @@ async function uploadMovie(event){
   formData.append('userId', userId)
   formData.append('userAvatar', userAvatar)
   formData.append('username', userName)
+  formData.append('subscribers', subscribers)
   
   
   
