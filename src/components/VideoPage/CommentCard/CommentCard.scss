@@ -1,0 +1,32 @@
+.commentCard{
+    display: flex;
+    margin-top: 50px;
+}
+
+.authorInfo{
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.comment{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.textContainer{
+    margin-left: 15px;
+}
+
+.likeDislikesContainer{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+
+    & > span{
+        color: grey;
+        font-weight: 700;
+    }
+}
+
+.likeIcon{
+    font-size: 20px !important;
+}

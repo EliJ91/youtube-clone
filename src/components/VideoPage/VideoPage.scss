@@ -93,6 +93,46 @@
     cursor: pointer;
 }
 
+.videoPage__commentHeader{
+    font-size: 16px;
+    color: grey;
+    font-weight: 500;
+    margin-top: 15px;
+    display: flex;
+
+    & > p{
+        vertical-align: text-top;
+        margin-left: 20px;
+        margin-top: 0;
+        display: flex;
+    }
+
+    &.__sortIcon{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.videoPage__newComment{
+    display: flex;
+    margin-top: 30px;
+
+    & Input{
+        margin-left: 10px;
+        flex: 1;
+        border: none;
+        background-color: ghostwhite;
+        border-bottom: 1px solid lightgray;
+        padding: 0;
+        height: 30px;
+        &:focus{
+            outline: none;
+        }
+
+    }
+
+}
+
 .switch{
     background-color: red;
     width: 35px;

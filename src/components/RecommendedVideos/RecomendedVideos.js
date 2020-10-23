@@ -9,9 +9,8 @@ import axios from 'axios'
 function RecomendedVideos() {
     const [allVideos, setAllVideos]=useState([])
     let history = useHistory()
-    
-    
-              
+    console.log(allVideos)
+
     useEffect(()=>{
         async function fetchData(){
             await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos") 
@@ -33,6 +32,7 @@ function RecomendedVideos() {
             state: { 
                 videoObject
         }})
+        console.log(videoObject)
     }
 
 

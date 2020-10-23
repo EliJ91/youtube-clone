@@ -7,15 +7,16 @@ import ReplyIcon from '@material-ui/icons/Reply';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Avatar from '@material-ui/core/Avatar'
+import SortIcon from '@material-ui/icons/Sort';
+import {useSelector} from 'react-redux';
+import CommentCard from './CommentCard/CommentCard'
 
 function VideoPage(props) {
 
-    console.log(props.location.state.videoObject)
-
     const video = props.location.state.videoObject.video
     const author = props.location.state.videoObject.author
-
-    console.log(author.subscribers)
+    const comments = props.location.state.videoObject.comments
+    const user = useSelector(state=>state)
 
     var date = new Date(video.uploadDate)
     var MMM = date.toLocaleString('default', { month: 'short' })
@@ -54,6 +55,15 @@ function VideoPage(props) {
                             <div className="videoPage__authorInfo__subscribe__Button">SUBSCRIBE</div>
                         </div>
                     </div>
+                    <div className="videoPage__commentHeader"> {comments.length} COMMENTS <p><SortIcon className="videoPage__commentHeader __sortIcon"/> SORT BY</p></div>
+                    <div className="videoPage__newComment">
+                        <Avatar src={user.avatar}/>
+                        <input placeholder="Add a public comment..."/>
+                    </div>
+
+                {comments.length > 0 ? 
+                comments.map((comment)=> <CommentCard commentData={comment}/>) : <></>
+                }
                 </div>
                 <div className="videoPage__upNext">
                     <VideoSidebar/>
