@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import './VideoPage.scss'
 import VideoSidebar from '../VideoSidebar/VideoSidebar'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
@@ -10,20 +10,42 @@ import Avatar from '@material-ui/core/Avatar'
 import SortIcon from '@material-ui/icons/Sort';
 import {useSelector} from 'react-redux';
 import CommentCard from './CommentCard/CommentCard'
+import axios from 'axios'
 
 function VideoPage(props) {
 
-    const video = props.location.state.videoObject.video
-    const author = props.location.state.videoObject.author
-    const comments = props.location.state.videoObject.comments
-    const user = useSelector(state=>state)
+    const [movie,setMovie]=useState()
 
-    var date = new Date(video.uploadDate)
-    var MMM = date.toLocaleString('default', { month: 'short' })
-    var dd = date.getDate()
-    var yyyy = date.getFullYear()
-    return (
+    useEffect(()=>{
+        async function fetchData(){
+            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.match.params.movieId}}) 
+            .then(function (response) {
+                   setMovie(response.data)
+                   
+              })
+              .catch(function (error) {
+                console.log(error);
+              })             
+            
+        }
+        fetchData()                       
+    },[])
+    
+   
+    const user = useSelector(state=>state)
+    
+        if(movie){             
+            const video = movie.video.video
+            const author = movie.video.author
+            const comments = movie.video.comments 
         
+            var date = new Date(video.uploadDate) 
+            var MMM = date.toLocaleString('default', { month: 'short' })
+            var dd = date.getDate()
+            var yyyy = date.getFullYear() 
+            
+            console.log(comments)
+        return (   
             <div className="videoPage">
                 <div className="videoPage__videoData">   
                     <video className="video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
@@ -48,7 +70,7 @@ function VideoPage(props) {
                                 <h1>{author.username}</h1>
                                 <h2>{author.subscribers.length-1} Subscribers</h2>
                                 <h3>{video.description}</h3>
-                                <h4>SHOW MORE</h4>
+                              <h4>SHOW MORE</h4>
                             </div>
                         </div>
                         <div className="videoPage__authorInfo__subscribe">
@@ -62,23 +84,28 @@ function VideoPage(props) {
                     </div>
 
                 {comments.length > 0 ?  
-                comments.map((comment)=> 
-                <div>
-                <CommentCard commentData={comment}/> 
-                {comment.reply.map((reply)=>
-                <CommentCard reply commentData={reply}/>)}
-                </div>
-                )
+                    comments.map((comment)=> 
+                        <div>
+                            <CommentCard commentData={comment}/>
+                                {comment.repy ? comment.reply.map((reply)=>
+                                    <CommentCard commentData={reply}/>)
+                                :<></>}
+                        </div>
+                    )
                 :<></>}
-                
-                
                 </div>
                 <div className="videoPage__upNext">
                     <VideoSidebar/>
                 </div>
-            </div>            
-        
-    )
+            </div>
+        )
+        }else{
+            return(
+            <div>whoops</div>
+            )
+        }
+                 
+    
 }
 
 export default VideoPage

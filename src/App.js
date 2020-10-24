@@ -30,7 +30,7 @@ function App() {
       <Router>
       <Header/>
         <Route path="/" exact component={appContainer} />
-        <Route path="/watch" component={VideoPage} />
+        <Route path="/watch/:movieId" render={(props)=><VideoPage {...props}/>} />
       </Router>
       
     </div>

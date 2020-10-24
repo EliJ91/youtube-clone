@@ -9,7 +9,6 @@ import axios from 'axios'
 function RecomendedVideos() {
     const [allVideos, setAllVideos]=useState([])
     let history = useHistory()
-    console.log(allVideos)
 
     useEffect(()=>{
         async function fetchData(){
@@ -28,11 +27,10 @@ function RecomendedVideos() {
     function directToVideo(videoObject){
         
         history.push({
-            pathname: "/watch",
+            pathname: "/watch/"+videoObject._id,
             state: { 
                 videoObject
         }})
-        console.log(videoObject)
     }
 
 

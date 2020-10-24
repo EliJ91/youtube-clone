@@ -30,7 +30,7 @@ function VideoSidebar() {
     function directToVideo(videoObject){
         
         history.push({
-            pathname: "/watch",
+            pathname: "/watch/"+videoObject._id,
             state: { 
                 videoObject
         }})
