@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './RecommendedVideos.css'
 import VideoCard from '../VideoCard/VideoCard'
 import axios from 'axios'
@@ -8,7 +8,6 @@ import axios from 'axios'
 
 function RecomendedVideos() {
     const [allVideos, setAllVideos]=useState([])
-    let history = useHistory()
 
     useEffect(()=>{
         async function fetchData(){
@@ -24,28 +23,20 @@ function RecomendedVideos() {
         fetchData()                       
     },[])
 
-    function directToVideo(videoObject){
-        
-        history.push({
-            pathname: "/watch/"+videoObject._id,
-            state: { 
-                videoObject
-        }})
-    }
-
-
+    
     return (
         <div className="recommendedVideos">
             <h2>Recomended</h2>
-        <div className="recommendedVideos__videosContainer">
-            {allVideos.map((videoObject)=>
-            <div key={videoObject._id} onClick={()=>directToVideo(videoObject)} className="recommendedVideos__videos">
-                <VideoCard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
+            <div className="recommendedVideos__videosContainer">
+                {allVideos.map((videoObject)=>
+                    <div key={videoObject._id}  className="recommendedVideos__videos">
+                        <Link to={{pathname:"/watch/"+videoObject._id , state:{videoObject}}}>
+                            <VideoCard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
+                        </Link>
+                    </div>
+                
+                )}
             </div>
-            )}
-        </div>
-
-            
         </div>
     )
 }

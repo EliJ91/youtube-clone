@@ -14,7 +14,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {LOGGED_IN} from '../../redux/actions'
 import {defaultState} from '../../redux/reducer'
 import axios from 'axios'
-import {useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 function Header() {
@@ -22,7 +22,6 @@ function Header() {
     const [uploadVideo, setUploadVideo] = useState(false)
     const [login, setLogin] = useState(false)
     const dispatch = useDispatch()
-    let history = useHistory()
 
    
     const loggedIn = useSelector(store=>store.username)
@@ -44,16 +43,14 @@ function Header() {
         
       }
 
-    function redirectHome(){
-        history.push('/')
-    }
+    
 
     return (
         <>
         <div className="header">
 
             <div className="header__left">
-                <img onClick={redirectHome} className = "header__logo" src={Logo} alt=""/>
+                <Link to='/' ><img className = "header__logo" src={Logo} alt=""/></Link>
             </div>
 
             <div className="header__input">
