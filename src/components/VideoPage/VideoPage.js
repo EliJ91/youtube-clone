@@ -29,7 +29,7 @@ function VideoPage(props) {
             
         }
         fetchData()                       
-    },[])
+    },[props.match.params.movieId])
     
    
     const user = useSelector(state=>state)
