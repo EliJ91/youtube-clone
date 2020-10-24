@@ -61,9 +61,17 @@ function VideoPage(props) {
                         <input placeholder="Add a public comment..."/>
                     </div>
 
-                {comments.length > 0 ? 
-                comments.map((comment)=> <CommentCard commentData={comment}/>) : <></>
-                }
+                {comments.length > 0 ?  
+                comments.map((comment)=> 
+                <div>
+                <CommentCard commentData={comment}/> 
+                {comment.reply.map((reply)=>
+                <CommentCard reply commentData={reply}/>)}
+                </div>
+                )
+                :<></>}
+                
+                
                 </div>
                 <div className="videoPage__upNext">
                     <VideoSidebar/>

@@ -9,6 +9,8 @@ import './CommentCard.scss'
 function CommentCard(props) {
     let comment= props.commentData
     
+    if(props.reply)
+
     var today = new Date().getTime()
     var posted = new Date(comment.date).getTime()
     var res = Math.abs(today - posted) / 1000;
