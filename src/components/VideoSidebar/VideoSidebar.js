@@ -9,6 +9,7 @@ import Switch from '@material-ui/core/Switch';
 
 function VideoSidebar() {
     const [allVideos, setAllVideos]=useState([])
+    const [button,setButton]=useState(true)
 
     useEffect(()=>{
         async function fetchData(){
@@ -24,12 +25,9 @@ function VideoSidebar() {
         fetchData()                       
     },[])
 
-    
-
-const [button,setButton]=useState(true)
     return (
         <div className="videoSideBar">
-            <div className="videoSideBar__topContainer">
+            <div className="videoSideBar_topContainer">
                 <h2>Up Next</h2>
                 <Switch
                 checked={button}
@@ -38,10 +36,10 @@ const [button,setButton]=useState(true)
                 name="checkedB"
                 inputProps={{ 'aria-label': 'primary checkbox' }}/>
             </div>
-            <div className="videoSideBar__videosContainer">
+            <div className="videoSideBar_videosContainer">
                 {allVideos.map((videoObject)=>
-                <Link to={{pathname: "/watch/"+videoObject._id, state: {videoObject}}}>
-                    <div key={videoObject._id} className="videoSideBar__videos">
+                <Link to={{pathname: "/watch/"+videoObject.videoSideBar_id, state: {videoObject}}}>
+                    <div key={videoObject._id} className="videoSideBar_videos">
                         <VideoSidecard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
                     </div>
                 </Link>

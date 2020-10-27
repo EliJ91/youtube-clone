@@ -17,6 +17,8 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 
+
+
 function Header() {
 
     const [uploadVideo, setUploadVideo] = useState(false)
@@ -49,25 +51,28 @@ function Header() {
         <>
         <div className="header">
 
-            <div className="header__left">
-                <Link to='/' ><img className = "header__logo" src={Logo} alt=""/></Link>
+            <div className="header_left">
+                <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
             </div>
 
-            <div className="header__input">
+            <div className="header_input">
                 <input placeholder="Search" type="text"></input>
-                <SearchIcon className="header__inputButton"/>
+                <SearchIcon className="header_inputButton"/>
             </div>
             
-            {width < 400 ? <MenuIcon className="header__menuIcon"/>:<div className="header__icons">
-                <VideoCallIcon className="header__icon header__uploadVideo" onClick={()=>setUploadVideo(true)}/>
-                <span className="header__uploadVideo_tooltip">Upload Video</span>
-                <AppsIcons className="header__icon"/>
-                <NotificationsIcon className="header__icon"/>
+            {width < 400 ? <MenuIcon className="header_menuIcon"/>:
+            <div className="header_icons">
+                <VideoCallIcon className="header_icon header_uploadVideo" onClick={()=>setUploadVideo(true)}/>
+                <span className="header_uploadTooltip">Upload Video</span>
+                <AppsIcons className="header_icon"/>
+                <NotificationsIcon className="header_icon"/>
 
                 {loggedIn !== null ? 
-                <><Avatar onClick={logout} className="header__avatar" src={avatar !== null ? avatar : null} />
-                <span className="header__logout_tooltip">Log Out</span></>:
-                <p className="header__loginText" onClick={()=>setLogin(true)}>Log in</p>
+                <>
+                    <Avatar onClick={logout} className="header_avatar" src={avatar} />
+                    <span className="header_logoutTooltip">Log Out</span>
+                </>:
+                <p className="header_loginText" onClick={()=>setLogin(true)}>Log in</p>
                 }   
             </div>}
                         

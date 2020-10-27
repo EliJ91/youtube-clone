@@ -36,20 +36,20 @@ function CommentCard(props) {
 
     return (
         <>
-        <div className={`commentCard ${props.nestReply && "nest"}`}>
-            <Avatar className={`avatar ${props.nestReply && "nest"}`} src={comment.userAvatar}/>
-            <div className="textContainer">
-                <div className="authorInfo">{comment.username} {leDays} {unit}{leDays > 1 ? "s" :""} ago</div>
-                <div className="comment">{comment.comment}</div>
-                    <div className="likeDislikesContainer">
-                        <ThumbDownAltIcon className="likeIcon" />{comment.likes.length}
-                        <ThumbUpAltIcon className="likeIcon"/>{comment.dislikes.length}
+        <div className={`commentCard ${props.nestReply && "commentCard_nest"}`}>
+            <Avatar className={`commentCard_avatar ${props.nestReply && "commentCard_nest"}`} src={comment.userAvatar}/>
+            <div className="commentCard_textContainer">
+                <div className="commentCard_authorInfo">{comment.username} {leDays} {unit}{leDays > 1 ? "s" :""} ago</div>
+                <div className="commentCard_comment">{comment.comment}</div>
+                    <div className="commentCard_likeDislikesContainer">
+                        <ThumbDownAltIcon className="commentCard_likeIcon" />{comment.likes.length}
+                        <ThumbUpAltIcon className="commentCard_likeIcon"/>{comment.dislikes.length}
                         <span>Reply</span>
                     </div>
                         {comment.reply && 
                         <>
                             <h1 onClick={()=>{setHidden(!hidden)}}> {hidden ? <><ArrowDropDownIcon/> View</> : <><ArrowDropUpIcon/> Hide</>}  {comment.reply.length} {comment.reply.length > 1 ? "replies" :"reply"}</h1>
-                            <div className={`replyContainer ${hidden && "hide"}`}>
+                            <div className={`commentCard_replyContainer ${hidden && "commentCard_hide"}`}>
                             {comment.reply.map((c)=><CommentCard nestReply commentData={c}/>)}
                             </div>
                         </>

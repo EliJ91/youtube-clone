@@ -84,27 +84,27 @@ async function uploadMovie(event){
 }
 
   return (
-    <div className="mydropzone__container">
-      <div className="mydropzone__dropzoneContainer" name="video" onDragEnter={(e)=>prepareFile(e)} onDragOver={(e)=>prepareFile(e)} onDrop={loadDroppedFile}>
+    <div className="mydropzone_container">
+      <div className="mydropzone_dropzoneContainer" name="video" onDragEnter={(e)=>prepareFile(e)} onDragOver={(e)=>prepareFile(e)} onDrop={loadDroppedFile}>
         {movie.name ?
-           <PublishIcon className="mydropzone__publishIcon" />:<div className="mydropzone__dropzone">Click or Drop the file here ...</div>
+           <PublishIcon className="mydropzone_publishIcon" />:<div className="mydropzone_dropzone">Click or Drop the file here ...</div>
         }
       </div>  
 
-      <input className="mydropzone__inputFile" type="file"  id="fileInput"  onChange={loadSelectedFile}/>
-      <label className="mydropzone__inputFileLabel" htmlFor="fileInput">
+      <input className="mydropzone_inputFile" type="file"  id="fileInput"  onChange={loadSelectedFile}/>
+      <label className="mydropzone_inputFileLabel" htmlFor="fileInput">
         {movie.name ? movie.name : "Click to select file." }</label>
 
 
-      <div className="mydropzone__inputContainer">
-        <p className="mydropzone__inputTitle">Title</p><input onChange={(e)=>{setVideoTitle(e.target.value)}} className="mydropzone__input" type="text"/>
+      <div className="mydropzone_inputContainer">
+        <p className="mydropzone_inputTitle">Title</p><input onChange={(e)=>{setVideoTitle(e.target.value)}} className="mydropzone_input" type="text"/>
       </div>
-      <div className="mydropzone__inputContainer">
-        <p className="mydropzone__inputTitle" >Description</p><textarea name="description" onChange={(e)=>{setVideoDescription(e.target.value)}} rows="3" className="mydropzone__input mydropzone__description" type="text"/>
+      <div className="mydropzone_inputContainer">
+        <p className="mydropzone_inputTitle" >Description</p><textarea name="description" onChange={(e)=>{setVideoDescription(e.target.value)}} rows="3" className="mydropzone_input mydropzone_description" type="text"/>
       </div>
-      <div className="mydropzone__inputContainer flex">
+      <div className="mydropzone_inputContainer flex">
         <>
-          <p className="mydropzone__inputTitle">Genre</p>
+          <p className="mydropzone_inputTitle">Genre</p>
           <select onChange={(e)=>setVideoGenre(e.target.value)}>
               <option value="comedy">Comedy</option>
               <option value="cars">Cars</option>
@@ -121,13 +121,13 @@ async function uploadMovie(event){
             </select>
         </>
         <>
-          <p className="mydropzone__inputTitle">Thumbnail URL</p>
-          <input className="mydropzone__input" onChange={(e)=>setVideoThumbnail(e.target.value)}type="select"/>
+          <p className="mydropzone_inputTitle">Thumbnail URL</p>
+          <input className="mydropzone_input" onChange={(e)=>setVideoThumbnail(e.target.value)}type="select"/>
         </>
       </div>
       {uploaded ? 
-      <button className="mydropzone__button uploaded">Uploaded</button> : 
-      <button onClick={uploadMovie} className="mydropzone__button">{!loading ? "Upload":"Loading..."}</button> }
+      <button className="mydropzone_button uploaded">Uploaded</button> : 
+      <button onClick={uploadMovie} className="mydropzone_button">{!loading ? "Upload":"Loading..."}</button> }
       
     </div>
     
@@ -139,8 +139,8 @@ export default MyDropzone;
 
 // {
 //   isDragActive ?
-//     <><div className="mydropzone__dropzone">Drop the file here ...</div> 
-//     <div className="mydropzone__selectUpload">Select File</div></>:
-//     <><div className="mydropzone__dropzone">Drop the file here ...</div> 
-//     <button className="mydropzone__selectUpload">Select File</button></>
+//     <><div className="mydropzone_dropzone">Drop the file here ...</div> 
+//     <div className="mydropzone_selectUpload">Select File</div></>:
+//     <><div className="mydropzone_dropzone">Drop the file here ...</div> 
+//     <button className="mydropzone_selectUpload">Select File</button></>
 // }

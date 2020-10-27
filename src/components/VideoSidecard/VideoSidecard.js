@@ -12,7 +12,7 @@ function VideoSidecard({id, title, author, authorImg, views, thumbnail, date}) {
 
     function checkValues(days, hours){
         if(hours>=24){
-            unit = "days"
+            unit = "day"
             return days
         }
         return hours
@@ -26,22 +26,18 @@ function VideoSidecard({id, title, author, authorImg, views, thumbnail, date}) {
 
     return (
         <div className="videoSidecard">
-            <div className="videoSidecard__thumbnailContainer">
-                <img className="videoSidecard__thumbnail" src={thumbnail} alt="video thumbnail"/>
+            <div className="videoSidecard_thumbnailContainer">
+                <img className="videoSidecard_thumbnail" src={thumbnail} alt="video thumbnail"/>
             </div>
-            
-
-            <div className="videoSidecard__videoDataContainer">    
-                <div className="videoSidecard__videoData">
+            <div className="videoSidecard_videoDataContainer">    
+                <div className="videoSidecard_videoData">
                     <h1>{title}</h1>
-                    <h2>{author}</h2>
-                <div className="videoSidecard__videoStats">
-                    <h2>{views} views •&nbsp;</h2>
-                    <h2> {leDays} {unit}{plural && "s"} ago</h2>
-                </div>                
-            </div>
-            
-
+                    <div className="videoSidecard_dataText">
+                        <h2>{author}</h2>
+                        <h2>{views} views </h2>
+                        <h2> {leDays} {unit}{plural && "s"} ago</h2>   
+                    </div>                                 
+                </div>
             </div>
         </div>
     )

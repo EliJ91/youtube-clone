@@ -15,6 +15,7 @@ import axios from 'axios'
 function VideoPage(props) {
 
     const [movie,setMovie]=useState()
+    const [comment, setComment]=useState("")
 
     useEffect(()=>{
         async function fetchData(){
@@ -47,40 +48,49 @@ function VideoPage(props) {
             console.log(comments)
         return (   
             <div className="videoPage">
-                <div className="videoPage__videoData">   
-                    <video className="video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
+                <div className="videoPage_videoData">   
+                    <video className="videoPage_video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
                     <h1>{video.title}</h1>   
-                    <div className="videoPage__vidDataContainer">
+                    <div className="videoPage_videoDataContainer">
                         <h1>{video.views} views • {`${MMM} ${dd}, ${yyyy}`}</h1>
                         <h2>
-                            <ThumbUpAltIcon className="clickable"/><span>{video.likes.length}</span>
-                            <ThumbDownAltIcon className="clickable"/><span>{video.dislikes.length}</span>
-                            <ReplyIcon className="clickable"/><span>SHARE</span>
-                            <PlaylistAddIcon className="clickable"/><span>SAVE</span>
-                            <MoreHorizIcon className="clickable"/>
+                            <ThumbUpAltIcon className="videoPage_clickable"/><span>{video.likes.length}</span>
+                            <ThumbDownAltIcon className="videoPage_clickable"/><span>{video.dislikes.length}</span>
+                            <ReplyIcon className="videoPage_clickable"/><span>SHARE</span>
+                            <PlaylistAddIcon className="videoPage_clickable"/><span>SAVE</span>
+                            <MoreHorizIcon className="videoPage_clickable"/>
                         </h2>
                     </div>
-                    <div className="videoPage__authorInfo">
-                        <div className="videoPage__authorInfo__leftContainer">
-                            <div className="videoPage__authorInfo__avatar">
+                    <div className="videoPage_authorInfo">
+                        <div className="videoPage_leftContainer">
+                            <div className="videoPage_avatar">
                                 <Avatar src={author.userAvatar}/>
                             </div>
                             
-                            <div className="videoPage__authorInfo__info">
+                            <div className="videoPage_info">
                                 <h1>{author.username}</h1>
                                 <h2>{author.subscribers.length-1} Subscribers</h2>
                                 <h3>{video.description}</h3>
-                              <h4>SHOW MORE</h4>
+                                <h4>SHOW MORE</h4>
                             </div>
                         </div>
-                        <div className="videoPage__authorInfo__subscribe">
-                            <div className="videoPage__authorInfo__subscribe__Button">SUBSCRIBE</div>
+                        <div className="videoPage_subscribe">
+                            <div className="videoPage_button">SUBSCRIBE</div>
                         </div>
                     </div>
-                    <div className="videoPage__commentHeader"> {comments.length} COMMENTS <p><SortIcon className="videoPage__commentHeader __sortIcon"/> SORT BY</p></div>
-                    <div className="videoPage__newComment">
+                    <div className="videoPage_commentHeader"> 
+                        {comments.length} COMMENTS 
+                        <p>
+                            <SortIcon className="videoPage_sortIcon"/> SORT BY
+                        </p>
+                    </div>
+                    <div className="videoPage_newComment">
                         <Avatar src={user.avatar}/>
-                        <input placeholder="Add a public comment..."/>
+                        <input placeholder="Add a public comment..." onChange={(e)=>setComment(e.target.value)}/>
+                    </div>
+                    <div className="videoPage_newCommentButton">
+                        <div className="videoPage_cancelComment">Cancel</div>
+                        <div className={`videoPage_submitComment ${comment !== "" disabled}`}>Comment</div>
                     </div>
 
                 {comments.length > 0 ?  
@@ -92,9 +102,9 @@ function VideoPage(props) {
                                 :<></>}
                         </div>
                     )
-                :<></>}
+                    :<></>}
                 </div>
-                <div className="videoPage__upNext">
+                <div className="videoPage_upNext">
                     <VideoSidebar/>
                 </div>
             </div>

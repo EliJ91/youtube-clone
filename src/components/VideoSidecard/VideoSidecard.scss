@@ -1,63 +1,75 @@
 .videoSidecard{
     cursor: pointer;
     display: flex;
-}
-
-
-
-.videoSidecard__videoStats{
-    display: flex;
-    align-items: center;
-
-    &> h2{
-        font-weight: 500;
-        font-size: .8rem;
-        color: rgb(133, 133, 133);
+    & .videoSidecard_thumbnailContainer{
+        text-align: center;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+        margin-right: 10px;
+        & .videoSidecard_thumbnail{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
+    & .videoSidecard_videoDataContainer{
+        & .videoSidecard_videoData{ 
+            display: grid;
+            & > h1{
+                font-weight: 500;
+                font-size: 1em;
+            }
+            & .videoSidecard_dataText{
+                & > h2{       
+                    font-weight: 500;
+                    font-size: .8em;
+                    color: rgb(133, 133, 133);
+                
+            }
+            }
+        }
+    }   
 }
 
-.videoSidecard__videoData{ 
-    & > h2{        
-        font-weight: 500;
-        font-size: .8rem;
-        color: rgb(133, 133, 133);
-    }
-    & > h1{
-        font-weight: 500;
-        font-size: 1rem;
-    }
-}
 
 
 
-.videoSidecard__thumbnail{
-    width: 100%;
-}
-.videoSidecard__thumbnailContainer{
-    text-align: center;
-    height: 99px;
-    width: 170px;
-    background-color: rgb(0, 0, 0);
-    margin-right: 10px;
-
-}
-.videoSidecard__videoDataContaine{
-    vertical-align: text-top;
-}
-
-.videoSidecard__videoDataContainer{
-    vertical-align: top;
-}
-
-@media only screen and (max-width: 1600px) {
-    .videoSidecard__videoStats{
-        display: block;        
-    }
-}
 
 @media only screen and (max-width: 1600px) {
     .videoSidecard{
         display: inline-block;
-        width: 170px;
+        & .videoSidecard_thumbnailContainer{
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+            margin-right: 10px;
+            max-height: 170px;
+            align-content: center;
+            & .videoSidecard_thumbnail{
+                object-fit: contain;                
+            }
+        }
+        & .videoSidecard_videoDataContainer{
+            vertical-align: text-top;
+            & .videoSidecard_videoData{
+                & > h1{
+                    margin-top: 5px;
+                    font-weight: 500;
+                    font-size: 1rem;
+                }
+                & .videoSidecard_dataText{
+                    display: flex; 
+                    & > h2{     
+                        padding-right: 10px;                       
+                        font-weight: 500;
+                        font-size: .8rem;
+                        color: rgb(133, 133, 133);
+                        line-height: 1;
+                    } 
+                }
+                               
+            }
+        }   
     }
+    
 }
+

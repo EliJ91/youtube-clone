@@ -93,17 +93,17 @@ function LoginUi(props) {
  
 
   return (
-    <div className="loginUi__alertContainer">
-     {accountCreated ? <div className="loginUi__alert"> ACCOUNT CREATED </div >:<div></div>}
+    <div className="loginUi">
+     {accountCreated ? <div className="loginUi_alert"> ACCOUNT CREATED </div >:<div></div>}
 
-      <div className="loginUi__container">
+      <div className="loginUi_container">
 
         
           <input onChange={(e)=>{setUsername(e.target.value)}} value={username} type="text"placeholder="Username"/>
 
           {!createAccount ?
-          <p className="loginUi__textLink" onClick={()=>setCreateAccount(true)} >Need an account?</p>:
-          <p className="loginUi__textLink" onClick={()=>setCreateAccount(false)}>Already have an account?</p>}
+          <p className="loginUi_textLink" onClick={()=>setCreateAccount(true)} >Need an account?</p>:
+          <p className="loginUi_textLink" onClick={()=>setCreateAccount(false)}>Already have an account?</p>}
           
         
 
@@ -114,8 +114,8 @@ function LoginUi(props) {
         {!createAccount  ? <div></div> : <input type="password" value={password2}  onChange={(e)=>setPassword2(e.target.value)} placeholder="Re-type password"/>}
         {!createAccount  ? <div></div> : <input type="text" value={avatarImg}  onChange={(e)=>setAvatarImg(e.target.value)} placeholder="Avatar URL"/>}
         {!createAccount ?
-        <button onClick={()=>login(username,password)} className="loginUi__button">Login</button>:
-        <button onClick={()=>newAccount(username,password,password2,avatarImg)} className="loginUi__button create">Create Account</button> }
+        <button onClick={()=>login(username,password)} className="loginUi_button">Login</button>:
+        <button onClick={()=>newAccount(username,password,password2,avatarImg)} className="loginUi_button create">Create Account</button> }
         
       </div>
     </div>

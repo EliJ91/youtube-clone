@@ -1,4 +1,4 @@
-.mydropzone__container{
+.mydropzone_container{
     display: grid;
     align-items: center;
     grid-template-rows: 1fr 10px 50px 100px 50px .5fr;
@@ -7,7 +7,7 @@
 
 
 
-.mydropzone__dropzoneContainer{
+.mydropzone_dropzoneContainer{
     border: 1px dashed black;
     width: 50%;
     height: 0;
@@ -30,7 +30,7 @@
 }
 
 
-.mydropzone__inputContainer{
+.mydropzone_inputContainer{
     margin: 0;
     padding: 0;
 
@@ -40,7 +40,7 @@
         text-align: center;
     }
 }
-.mydropzone__inputTitle{
+.mydropzone_inputTitle{
     font-weight: bold;
     color: rgb(53, 53, 53);
     margin-right: 10px;
@@ -52,11 +52,11 @@
     }
 }
 
-.mydropzone__input{
+.mydropzone_input{
     width: 100%;
 }
 
-.mydropzone__button{
+.mydropzone_button{
     width: 25%;
     margin-left: auto;
     margin-right: auto;
@@ -79,7 +79,7 @@
 }
 
 
-.mydropzone__publishIcon{
+.mydropzone_publishIcon{
     font-size: 100px !important;
     position: absolute !important;
     color: #FF0000;
@@ -87,7 +87,7 @@
     top: 23%;
 }
 
-.mydropzone__inputFile{
+.mydropzone_inputFile{
     margin: 0;
     padding: 0;
     width: 35%;
@@ -95,7 +95,7 @@
     margin-right: auto;
     display: none;
 }
-.mydropzone__inputFileLabel{
+.mydropzone_inputFileLabel{
     text-align: center;
     margin: 0;
     padding: 0;

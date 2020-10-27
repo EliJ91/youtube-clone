@@ -1,0 +1,38 @@
+.recommendedVideos{
+    flex: 1;
+    background: ghostwhite;
+    padding: 40px 20px;
+    padding-bottom: 0;
+    height: 100vh;
+
+    & > h2{
+        margin-left: 5px;
+        margin-bottom: 20px;
+    }
+
+    & .RecommendedVideos_videos{
+        margin: 10px;
+        & a{
+            color: black;
+            & :active{
+                transform: scale(.98);
+            }
+        }
+    }
+    & .RecommendedVideos_videosContainer{
+        display: grid;
+        grid-template-columns: repeat( 4,1fr );
+        padding: 10px
+    }
+}
+
+
+
+@media only screen and (max-width: 720px) {
+    .recommendedVideos_videosContainer{
+        display: grid;
+        grid-template-columns: repeat( 1,1fr );
+        padding: 10px;
+        
+    }
+}

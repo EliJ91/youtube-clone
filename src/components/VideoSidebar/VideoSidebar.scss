@@ -4,30 +4,61 @@
     padding: 40px 20px;
     padding-bottom: 0;
     height: 100vh;
-
-    & .videoSideBar__topContainer{
+    & .videoSideBar_topContainer{
         display: flex;
         justify-content: space-between;
+        & > h2{
+            margin-left: 5px;
+            margin-bottom: 20px;
+        }
     }
-
-    & > h2{
-        margin-left: 5px;
-        margin-bottom: 20px;
+    & .videoSideBar_videosContainer{
+        display: grid;
+        padding: 10px;
+        & > a{
+            text-decoration: none;
+            color: black;
+            &:active{
+                transform: scale(.98);
+                }
+        }
+        &.videoSideBar_videos{
+            max-width: 500px;
+        }
     }
-    
 }
 
-.video{
-    max-width: 500px;
+.switch{
+    background-color: red;
+    width: 35px;
+    height: 13px;
+    border-radius: 34px;
+    overflow: visible;
+    position: relative;
+    & .checkbox{
+        position: absolute;
+        visibility: hidden;
+        :before{
+            content: "\00a0";
+            height: 30px;
+            width: 30px;
+            background-color: blue;
+            display: inline-block;
+        }
+        &:focus{
+            right: 0;
+            left: -10px;
+            transition: all 5s;
+        }
+    }
+}
+.MuiSwitch-track{
+    background-color: rgb(181, 180, 180) !important;
 }
 
-.videoSideBar__videosContainer{
-    display: grid;
-    padding: 10px;
-    
-}
 
-Link{
-    text-decoration: none;
-    color: red;
-}
+
+
+
+
+

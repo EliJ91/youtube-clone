@@ -1,5 +1,5 @@
 import React from 'react'
-import './VideoCard.css'
+import './VideoCard.scss'
 import Avatar from '@material-ui/core/Avatar'
 
 function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
@@ -27,23 +27,21 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
 
     return (
         <div className="videoCard">
-            <div className="videoCard__thumbnailContainer">
-                <img className="videoCard__thumbnail" src={thumbnail} alt="video thumbnail"/>
+            <div className="videoCard_thumbnailContainer">
+                <img className="videoCard_thumbnail" src={thumbnail} alt="video thumbnail"/>
             </div>
             
 
-            <div className="videoCard__videoDataContainer">    
-                <Avatar className="videoCard__avatar"src={authorImg}/>
-            <div className="videoCard__videoData">
-                <h1>{title}</h1>
-                <h2>{author}</h2>
-                <div className="videoCard__videoStats">
-                    <h2>{views} views •&nbsp;</h2>
-                    <h2> {leDays} {unit}{plural && "s"} ago</h2>
-                </div>                
-            </div>
-            
-
+            <div className="videoCard_videoDataContainer">    
+                <Avatar className="videoCard_avatar"src={authorImg}/>
+                <div className="videoCard_videoData">
+                    <h1>{title}</h1>
+                    <h2>{author}</h2>
+                    <div className="videoCard_videoStats">
+                        <h2>{views} views •&nbsp;</h2>
+                        <h2> {leDays} {unit}{plural && "s"} ago</h2>
+                    </div>                
+                </div>
             </div>
         </div>
     )

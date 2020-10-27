@@ -8,141 +8,153 @@
     z-index: 10;
     background-color: white;
     width: 100%;
-}
-.header__logo{
-    height: 24px;
-    width: 80px;
-    object-fit: contain;
-    margin-left: 20px;
-    cursor: pointer;
-}
 
-.header__input{
-    display: flex;
-    align-items: center;
-    width: 30%;
-    border: 1px solid rgba(128, 128, 128, 0.425);
+    & .header_left{
+        & .header_logo{
+            height: 24px;
+            width: 80px;
+            object-fit: contain;
+            margin-left: 20px;
+            cursor: pointer;
 
-    &:focus{
-        outline: none;
+            &:active{
+            transform: scale(.9);
+            }
+        }
     }
 
-    &>input{
-        flex: 1;
-        border: none;
-        padding-left: 10px;
-        outline: none;
-    }
-}
-
-.header__icons{
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin: 3px;
+    & .header_input{
+        display: flex;
+        align-items: center;
+        width: 30%;
+        border: 1px solid rgba(128, 128, 128, 0.425);
     
-}
-.header__icon{
-    margin-right: 30px;
-    cursor: pointer;
-    max-height: 35px;
-    max-width: 35px;
-    padding: 10px;
-}
-.header__menuIcon{
-    color: grey;
-}
+        &:focus{
+            outline: none;
+        }    
+        &>input{
+            flex: 1;
+            border: none;
+            padding-left: 10px;
+            outline: none;
+        }
+        & .header_inputButton{
+            width: 50px !important;
+            height: 20px !important;
+            padding: 5px;
+            background-color: #fafafa;
+            border-left: 1px solid lightgray;
+            color: grey;
+        }     
+    }
 
-.header__loginText{
-    font-size: 15px;
-    font-weight: bold;
-    margin-right: 30px;
-    cursor: pointer;
-    max-height: 35px;
-    padding: 10px 15px;
+    & .header_menuIcon{
+        color: grey;
+    }
 
-    &:hover{
+    .header_icons{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin: 3px;
+
+        & .header_icon{
+            margin-right: 30px;
+            cursor: pointer;
+            max-height: 35px;
+            max-width: 35px;
+            padding: 10px;
+        }
+
+        & .header_uploadVideo{
+            border-radius: 50%;
+
+            &:hover{
+                transition-duration: 0.5s;
+                transition-property: background-color;
+                background-color:rgb(207, 207, 207);
+                border-radius: 50%;
+                
+
+                & + .header_uploadTooltip{
+                    opacity: 1;
+                }
+            }
+            &:active{
+                color: white;
+            }
+        }
+        & .header_uploadTooltip{
+            opacity: 0;
+            width: 120px;
+            background-color: rgba(0, 0, 0, 0.432);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            transition-duration: 0.5s;
+            transition-property: opacity;
+            
+        
+            position: absolute;
+            z-index: 1;
+            top: 125%;
+            left: 7%;
+            margin-left: -60px;
+        }
+    }
+
+    & .header_avatar{
+        margin-right: 30px;
+
+        &:hover + .header_logoutTooltip{
+            opacity: 1;
+        }
+    }
+
+    & .header_logoutTooltip{
+        opacity: 0;
+        width: 120px;
+        background-color: rgba(0, 0, 0, 0.432);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
         transition-duration: 0.5s;
-        transition-property: background-color;
-        background-color:rgb(207, 207, 207);
-        border-radius: 10px;
-    }
-    &:active{
-        color: white;
-    }
-}
-
-
-.header__inputButton{
-    width: 50px !important;
-    height: 20px !important;
-    padding: 5px;
-    background-color: #fafafa;
-    border-left: 1px solid lightgray;
-    color: grey;
-}
-
-
-.header__uploadVideo{
-    border-radius: 50%;
-    &:hover{
-        transition-duration: 0.5s;
-        transition-property: background-color;
-        background-color:rgb(207, 207, 207);
-        border-radius: 50%;
-    }
-    &:active{
-        color: white;
-    }
-    &:hover + .header__uploadVideo_tooltip{
-        visibility: visible;
-    }
-}
-
-
-.header__uploadVideo_tooltip{
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.432);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+        transition-property: opacity;
+        
     
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 75%;
+        margin-left: -60px;
+    }
 
-    position: absolute;
-    z-index: 1;
-    top: 125%;
-    left: 6%;
-    margin-left: -60px;
+    & .header_loginText{
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 30px;
+        cursor: pointer;
+        max-height: 35px;
+        padding: 10px 15px;
     
+        &:hover{
+            transition-duration: 0.5s;
+            transition-property: background-color;
+            background-color:rgb(207, 207, 207);
+            border-radius: 10px;
+        }
+        &:active{
+            color: white;
+        }
+    }
 }
 
-.header__logout_tooltip{
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.432);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    
 
-    position: absolute;
-    z-index: 1;
-    top: 125%;
-    left: 75%;
-    margin-left: -60px;
-    
-}
 
-.header__avatar{
-    margin-right: 30px;
 
-    &:hover + .header__logout_tooltip{
-    visibility: visible;
-}
-}
+
 
 @media only screen and (max-width: 800px) {
     .sidebar {
@@ -155,13 +167,16 @@
         justify-items: center;
         background-size: auto;
     }
-    .header__menuIcon{
+    .headerheader_menuIcon{
         justify-content: center;
     }
-    .header__logo{
+    .headerheader_logo{
         margin: 3px;
+        &:active{
+            transform: scale(.9);
+        }
     }
-    .header__input{
+    .headerheader_input{
         width: 100%;
         margin: 2px 5px;
         & > input{
@@ -169,7 +184,9 @@
             margin: 0;
         }
     }
-    .header__loginText{
+    .headerheader_loginText{
         white-space: nowrap;
     }
   }
+  
+
