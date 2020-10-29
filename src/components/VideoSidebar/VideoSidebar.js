@@ -38,7 +38,7 @@ function VideoSidebar() {
             </div>
             <div className="videoSideBar_videosContainer">
                 {allVideos.map((videoObject)=>
-                <Link to={{pathname: "/watch/"+videoObject.videoSideBar_id, state: {videoObject}}}>
+                <Link key={videoObject._id} to={{pathname: "/watch/"+videoObject.videoSideBar_id, state: {videoObject}}}>
                     <div key={videoObject._id} className="videoSideBar_videos">
                         <VideoSidecard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
                     </div>

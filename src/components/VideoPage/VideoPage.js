@@ -16,6 +16,10 @@ function VideoPage(props) {
 
     const [movie,setMovie]=useState()
     const [comment, setComment]=useState("")
+    const [commentButton,setCommentbutton]=useState(false)
+
+    const user = useSelector(state=>state)
+
 
     useEffect(()=>{
         async function fetchData(){
@@ -31,9 +35,9 @@ function VideoPage(props) {
         }
         fetchData()                       
     },[props.match.params.movieId])
-    
+
    
-    const user = useSelector(state=>state)
+    
     
         if(movie){             
             const video = movie.video.video
@@ -44,8 +48,22 @@ function VideoPage(props) {
             var MMM = date.toLocaleString('default', { month: 'short' })
             var dd = date.getDate()
             var yyyy = date.getFullYear() 
+
+        async function addComment(id,comment,userData){
+            await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
+                movieId: id,
+                comment: comment,
+                user: user
+            },{withCredentials:true}) 
+                .then(function (response) {
+                    console.log(response)
+                        
+                    })
+                    .catch(function (error) {
+                    console.log(error);
+                    }) 
+        }
             
-            console.log(comments)
         return (   
             <div className="videoPage">
                 <div className="videoPage_videoData">   
@@ -86,18 +104,18 @@ function VideoPage(props) {
                     </div>
                     <div className="videoPage_newComment">
                         <Avatar src={user.avatar}/>
-                        <input placeholder="Add a public comment..." onChange={(e)=>setComment(e.target.value)}/>
-                    </div>
-                    <div className="videoPage_newCommentButton">
-                        <div className="videoPage_cancelComment">Cancel</div>
-                        <div className={`videoPage_submitComment ${comment !== "" disabled}`}>Comment</div>
+                        <input placeholder="Add a public comment..." onClick={()=>setCommentbutton(true)} onChange={(e)=>setComment(e.target.value)}/>
+                        <div className={`videoPage_newCommentButton ${!commentButton && 'hidden'}`}>
+                            <button className="videoPage_cancelComment" onClick={()=>setCommentbutton(false)}>Cancel</button>
+                            <button disabled = {!comment} onClick={()=>addComment(props.match.params.movieId,comment,user)}className={`videoPage_submitComment ${!comment && 'disabled'}`}>Comment</button>
+                        </div>
                     </div>
 
                 {comments.length > 0 ?  
                     comments.map((comment)=> 
-                        <div>
-                            <CommentCard commentData={comment}/>
-                                {comment.repy ? comment.reply.map((reply)=>
+                        <div >
+                            <CommentCard  commentData={comment}/>
+                                {!comment.reply ? comment.reply.map((reply)=>
                                     <CommentCard commentData={reply}/>)
                                 :<></>}
                         </div>
@@ -111,7 +129,7 @@ function VideoPage(props) {
         )
         }else{
             return(
-            <div>whoops</div>
+            <div>Loading...</div>
             )
         }
                  
