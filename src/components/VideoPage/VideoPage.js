@@ -7,18 +7,33 @@ import ReplyIcon from '@material-ui/icons/Reply';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Avatar from '@material-ui/core/Avatar'
-import SortIcon from '@material-ui/icons/Sort';
-import {useSelector} from 'react-redux';
-import CommentCard from './CommentCard/CommentCard'
 import axios from 'axios'
+import CommentSection from './CommentSection/CommentSection'
 
 function VideoPage(props) {
+    const moviePlaceholder = {video:{
+        author:{
+            subscribers: [],
+            userAvatar: "",
+            userId: "",
+            username: "",
+        },
+        comments: [],
+        video:{
+            description: "",
+            dislikes: [],
+            genre: "",
+            likes: [],
+            thumbnail: "",
+            title: "",
+            uploadDate: "Fri Oct 23 2020 15:39:59 GMT-0400 (Eastern Daylight Time)",
+            videoURL: "",
+            views: 0
+        },
+        _id: ""
+    }}
 
-    const [movie,setMovie]=useState()
-    const [comment, setComment]=useState("")
-    const [commentButton,setCommentbutton]=useState(false)
-
-    const user = useSelector(state=>state)
+    const [movie,setMovie]=useState(moviePlaceholder)
 
 
     useEffect(()=>{
@@ -39,30 +54,17 @@ function VideoPage(props) {
    
     
     
-        if(movie){             
+                     
             const video = movie.video.video
             const author = movie.video.author
-            const comments = movie.video.comments 
         
             var date = new Date(video.uploadDate) 
             var MMM = date.toLocaleString('default', { month: 'short' })
             var dd = date.getDate()
             var yyyy = date.getFullYear() 
 
-        async function addComment(id,comment,userData){
-            await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
-                movieId: id,
-                comment: comment,
-                user: user
-            },{withCredentials:true}) 
-                .then(function (response) {
-                    console.log(response)
-                        
-                    })
-                    .catch(function (error) {
-                    console.log(error);
-                    }) 
-        }
+       
+        
             
         return (   
             <div className="videoPage">
@@ -96,45 +98,19 @@ function VideoPage(props) {
                             <div className="videoPage_button">SUBSCRIBE</div>
                         </div>
                     </div>
-                    <div className="videoPage_commentHeader"> 
-                        {comments.length} COMMENTS 
-                        <p>
-                            <SortIcon className="videoPage_sortIcon"/> SORT BY
-                        </p>
-                    </div>
-                    <div className="videoPage_newComment">
-                        <Avatar src={user.avatar}/>
-                        <input placeholder="Add a public comment..." onClick={()=>setCommentbutton(true)} onChange={(e)=>setComment(e.target.value)}/>
-                        <div className={`videoPage_newCommentButton ${!commentButton && 'hidden'}`}>
-                            <button className="videoPage_cancelComment" onClick={()=>setCommentbutton(false)}>Cancel</button>
-                            <button disabled = {!comment} onClick={()=>addComment(props.match.params.movieId,comment,user)}className={`videoPage_submitComment ${!comment && 'disabled'}`}>Comment</button>
-                        </div>
-                    </div>
-
-                {comments.length > 0 ?  
-                    comments.map((comment)=> 
-                        <div >
-                            <CommentCard  commentData={comment}/>
-                                {!comment.reply ? comment.reply.map((reply)=>
-                                    <CommentCard commentData={reply}/>)
-                                :<></>}
-                        </div>
-                    )
-                    :<></>}
-                </div>
-                <div className="videoPage_upNext">
-                    <VideoSidebar/>
-                </div>
+                    
+                <CommentSection data={movie.video}/>
             </div>
+
+            <div className="videoPage_upNext">
+                    <VideoSidebar/>
+            </div>
+        </div>
         )
-        }else{
-            return(
-            <div>Loading...</div>
-            )
-        }
+}
                  
     
-}
+
 
 export default VideoPage
 

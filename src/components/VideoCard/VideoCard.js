@@ -1,30 +1,12 @@
 import React from 'react'
 import './VideoCard.scss'
 import Avatar from '@material-ui/core/Avatar'
+import timeSince from '../../Utils/timeSince'
 
 function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
-    var today = new Date().getTime()
-    var posted = new Date(date).getTime()
-    var res = Math.abs(today - posted) / 1000;
-    var days = Math.ceil(res / 86400);
-    var hours = Math.ceil(res / 3600);
-
-    var unit = "hour";
-
-    function checkValues(days, hours){
-        if(hours>=24){
-            unit = "days"
-            return days
-        }
-        return hours
-    }
-
-    let leDays = checkValues(days, hours)
-
-    if(leDays>1){
-        var plural = true;
-    }
-
+       
+    const time = timeSince(date)
+    
     return (
         <div className="videoCard">
             <div className="videoCard_thumbnailContainer">
@@ -39,7 +21,7 @@ function VideoCard({id, title, author, authorImg, views, thumbnail, date}) {
                     <h2>{author}</h2>
                     <div className="videoCard_videoStats">
                         <h2>{views} views •&nbsp;</h2>
-                        <h2> {leDays} {unit}{plural && "s"} ago</h2>
+                        <h2> {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</h2>
                     </div>                
                 </div>
             </div>
