@@ -8,9 +8,9 @@ import {useSelector} from 'react-redux';
 const Axios = axios;
 
 function CommentSection(props) {
-    const [comment, setComment]=useState()
+    const [comment, setComment]=useState("")
     const [allComments, setAllComments]=useState({})
-    const [commentButton,setCommentbutton]=useState(false)
+    const [commentButton,setCommentButton]=useState(false)
     const user = useSelector(state=>state)
  
  const comments = allComments ? allComments : props.data.comments
@@ -39,8 +39,9 @@ function CommentSection(props) {
             user: user
         },{withCredentials: true}) 
         .then(function (response) {
-            //console.log(response.data.comments)
             setAllComments(response.data.comments)  
+            setCommentButton(false)
+            setComment("")
         })
         .catch(function (error) {
             if(error){
@@ -60,9 +61,9 @@ function CommentSection(props) {
             </div>
             <div className="videoPage_newComment">
                 <Avatar src={user.avatar}/>
-                <input placeholder="Add a public comment..." onClick={()=>setCommentbutton(true)} onChange={(e)=>setComment(e.target.value)}/>
+                <input placeholder="Add a public comment..." value={comment} onClick={()=>setCommentButton(true)} onChange={(e)=>setComment(e.target.value)}/>
                 <div className={`videoPage_newCommentButton ${!commentButton && 'hidden'}`}>
-                    <button className="videoPage_cancelComment" onClick={()=>setCommentbutton(false)}>Cancel</button>
+                    <button className="videoPage_cancelComment" onClick={()=>setCommentButton(false)}>Cancel</button>
                     <button disabled = {!comment} onClick={()=>{addComment(props.data._id)}
                     } className={`videoPage_submitComment ${!comment && 'disabled'}`}>Comment</button>
                 </div>
