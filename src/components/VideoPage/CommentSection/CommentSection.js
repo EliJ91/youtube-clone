@@ -15,21 +15,21 @@ function CommentSection(props) {
  console.log(props)
  const comments = allComments ? allComments : props.data.comments
 
-    useEffect(()=>{
-        function fetchData(){
-            Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
-                .then(function (response){
-                    setAllComments(response.data.video.comments)
+    // useEffect(()=>{
+    //     function fetchData(){
+    //         Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
+    //             .then(function (response){
+    //                 setAllComments(response.data.video.comments)
                     
                     
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })             
+    //             })
+    //             .catch(function (error) {
+    //                 console.log(error);
+    //             })             
             
-        }
-        fetchData()                       
-    },[])
+    //     }
+    //     fetchData()                       
+    // },[])
 
     function addComment(id){
         Axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
