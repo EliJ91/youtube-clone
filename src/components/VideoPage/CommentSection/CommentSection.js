@@ -19,7 +19,6 @@ function CommentSection(props) {
         function fetchData(){
             Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
                 .then(function (response){
-                    
                     setAllComments(response.data.video.comments)
                     
                     

@@ -35,9 +35,9 @@ function CommentCard(props) {
                 setReply("")
                 })
                 .catch(function (error) {
-                    if(error){
-                        alert("Please log in.")
-                      }
+                    console.log(error)
+                    alert("Please log in.")
+                      
                 }) 
     }
 
