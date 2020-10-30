@@ -19,6 +19,7 @@ function CommentSection(props) {
         function fetchData(){
             Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
                 .then(function (response){
+                    
                     setAllComments(response.data.video.comments)
                     
                     
@@ -31,19 +32,21 @@ function CommentSection(props) {
         fetchData()                       
     },[props.data._id])
 
-     function addComment(id){
+    function addComment(id){
         Axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
             movieId: id,
             comment: comment,
             user: user
+        },{withCredentials: true}) 
+        .then(function (response) {
+            //console.log(response.data.comments)
+            setAllComments(response.data.comments)  
+        })
+        .catch(function (error) {
+            if(error){
+                alert("Please log in.")
+              }
         }) 
-            .then(function (response) {
-                console.log(response.data.comments)
-                setAllComments(response.data.comments)  
-                })
-                .catch(function (error) {
-                    console.log(error);
-                }) 
     }
 
 
@@ -68,11 +71,11 @@ function CommentSection(props) {
             
                 {allComments.length > 0 &&  
                     <div >
-                        {allComments.map((comment)=> 
+                        {allComments.map((mainComment)=> 
                             <div >
-                                <CommentCard key={comment} commentData={comment}/>
-                                {!comment.reply && comment.reply.map((reply)=>
-                                    <CommentCard key={comment} commentData={reply}/>)
+                                <CommentCard key={mainComment} commentData={mainComment}/>
+                                {!mainComment.reply && mainComment.reply.map((reply)=>
+                                    <CommentCard key={reply} commentData={reply}/>)
                                 }
                             </div>
                         )}

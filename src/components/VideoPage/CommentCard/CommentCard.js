@@ -16,9 +16,11 @@ function CommentCard(props) {
     const [reply, setReply]=useState("")
     const user = useSelector(state=>state)
     const [replyButton,setReplyButton]=useState(false)
+    const [allComments, setAllComments]=useState()
+
+    const comment = allComments ? allComments : props.commentData
     
-    let comment = props.commentData
-    
+
     const time = timeSince(comment.date)
     
     async function replyComment(comment){
@@ -26,14 +28,15 @@ function CommentCard(props) {
             commentId: comment.commentId,
             comment: reply,
             user: user
-        }) 
+        },{withCredentials: true}) 
             .then(function (response) {
-                console.log(response)
-                window.location.reload(true);
+                setAllComments(response.data)  
                     
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if(error){
+                        alert("Please log in.")
+                      }
                 }) 
     }
 

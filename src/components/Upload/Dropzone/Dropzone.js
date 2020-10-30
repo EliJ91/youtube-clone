@@ -75,7 +75,7 @@ async function uploadMovie(event){
     }
   }catch(error){
     if(error){
-      alert("Please log in before you upload")
+      alert("Please log in.")
     }
     setLoading(false)
     console.log(error)
