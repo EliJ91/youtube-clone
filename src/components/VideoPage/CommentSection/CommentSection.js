@@ -29,7 +29,7 @@ function CommentSection(props) {
             
         }
         fetchData()                       
-    },[props.data._id])
+    },[])
 
     function addComment(id){
         Axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
