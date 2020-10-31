@@ -33,6 +33,9 @@ function Header() {
     useEffect(()=>{
         async function fetchData(){
             const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{}, {withCredentials: true}) 
+            if(!user){
+                console.log("Not logged in.")
+            }
             dispatch(LOGGED_IN(user.data))       
         }
         fetchData()                       

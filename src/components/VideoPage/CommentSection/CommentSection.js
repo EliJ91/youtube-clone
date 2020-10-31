@@ -17,17 +17,13 @@ function CommentSection(props) {
 
     useEffect(()=>{
         function fetchData(id){
-            console.log(props.data._id)
             Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: id}}) 
                 .then(function (response){
                     setAllComments(response.data.video.comments)
-                    
-                    
                 })
                 .catch(function (error) {
                     console.log(error);
                 })             
-            
         }
         if(props.data._id){fetchData(props.data._id)}                     
     },[props.data._id])
