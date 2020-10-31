@@ -12,11 +12,12 @@ function CommentSection(props) {
     const [allComments, setAllComments]=useState({})
     const [commentButton,setCommentButton]=useState(false)
     const user = useSelector(state=>state)
- console.log(props.data._id)
+ 
  const comments = allComments ? allComments : props.data.comments
 
     useEffect(()=>{
         function fetchData(){
+            console.log(props.data._id)
             Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
                 .then(function (response){
                     setAllComments(response.data.video.comments)
