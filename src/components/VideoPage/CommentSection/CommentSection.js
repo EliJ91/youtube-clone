@@ -16,9 +16,9 @@ function CommentSection(props) {
  const comments = allComments ? allComments : props.data.comments
 
     useEffect(()=>{
-        function fetchData(){
+        function fetchData(id){
             console.log(props.data._id)
-            Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.data._id}}) 
+            Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: id}}) 
                 .then(function (response){
                     setAllComments(response.data.video.comments)
                     
@@ -29,7 +29,7 @@ function CommentSection(props) {
                 })             
             
         }
-        fetchData()                       
+        {console.log(props.data._id) && fetchData(props.data._id)}                     
     },[props.data._id])
 
     function addComment(id){
