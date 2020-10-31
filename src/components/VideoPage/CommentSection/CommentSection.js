@@ -12,7 +12,7 @@ function CommentSection(props) {
     const [allComments, setAllComments]=useState({})
     const [commentButton,setCommentButton]=useState(false)
     const user = useSelector(state=>state)
- console.log(props)
+ console.log(props.data._id)
  const comments = allComments ? allComments : props.data.comments
 
     useEffect(()=>{
