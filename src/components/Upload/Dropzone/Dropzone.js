@@ -27,24 +27,36 @@ function MyDropzone(props) {
   
 
   function prepareFile(e){
-    e.stopPropagation()
     e.preventDefault()
-    e.persist()
    }
 
  function loadDroppedFile(e){
+   if(e.dataTransfer.files[0].size > 104857600){
+    e.stopPropagation()
+    e.preventDefault()
+    setMovie({})
+    alert("Movie must be less than 100MB")
+    return
+   }
   e.stopPropagation()
   e.preventDefault()
   setMovie(e.dataTransfer.files[0])   
  }
 
  function loadSelectedFile(e){
+  if(e.target.files[0].size > 104857600){
+    e.stopPropagation()
+    e.preventDefault()
+    setMovie({})
+    alert("Movie must be less than 100MB")
+    return
+  }
   e.stopPropagation()
   e.preventDefault()
   setMovie(e.target.files[0])   
  }
 
-
+console.log(movie.size)
 
 
 async function uploadMovie(event){
@@ -85,7 +97,7 @@ async function uploadMovie(event){
 
   return (
     <div className="mydropzone_container">
-      <div className="mydropzone_dropzoneContainer" name="video" onDragEnter={(e)=>prepareFile(e)} onDragOver={(e)=>prepareFile(e)} onDrop={loadDroppedFile}>
+      <div className="mydropzone_dropzoneContainer" name="video"  onDragOver={(e)=>prepareFile(e)} onDrop={loadDroppedFile}>
         {movie.name ?
            <PublishIcon className="mydropzone_publishIcon" />:<div className="mydropzone_dropzone">Click or Drop the file here ...</div>
         }
