@@ -29,7 +29,7 @@ function CommentSection(props) {
                 })             
             
         }
-        {props.data._id && fetchData(props.data._id)}                     
+        if(props.data._id){fetchData(props.data._id)}                     
     },[props.data._id])
 
     function addComment(id){
