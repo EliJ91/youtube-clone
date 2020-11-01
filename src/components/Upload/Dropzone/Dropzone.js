@@ -105,7 +105,7 @@ async function uploadMovie(event){
 
       <input className="mydropzone_inputFile" type="file"  id="fileInput"  onChange={loadSelectedFile}/>
       <label className="mydropzone_inputFileLabel" htmlFor="fileInput">
-        {movie.name ? movie.name : "Click to select file." }</label>
+        {movie.name ? movie.name : "Click to select file. File must be under 100MB." }</label>
 
 
       <div className="mydropzone_inputContainer">
