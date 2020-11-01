@@ -1,15 +1,16 @@
 .commentCard{
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
 
     & .commentCard_nest{
-        margin-top: 20px;
+        margin-top: 5px;
+        margin-left : 3em;
     }
 
     & .commentCard_newComment{
         display: flex;
-        margin-top: 30px;
         flex-wrap: wrap;
+        margin-top: 20px;
         &.hidden{
             display: none;
         }
@@ -97,13 +98,7 @@
 .commentCard_textContainer{
     margin-left: 15px;
     width: 100%;
-    &>h1{
-        color: blue;
-        font-weight: 500;
-        font-size: 15px;
-        margin-top: 10px;
-        cursor: pointer;
-    }
+    
 }
 
 .commentCard_likeDislikesContainer{
@@ -123,5 +118,4 @@
     font-size: 20px !important;
     cursor: pointer;
     margin-right: 10px;
-    margin-left: 10px;
 }

@@ -9,9 +9,12 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Avatar from '@material-ui/core/Avatar'
 import axios from 'axios'
 import CommentSection from './CommentSection/CommentSection'
+import {useSelector} from 'react-redux';
+
 
 function VideoPage(props) {
-    const moviePlaceholder = {video:{
+    const movieId = props.match.params.movieId
+    const moviePlaceholder = {
         author:{
             subscribers: [],
             userAvatar: "",
@@ -31,24 +34,24 @@ function VideoPage(props) {
             views: 0
         },
         _id: ""
-    }}
+    }
 
     const [movie,setMovie]=useState(moviePlaceholder)
+   
 
     useEffect(()=>{
         async function fetchData(){
             await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.match.params.movieId}}) 
-            
             .then(function (response) {
-                console.log("fired")
                    setMovie(response.data)
-                   
               })
               .catch(function (error) {
                 console.log(error);
               })             
             
         }
+        axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/addView",{params:{movieId: props.match.params.movieId}}) 
+            
         fetchData()                       
     },[props.match.params.movieId])
 
@@ -56,16 +59,33 @@ function VideoPage(props) {
     
     
                      
-            const video = movie.video.video
-            const author = movie.video.author
-        
-            var date = new Date(video.uploadDate) 
-            var MMM = date.toLocaleString('default', { month: 'short' })
-            var dd = date.getDate()
-            var yyyy = date.getFullYear() 
-
-       
-        
+        const video = movie.video
+        const author = movie.author
+        const user = useSelector(state => state)
+    
+        var date = new Date(video.uploadDate) 
+        var MMM = date.toLocaleString('default', { month: 'short' })
+        var dd = date.getDate()
+        var yyyy = date.getFullYear() 
+   async function likeVideo(){
+      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeVideo",{user:user,movieId:movieId}) 
+            .then(function (response) {
+                setMovie(response.data)
+              })
+              .catch(function (error) {
+                console.log(error);
+              }) 
+    }
+    async function dislikeVideo(){
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeVideo",{user:user,movieId:movieId}) 
+              .then(function (response) {
+                  setMovie(response.data)
+                })
+                .catch(function (error) {
+                  console.log(error);
+                }) 
+      }
+       console.log(movie)
             
         return (   
             <div className="videoPage">
@@ -75,8 +95,8 @@ function VideoPage(props) {
                     <div className="videoPage_videoDataContainer">
                         <h1>{video.views} views • {`${MMM} ${dd}, ${yyyy}`}</h1>
                         <h2>
-                            <ThumbUpAltIcon className="videoPage_clickable"/><span>{video.likes.length}</span>
-                            <ThumbDownAltIcon className="videoPage_clickable"/><span>{video.dislikes.length}</span>
+                            <ThumbUpAltIcon onClick={()=>likeVideo()} className="videoPage_clickable"/><span>{video.likes.length}</span>
+                            <ThumbDownAltIcon onClick={()=>dislikeVideo()} className="videoPage_clickable"/><span>{video.dislikes.length}</span>
                             <ReplyIcon className="videoPage_clickable"/><span>SHARE</span>
                             <PlaylistAddIcon className="videoPage_clickable"/><span>SAVE</span>
                             <MoreHorizIcon className="videoPage_clickable"/>
@@ -100,7 +120,7 @@ function VideoPage(props) {
                         </div>
                     </div>
                     
-                <CommentSection data={movie.video}/>
+                <CommentSection data={movie}/>
             </div>
 
             <div className="videoPage_upNext">

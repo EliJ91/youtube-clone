@@ -4,22 +4,24 @@ import Avatar from '@material-ui/core/Avatar'
 import CommentCard from '../CommentCard/CommentCard'
 import SortIcon from '@material-ui/icons/Sort';
 import {useSelector} from 'react-redux';
+import './CommentSection.scss'
 
-const Axios = axios;
+
+
 
 function CommentSection(props) {
     const [comment, setComment]=useState("")
-    const [allComments, setAllComments]=useState({})
+    const [allComments, setAllComments]=useState(props.data.comments)
     const [commentButton,setCommentButton]=useState(false)
     const user = useSelector(state=>state)
  
- const comments = allComments ? allComments : props.data.comments
+ const comments = allComments 
 
     useEffect(()=>{
-        function fetchData(id){
-            Axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: id}}) 
+       async function fetchData(id){
+           await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: id}}) 
                 .then(function (response){
-                    setAllComments(response.data.video.comments)
+                    setAllComments(response.data.comments)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -28,8 +30,8 @@ function CommentSection(props) {
         if(props.data._id){fetchData(props.data._id)}                     
     },[props.data._id])
 
-    function addComment(id){
-        Axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
+   async function addComment(id){
+      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
             movieId: id,
             comment: comment,
             user: user
@@ -48,32 +50,29 @@ function CommentSection(props) {
 
 
     return (
-        <div>
-            <div className="videoPage_commentHeader"> 
+        <div className="commentSection">
+            <div className="commentSection_commentHeader"> 
                 {comments.length} COMMENTS 
                 <p>
-                    <SortIcon className="videoPage_sortIcon"/> SORT BY
+                    <SortIcon className="commentSection_sortIcon"/> SORT BY
                 </p>
             </div>
-            <div className="videoPage_newComment">
+            <div className="commentSection_newComment">
                 <Avatar src={user.avatar}/>
                 <input placeholder="Add a public comment..." value={comment} onClick={()=>setCommentButton(true)} onChange={(e)=>setComment(e.target.value)}/>
-                <div className={`videoPage_newCommentButton ${!commentButton && 'hidden'}`}>
-                    <button className="videoPage_cancelComment" onClick={()=>setCommentButton(false)}>Cancel</button>
+                <div className={`commentSection_newCommentButton ${!commentButton && 'hidden'}`}>
+                    <button className="commentSection_cancelComment" onClick={()=>setCommentButton(false)}>Cancel</button>
                     <button disabled = {!comment} onClick={()=>{addComment(props.data._id)}
-                    } className={`videoPage_submitComment ${!comment && 'disabled'}`}>Comment</button>
+                    } className={`commentSection_submitComment ${!comment && 'disabled'}`}>Comment</button>
                 </div>
             </div>
 
             
                 {allComments.length > 0 &&  
-                    <div >
+                    <div key={allComments}>
                         {allComments.map((mainComment)=> 
-                            <div key={mainComment.commentId}>
-                                <CommentCard  commentData={mainComment}/>
-                                {!mainComment.reply && mainComment.reply.map((reply)=>
-                                    <CommentCard key={reply} commentData={reply}/>)
-                                }
+                            <div className="commentSection_Comment" key={mainComment.commentId}>
+                                <CommentCard addReply={i => setAllComments(i)} commentData={mainComment}/>
                             </div>
                         )}
                     </div>

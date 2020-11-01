@@ -86,79 +86,7 @@
                 }
             }
         }
-        & .videoPage_commentHeader{
-            font-size: 16px;
-            color: grey;
-            font-weight: 500;
-            margin-top: 15px;
-            display: flex;
         
-            & > p{
-                vertical-align: text-top;
-                margin-left: 20px;
-                margin-top: 0;
-                display: flex;
-                &.videoPage_sortIcon{
-                    margin: 0;
-                    padding: 0;
-                }
-            }
-        }
-        & .videoPage_newComment{
-            display: flex;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        
-            & input{
-                margin-left: 10px;
-                flex: 1;
-                border: none;
-                background-color: ghostwhite;
-                border-bottom: 1px solid lightgray;
-                padding: 0;
-                height: 30px;
-                transition: .5s;
-                transition-property: border-bottom;
-                &:focus{
-                    outline: none;
-                    border-bottom: 1px solid black;
-                }
-            }
-        }
-        & .videoPage_newCommentButton{
-            display: flex;
-            flex: 1 1 100%;
-            justify-content: flex-end;
-            &.hidden{
-                display: none;
-            }
-            & > button{
-                width: 100px;
-                height: 36px;
-            }
-            & .videoPage_cancelComment{
-                border: none;
-                background-color: ghostwhite;
-                font-size: 14px;
-                font-weight: 600;
-                color: gray;
-                &:focus{
-                    transform: scale(.9);
-                    outline: none;
-                }
-            }
-            & .videoPage_submitComment{
-                color: white;
-                font-size: 16px;
-                font-weight: 700;
-                background-color: rgb(0, 81, 255);
-                border: none;
-                border-radius: 2px;
-                &.disabled{
-                    background-color: lightgrey;
-                }
-            }
-        }
     }
 }
 
