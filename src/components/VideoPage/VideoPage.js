@@ -85,7 +85,6 @@ function VideoPage(props) {
                   console.log(error);
                 }) 
       }
-       console.log(user)
             
         return (   
             <div className="videoPage">
