@@ -30,7 +30,8 @@ function CommentCard(props) {
             user: user
         },{withCredentials: true}) 
             .then(function (response) {
-                setAllComments(response.data)  
+                let index = response.data[0].comments.indexOf()
+                setAllComments(response.data[0].comments)  
                 setReplyButton(false)
                 setReply("")
                 })

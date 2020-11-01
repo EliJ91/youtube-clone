@@ -69,8 +69,8 @@ function CommentSection(props) {
                 {allComments.length > 0 &&  
                     <div >
                         {allComments.map((mainComment)=> 
-                            <div >
-                                <CommentCard key={mainComment} commentData={mainComment}/>
+                            <div key={mainComment.commentId}>
+                                <CommentCard  commentData={mainComment}/>
                                 {!mainComment.reply && mainComment.reply.map((reply)=>
                                     <CommentCard key={reply} commentData={reply}/>)
                                 }

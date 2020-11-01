@@ -35,11 +35,12 @@ function VideoPage(props) {
 
     const [movie,setMovie]=useState(moviePlaceholder)
 
-
     useEffect(()=>{
         async function fetchData(){
             await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.match.params.movieId}}) 
+            
             .then(function (response) {
+                console.log("fired")
                    setMovie(response.data)
                    
               })
