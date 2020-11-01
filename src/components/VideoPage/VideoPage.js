@@ -85,7 +85,7 @@ function VideoPage(props) {
                   console.log(error);
                 }) 
       }
-       console.log(movie)
+       console.log(user)
             
         return (   
             <div className="videoPage">
@@ -95,8 +95,8 @@ function VideoPage(props) {
                     <div className="videoPage_videoDataContainer">
                         <h1>{video.views} views • {`${MMM} ${dd}, ${yyyy}`}</h1>
                         <h2>
-                            <ThumbUpAltIcon onClick={()=>likeVideo()} className="videoPage_clickable"/><span>{video.likes.length}</span>
-                            <ThumbDownAltIcon onClick={()=>dislikeVideo()} className="videoPage_clickable"/><span>{video.dislikes.length}</span>
+                            <ThumbUpAltIcon onClick={()=>likeVideo()} className={`videoPage_clickable ${video.likes.includes(user.username) && "likeDislike"}`} /><span>{video.likes.length}</span>
+                            <ThumbDownAltIcon onClick={()=>dislikeVideo()} className={`videoPage_clickable ${video.dislikes.includes(user.username) && "likeDislike"}`}/><span>{video.dislikes.length}</span>
                             <ReplyIcon className="videoPage_clickable"/><span>SHARE</span>
                             <PlaylistAddIcon className="videoPage_clickable"/><span>SAVE</span>
                             <MoreHorizIcon className="videoPage_clickable"/>

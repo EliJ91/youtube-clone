@@ -96,9 +96,12 @@
 
 .videoPage_clickable{
     cursor: pointer;
+    
 }
 
-
+.likeDislike{
+    color: rgb(0, 110, 255);
+}
 
 @media only screen and (max-width: 800px) {
     .videoPage_upNext{
