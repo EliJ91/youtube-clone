@@ -46,8 +46,8 @@ function CommentCard(props) {
                 <div className="commentCard_authorInfo">{comment.username} {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</div>
                 <div className="commentCard_comment">{comment.comment}</div>
                     <div className="commentCard_likeDislikesContainer">
-                        <ThumbDownAltIcon className="commentCard_likeIcon" />{comment.likes.length}
-                        <ThumbUpAltIcon className="commentCard_likeIcon"/>{comment.dislikes.length}
+                        <ThumbDownAltIcon className="commentCard_likeIcon" /><span>{comment.likes.length}</span>
+                        <ThumbUpAltIcon className="commentCard_likeIcon"/><span>{comment.dislikes.length}</span>
                         <span onClick={()=>setReplyButton(true)}>Reply</span>
                     </div>
                     <div className={`commentCard_newComment ${!replyButton && 'hidden'}`}>
