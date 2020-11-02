@@ -68,7 +68,7 @@ function VideoPage(props) {
         var dd = date.getDate()
         var yyyy = date.getFullYear() 
    async function likeVideo(){
-      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeVideo",{user:user,movieId:movieId}) 
+      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeVideo",{user:user,movieId:movieId},{withCredentials:true}) 
             .then(function (response) {
                 setMovie(response.data)
               })
@@ -77,7 +77,7 @@ function VideoPage(props) {
               }) 
     }
     async function dislikeVideo(){
-        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeVideo",{user:user,movieId:movieId}) 
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeVideo",{user:user,movieId:movieId},{withCredentials:true}) 
               .then(function (response) {
                   setMovie(response.data)
                 })

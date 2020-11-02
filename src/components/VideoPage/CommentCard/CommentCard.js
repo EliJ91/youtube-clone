@@ -70,7 +70,7 @@ function CommentCard(props) {
                     }
         
                     <div className={`commentCard_replyContainer ${hidden && "commentCard_hide"}`}>
-                        {comment.reply.map((c)=><CommentCard nestReply addReply={props.addReply} key={c.replyId} commentData={c}/>)}
+                        {comment.reply.reverse().map((c)=><CommentCard nestReply addReply={props.addReply} key={c.replyId} commentData={c}/>)}
                     </div>
                 </>
             }

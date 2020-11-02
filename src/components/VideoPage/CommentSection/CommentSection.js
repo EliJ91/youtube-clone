@@ -70,7 +70,7 @@ function CommentSection(props) {
             
                 {allComments.length > 0 &&  
                     <div key={allComments}>
-                        {allComments.map((mainComment)=> 
+                        {allComments.reverse().map((mainComment)=> 
                             <div className="commentSection_Comment" key={mainComment.commentId}>
                                 <CommentCard addReply={i => setAllComments(i)} commentData={mainComment}/>
                             </div>
