@@ -166,7 +166,6 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
 
         & .header_logo{
             margin: 3px;
@@ -176,8 +175,7 @@
         }
         & .header_input{
             margin: 2px 10px;
-            width: 50%;
-            min-width: 240px;
+            flex: 1;
             & > input{
                 padding: 3px;
                 margin: 0;
