@@ -86,6 +86,7 @@ async function uploadMovie(event){
       return <Redirect to='/'  />  
     }
   }catch(error){
+    console.log(error)
     if(error){
       alert("Please log in.")
     }
