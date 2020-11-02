@@ -113,7 +113,9 @@
         
     }
     .videoPage{
-        grid-template-columns: 1fr;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
