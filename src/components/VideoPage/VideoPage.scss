@@ -5,13 +5,13 @@
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 4fr 1.5fr;
+    max-width: 100vw;
     & .videoPage_videoData{
-        max-width: 100%;  
+        max-width: 100;  
         & .videoPage_video{
             min-width: 100%;
             padding: 0;
             border: 1px solid black;
-            margin-right: 20px;
             max-width: 0;
             object-fit: fill;
         }  
@@ -114,7 +114,6 @@
     }
     .videoPage{
         grid-template-columns: 1fr;
-        min-width: 700px;
     }
 }
 
