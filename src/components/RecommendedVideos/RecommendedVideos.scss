@@ -10,7 +10,7 @@
         margin-bottom: 20px;
     }
 
-    & .RecommendedVideos_videos{
+    & .recommendedVideos_videos{
         margin: 10px;
         & a{
             color: black;
@@ -19,7 +19,7 @@
             }
         }
     }
-    & .RecommendedVideos_videosContainer{
+    & .recommendedVideos_videosContainer{
         display: grid;
         grid-template-columns: repeat( 4,1fr );
         padding: 10px
@@ -28,11 +28,18 @@
 
 
 
-@media only screen and (max-width: 720px) {
-    .recommendedVideos_videosContainer{
-        display: grid;
-        grid-template-columns: repeat( 1,1fr );
-        padding: 10px;
-        
+@media only screen and (max-width: 800px) {
+    .recommendedVideos{
+        & .recommendedVideos_videosContainer{
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            padding: 10px;
+            & .recommendedVideos_videos{
+            margin-top: 0px;
+            }
+            
+        }
     }
+    
 }

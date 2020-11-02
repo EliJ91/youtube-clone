@@ -33,7 +33,7 @@ function VideoSidecard({id, title, author, authorImg, views, thumbnail, date}) {
                 <div className="videoSidecard_videoData">
                     <h1>{title}</h1>
                     <div className="videoSidecard_dataText">
-                        <h2>{author}</h2>
+                        <h1>{author}</h1>
                         <h2>{views} views </h2>
                         <h2> {leDays} {unit}{plural && "s"} ago</h2>   
                     </div>                                 

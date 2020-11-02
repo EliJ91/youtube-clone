@@ -27,9 +27,9 @@ function RecomendedVideos() {
     return (
         <div className="recommendedVideos">
             <h2>Recomended</h2>
-            <div className="RecommendedVideos_videosContainer">
+            <div className="recommendedVideos_videosContainer">
                 {allVideos.map((videoObject)=>
-                    <div key={videoObject._id}  className="RecommendedVideos_videos">
+                    <div key={videoObject._id}  className="recommendedVideos_videos">
                         <Link to={{pathname:"/watch/"+videoObject._id , state:{videoObject}}}>
                             <VideoCard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
                         </Link>

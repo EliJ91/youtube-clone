@@ -56,8 +56,6 @@ function MyDropzone(props) {
   setMovie(e.target.files[0])   
  }
 
-console.log(movie.size)
-
 
 async function uploadMovie(event){
   setLoading(true)

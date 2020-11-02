@@ -10,6 +10,7 @@
         & > h2{
             margin-left: 5px;
             margin-bottom: 20px;
+            font-size: 20px;
         }
     }
     & .videoSideBar_videosContainer{
@@ -56,6 +57,10 @@
     background-color: rgb(181, 180, 180) !important;
 }
 
+
+@media only screen and (max-width: 1600px) {
+    
+}
 
 
 

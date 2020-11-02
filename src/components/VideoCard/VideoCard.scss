@@ -10,15 +10,14 @@ a{
 
     & .videoCard_thumbnailContainer{
         text-align: center;
-        max-height: 200px;
-        max-width: 355.55px;
+        max-height: 160px;
+        width: 300px;
         background-color: rgb(0, 0, 0);
         overflow: hidden;
         box-shadow: 0px 0px 10px 1px black;
 
         & .videoCard_thumbnail{
-            max-width: 100%;
-            max-height: 200px;
+            max-height: 160px;
         }
     }
 
@@ -62,3 +61,28 @@ a{
 
 
 
+@media only screen and (max-width: 1320px) {
+    .videoCard{
+        & .videoCard_videoDataContainer{
+            display: block;
+            & .videoCard_avatar{
+                display: none;
+            }
+            & .videoCard_videoData{
+                & .videoCard_videoStats{
+                    display: none;
+                }
+            }
+            
+        }
+        
+    }
+}
+@media only screen and (max-width: 800px) {
+    .videoCard{
+        margin-bottom: 30px;
+        & .videoCard_videoDataContainer{
+            margin-top: 0;  
+        }
+    }
+}
