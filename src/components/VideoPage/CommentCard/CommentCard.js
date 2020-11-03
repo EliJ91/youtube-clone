@@ -38,6 +38,8 @@ function CommentCard(props) {
                       
                 }) 
     }
+    
+    
     return (
         <>
         <div key={comment} className={`commentCard ${props.nestReply && "commentCard_nest"}`}>
@@ -46,8 +48,8 @@ function CommentCard(props) {
                 <div className="commentCard_authorInfo">{comment.username} {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</div>
                 <div className="commentCard_comment">{comment.comment}</div>
                     <div className="commentCard_likeDislikesContainer">
-                        <ThumbDownAltIcon className="commentCard_likeIcon" /><span>{comment.likes.length}</span>
-                        <ThumbUpAltIcon className="commentCard_likeIcon"/><span>{comment.dislikes.length}</span>
+                        <ThumbUpAltIcon className="commentCard_likeIcon"/><span>{comment.likes.length}</span>
+                        <ThumbDownAltIcon className="commentCard_likeIcon" /><span>{comment.dislikes.length}</span>
                         <span onClick={()=>setReplyButton(true)}>Reply</span>
                     </div>
                     <div className={`commentCard_newComment ${!replyButton && 'hidden'}`}>
@@ -70,7 +72,7 @@ function CommentCard(props) {
                     }
         
                     <div className={`commentCard_replyContainer ${hidden && "commentCard_hide"}`}>
-                        {comment.reply.reverse().map((c)=><CommentCard nestReply addReply={props.addReply} key={c.replyId} commentData={c}/>)}
+                        {comment.reply.map((c)=><CommentCard nestReply addReply={props.addReply} key={c.replyId} commentData={c}/>)}
                     </div>
                 </>
             }

@@ -13,9 +13,17 @@ function CommentSection(props) {
     const [comment, setComment]=useState("")
     const [allComments, setAllComments]=useState(props.data.comments)
     const [commentButton,setCommentButton]=useState(false)
+    const [sortByDate,setSortByDate]=useState(true)
+
+    
+    
+    
     const user = useSelector(state=>state)
  
- const comments = allComments 
+    const comments = sortByDate ? allComments.sort((a, b) =>{return new Date(b.date) - new Date(a.date)}) : allComments.sort((a, b) => (a.likes.length > b.likes.length) ? -1 : 1)
+
+
+
 
     useEffect(()=>{
        async function fetchData(id){
@@ -48,14 +56,19 @@ function CommentSection(props) {
         }) 
     }
 
-
+    
     return (
         <div className="commentSection">
             <div className="commentSection_commentHeader"> 
                 {comments.length} COMMENTS 
-                <p>
-                    <SortIcon className="commentSection_sortIcon"/> SORT BY
-                </p>
+                <div className="commentSection_sortByContainer">
+                    <SortIcon  className="commentSection_sortIcon"/> SORT BY 
+                    <div className="commentSection_sortBySelectors">
+                        <h1 className={`${!sortByDate && "active"}`} onClick={()=>setSortByDate(false)} >Top Comments</h1>
+                        <h1 className={`${sortByDate && "active"}`} onClick={()=>setSortByDate(true)}>Newest First</h1>
+                    </div>
+                    
+                </div>
             </div>
             <div className="commentSection_newComment">
                 <Avatar src={user.avatar}/>
@@ -69,8 +82,8 @@ function CommentSection(props) {
 
             
                 {allComments.length > 0 &&  
-                    <div key={allComments}>
-                        {allComments.reverse().map((mainComment)=> 
+                    <div key={comments}>
+                        {comments.map((mainComment)=> 
                             <div className="commentSection_Comment" key={mainComment.commentId}>
                                 <CommentCard addReply={i => setAllComments(i)} commentData={mainComment}/>
                             </div>

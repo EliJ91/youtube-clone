@@ -26,19 +26,27 @@
             margin-top: 10px;
             padding-bottom: 20px;
             & > h1{
-                font-size: 1em;
+                font-size: 14px;
                 vertical-align: middle;
                 color: rgb(145, 145, 145);
+                font-weight: 400;
             }
             & > h2{
                 display: flex;
-                font-size: 1em;
+                font-size: 12px;
+                font-weight: 600;
                 align-items: center;
                 color: rgb(145, 145, 145);                
                 &>span{
                     margin-right: 30px;
                 }
+                & .videoPage_clickIcon{
+                    cursor: pointer;
+                    margin-right: 5px;
+                    
+                }
             }
+            
         }
         & .videoPage_authorInfo{
             margin-top: 20px;
@@ -92,10 +100,7 @@
 
 
 
-.videoPage_clickable{
-    cursor: pointer;
-    
-}
+
 
 .likeDislike{
     color: rgb(0, 110, 255);

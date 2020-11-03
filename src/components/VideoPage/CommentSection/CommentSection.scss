@@ -1,19 +1,55 @@
 .commentSection_commentHeader{
     font-size: 16px;
-    color: grey;
+    color: black;
     font-weight: 500;
     margin-top: 15px;
     display: flex;
+    
 
-    & > p{
+    & > .commentSection_sortByContainer{
         vertical-align: text-top;
         margin-left: 20px;
         margin-top: 0;
         display: flex;
-        &.commentSection_sortIcon{
+        color: grey;
+        font-size: 14px;
+        cursor: pointer;
+        position: relative;
+        &:hover > .commentSection_sortBySelectors{
+            display: block; 
+        }
+        & .commentSection_sortIcon{
             margin: 0;
             padding: 0;
         }
+        & .commentSection_sortBySelectors{
+           position: absolute;
+           margin-top: 25px;
+           margin-left: 5px;
+           display: none;
+           background-color: white;
+           box-shadow: 1px 2px 4px 1px #888888;
+           white-space: nowrap;
+           padding: 5px 0px;
+           &:hover{
+            display: block;
+        }
+           & > h1{
+               font-size: 14px;
+               padding: 10px;
+               color: #111111;
+               font-weight: 400;
+               &:hover {
+                   background-color: darkgray;
+               } 
+           }
+           & .active{
+            border-left: 3px solid #111111;
+            padding-left: 7px;
+           }
+        
+        }
+        
     }
 }
 .commentSection_newComment{
