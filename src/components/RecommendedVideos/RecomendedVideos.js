@@ -23,10 +23,10 @@ function RecomendedVideos() {
         fetchData()                       
     },[])
 
-    
+    console.log(allVideos)
     return (
         <div className="recommendedVideos">
-            <h2>Recomended</h2>
+            {allVideos.length === 0 ? <h2>Server starting. Please refresh page in 5 seconds.</h2> : <h2>Recomended</h2> }
             <div className="recommendedVideos_videosContainer">
                 {allVideos.map((videoObject)=>
                     <div key={videoObject._id}  className="recommendedVideos_videos">

@@ -38,7 +38,25 @@ function CommentCard(props) {
                       
                 }) 
     }
-    
+    async function likeComment(comment){
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeComment",{commentId:comment.commentId, replyId: comment.replyId, user},{withCredentials:true}) 
+              .then(function (response) {
+                    props.addReply(response.data.comments)
+                })
+                .catch(function (error) {
+                  console.log(error);
+                }) 
+      }
+    async function dislikeComment(comment){
+    console.log(comment)
+    await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeComment",{commentId:comment.commentId, replyId: comment.replyId, user},{withCredentials:true}) 
+            .then(function (response) {
+                props.addReply(response.data.comments)
+            })
+            .catch(function (error) {
+                console.log(error);
+            }) 
+    }
     
     return (
         <>
@@ -48,8 +66,8 @@ function CommentCard(props) {
                 <div className="commentCard_authorInfo">{comment.username} {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</div>
                 <div className="commentCard_comment">{comment.comment}</div>
                     <div className="commentCard_likeDislikesContainer">
-                        <ThumbUpAltIcon className="commentCard_likeIcon"/><span>{comment.likes.length}</span>
-                        <ThumbDownAltIcon className="commentCard_likeIcon" /><span>{comment.dislikes.length}</span>
+                        <ThumbUpAltIcon onClick={()=>likeComment(comment)} className={`commentCard_likeIcon ${comment.likes.includes(user.username) && "likeDislike"} `} /><span>{comment.likes.length}</span>
+                        <ThumbDownAltIcon onClick={()=>dislikeComment(comment)} className={`commentCard_likeIcon ${comment.dislikes.includes(user.username) && "likeDislike"} `} /><span>{comment.dislikes.length}</span>
                         <span onClick={()=>setReplyButton(true)}>Reply</span>
                     </div>
                     <div className={`commentCard_newComment ${!replyButton && 'hidden'}`}>

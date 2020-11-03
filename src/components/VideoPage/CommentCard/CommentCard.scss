@@ -14,6 +14,13 @@
         &.hidden{
             display: none;
         }
+        & .commentCard_avatar{
+            &.commentCard_nest{
+                width: 24px;
+                height: 24px;
+                margin-top: 0;
+            }
+        }
         & .commentCard_replyAvatar{
             width: 24px;
             height: 24px;
@@ -68,6 +75,39 @@
             }
         }
     }
+    & .commentCard_textContainer{
+        margin-left: 15px;
+        width: 100%;
+        & .commentCard_authorInfo{
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        & .commentCard_comment{
+            font-size: 16px;
+            margin-bottom: 10px;
+            max-width: 59em;
+            word-wrap: break-word;  
+        }
+        & .commentCard_likeDislikesContainer{
+            font-size: 15px;
+            display: flex;
+            & .commentCard_likeIcon{
+                font-size: 20px !important;
+                cursor: pointer;
+                margin-right: 10px;
+                color: grey;   
+                &.likeDislike{
+                    color: rgb(0, 72, 255);
+                }
+            }
+            & > span{
+                color: grey;
+                font-weight: 500;
+                cursor: pointer;
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
 
@@ -76,47 +116,11 @@
 }
 
 
-.commentCard_avatar{
-    &.commentCard_nest{
-        width: 24px;
-        height: 24px;
-        margin-top: 0;
-    }
-}
-.commentCard_authorInfo{
-    font-size: 13px;
-    margin-bottom: 10px;
-}
 
-.commentCard_comment{
-    font-size: 16px;
-    margin-bottom: 10px;
-    max-width: 59em;
-    word-wrap: break-word;
-    
-}
-.commentCard_textContainer{
-    margin-left: 15px;
-    width: 100%;
-    
-}
 
-.commentCard_likeDislikesContainer{
-    font-size: 15px;
-    display: flex;
-    
 
-    & > span{
-        color: grey;
-        font-weight: 500;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-}
 
-.commentCard_likeIcon{
-    font-size: 20px !important;
-    cursor: pointer;
-    margin-right: 10px;
-    color: grey;
-}
+
+
+
+
