@@ -89,7 +89,9 @@ function VideoPage(props) {
         return (   
             <div className="videoPage">
                 <div className="videoPage_videoData">   
-                    <video className="videoPage_video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
+                <div className="videoPage_videoContainer">
+                    <video className="video" controls preload="auto" poster={video.thumbnail} src={video.videoURL} type='video/mp4' autoPlay/>
+                </div>
                     <h1>{video.title}</h1>   
                     <div className="videoPage_videoDataContainer">
                         <h1>{video.views} views • {`${MMM} ${dd}, ${yyyy}`}</h1>
