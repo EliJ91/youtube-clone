@@ -1,3 +1,5 @@
+@import "../../../Utils//variables";
+
 .mydropzone_container{
     display: grid;
     align-items: center;
@@ -42,11 +44,11 @@
 }
 .mydropzone_inputTitle{
     font-weight: bold;
-    color: rgb(53, 53, 53);
+    color: $dark-grey;
     margin-right: 10px;
 
     &span{
-        color: lightgrey;
+        color: $light-grey;
         font-size: 12px;
         font-weight: 500;
     }
@@ -64,7 +66,7 @@
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    background-color: #FF0000;
+    background-color: $YTred;
     color: white;
     outline: none;
     cursor: pointer;
@@ -82,7 +84,7 @@
 .mydropzone_publishIcon{
     font-size: 100px !important;
     position: absolute !important;
-    color: #FF0000;
+    color: $YTred;
     right: 30%;
     top: 23%;
 }

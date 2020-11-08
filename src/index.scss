@@ -1,10 +1,12 @@
+@import "./Utils/variables";
+
 *{
   margin:0;
   padding:0;
 }
 html{
   min-width: fit-content;
-  background: ghostwhite;
+  background: $off-white;
 }
 
 body {
