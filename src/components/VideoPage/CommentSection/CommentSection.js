@@ -29,7 +29,7 @@ function CommentSection(props) {
        async function fetchData(id){
            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: id}}) 
                 .then(function (response){
-                    setAllComments(response.data.comments)
+                    setAllComments(response.data[0].comments)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -42,7 +42,7 @@ function CommentSection(props) {
       await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/addComment",{
             movieId: id,
             comment: comment,
-            user: user
+            userId: user._id
         },{withCredentials: true}) 
         .then(function (response) {
             setAllComments(response.data.comments)  

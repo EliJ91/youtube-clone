@@ -15,12 +15,7 @@ import {useSelector} from 'react-redux';
 function VideoPage(props) {
     const movieId = props.match.params.movieId
     const moviePlaceholder = {
-        author:{
-            subscribers: [],
-            userAvatar: "",
-            userId: "",
-            username: "",
-        },
+        authorId:null,
         comments: [],
         video:{
             description: "",
@@ -35,20 +30,24 @@ function VideoPage(props) {
         },
         _id: ""
     }
-
+    
     const [movie,setMovie]=useState(moviePlaceholder)
-   
+    const [author, setAuthor]=useState({subscribers:[]})
 
     useEffect(()=>{
         async function fetchData(){
-            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{params:{movieId: props.match.params.movieId}}) 
+            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{
+                params:{
+                    movieId: props.match.params.movieId
+                }
+            }) 
             .then(function (response) {
-                   setMovie(response.data)
+                   setMovie(response.data[0])
+                   setAuthor(response.data[1])
               })
               .catch(function (error) {
                 console.log(error);
-              })             
-            
+              })   
         }
         axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/addView",{params:{movieId: props.match.params.movieId}}) 
             
@@ -56,19 +55,18 @@ function VideoPage(props) {
     },[props.match.params.movieId])
 
    
-    
-    
                      
         const video = movie.video
-        const author = movie.author
         const user = useSelector(state => state)
-    
+        document.title = video.title
+
         var date = new Date(video.uploadDate) 
         var MMM = date.toLocaleString('default', { month: 'short' })
         var dd = date.getDate()
-        var yyyy = date.getFullYear() 
+        var yyyy = date.getFullYear()
+
    async function likeVideo(){
-      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeVideo",{user:user,movieId:movieId},{withCredentials:true}) 
+      await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeVideo",{userId:user._id,movieId:movieId},{withCredentials:true}) 
             .then(function (response) {
                 setMovie(response.data)
               })
@@ -76,8 +74,9 @@ function VideoPage(props) {
                 console.log(error);
               }) 
     }
+
     async function dislikeVideo(){
-        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeVideo",{user:user,movieId:movieId},{withCredentials:true}) 
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeVideo",{userId:user._id,movieId:movieId},{withCredentials:true}) 
               .then(function (response) {
                   setMovie(response.data)
                 })
@@ -96,8 +95,8 @@ function VideoPage(props) {
                     <div className="videoPage_videoDataContainer">
                         <h1>{video.views} views • {`${MMM} ${dd}, ${yyyy}`}</h1>
                         <h2>
-                            <ThumbUpAltIcon onClick={()=>likeVideo()} className={`videoPage_clickIcon ${video.likes.includes(user.username) && "likeDislike"}`} /><span>{video.likes.length}</span>
-                            <ThumbDownAltIcon onClick={()=>dislikeVideo()} className={`videoPage_clickIcon ${video.dislikes.includes(user.username) && "likeDislike"}`}/><span>{video.dislikes.length}</span>
+                            <ThumbUpAltIcon onClick={()=>likeVideo()} className={`videoPage_clickIcon ${video.likes.includes(user._id) && "likeDislike"}`} /><span>{video.likes.length}</span>
+                            <ThumbDownAltIcon onClick={()=>dislikeVideo()} className={`videoPage_clickIcon ${video.dislikes.includes(user._id) && "likeDislike"}`}/><span>{video.dislikes.length}</span>
                             <ReplyIcon className="videoPage_clickable"/><span>SHARE</span>
                             <PlaylistAddIcon className="videoPage_clickable"/><span>SAVE</span>
                             <MoreHorizIcon className="videoPage_clickable"/>
@@ -106,12 +105,12 @@ function VideoPage(props) {
                     <div className="videoPage_authorInfo">
                         <div className="videoPage_leftContainer">
                             <div className="videoPage_avatar">
-                                <Avatar src={author.userAvatar}/>
+                                <Avatar src={author.avatar}/>
                             </div>
                             
                             <div className="videoPage_info">
                                 <h1>{author.username}</h1>
-                                <h2>{author.subscribers.length-1} Subscribers</h2>
+                                <h2>{author.subscribers.length} Subscribers</h2>
                                 <h3>{video.description}</h3>
                                 <h4>SHOW MORE</h4>
                             </div>

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './VideoSidebar.scss'
-import VideoSidecard from '../VideoSidecard/VideoSidecard'
 import axios from 'axios'
 import Switch from '@material-ui/core/Switch';
+import VideoCard from '../VideoCard/VideoCard'
 
 
 
@@ -39,7 +39,7 @@ function VideoSidebar() {
                 {allVideos.map((videoObject)=>
                 <Link key={videoObject._id} to={{pathname: "/watch/"+videoObject._id, state: {videoObject}}}>
                     <div key={videoObject._id} className="videoSideBar_videos">
-                        <VideoSidecard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
+                        <VideoCard  type="videoSidecard" video={videoObject.video} authorId={videoObject.authorId} />
                     </div>
                 </Link>
                 )}

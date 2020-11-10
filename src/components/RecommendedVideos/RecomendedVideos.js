@@ -22,8 +22,7 @@ function RecomendedVideos() {
         }
         fetchData()                       
     },[])
-
-    console.log(allVideos)
+    document.title = "Not YouTube"
     return (
         <div className="recommendedVideos">
             {allVideos.length === 0 ? <h2>Server starting. Please refresh page in 5 seconds.</h2> : <h2>Recomended</h2> }
@@ -31,10 +30,9 @@ function RecomendedVideos() {
                 {allVideos.map((videoObject)=>
                     <div key={videoObject._id}  className="recommendedVideos_videos">
                         <Link to={{pathname:"/watch/"+videoObject._id , state:{videoObject}}}>
-                            <VideoCard  title= {videoObject.video.title} author={videoObject.author.username} views={videoObject.video.views} authorImg={videoObject.author.userAvatar} thumbnail={videoObject.video.thumbnail} date={videoObject.video.uploadDate}/>
+                            <VideoCard type="videoCard" video={videoObject.video} authorId={videoObject.authorId}/>
                         </Link>
                     </div>
-                
                 )}
             </div>
         </div>

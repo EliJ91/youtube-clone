@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
@@ -18,14 +18,29 @@ function CommentCard(props) {
     const [replyButton,setReplyButton]=useState(false)
     const comment = props.commentData
     const [hidden, setHidden]=useState(true)
+    const [Author, setAuthor]=useState({})
 
     const time = timeSince(comment.date)
+
+    useEffect(()=>{
+        async function fetchData(){
+            await axios.get(process.env.REACT_APP_API_PREFIX+"/api/user/getUser",{params: {Id:props.commentData.userId}}) 
+            .then(function (response) {
+                setAuthor(response.data)
+              })
+              .catch(function (error) {
+                console.log(error);
+              })             
+            
+        }
+        fetchData()                       
+    },[props.commentData.userId])
     
     async function replyComment(commentt){
         await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/replyComment",{
             replyId: commentt.commentId ? commentt.commentId : commentt.replyId ,
             comment: reply,
-            user: user
+            userId: user._id
         },{withCredentials: true}) 
             .then(function (response) {
                 props.addReply(response.data) 
@@ -39,7 +54,7 @@ function CommentCard(props) {
                 }) 
     }
     async function likeComment(comment){
-        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeComment",{commentId:comment.commentId, replyId: comment.replyId, user},{withCredentials:true}) 
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/likeComment",{commentId:comment.commentId, replyId: comment.replyId, userId:user._id},{withCredentials:true}) 
               .then(function (response) {
                     props.addReply(response.data.comments)
                 })
@@ -49,7 +64,7 @@ function CommentCard(props) {
       }
     async function dislikeComment(comment){
     console.log(comment)
-    await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeComment",{commentId:comment.commentId, replyId: comment.replyId, user},{withCredentials:true}) 
+    await axios.post(process.env.REACT_APP_API_PREFIX+"/api/video/dislikeComment",{commentId:comment.commentId, replyId: comment.replyId, userId:user._id},{withCredentials:true}) 
             .then(function (response) {
                 props.addReply(response.data.comments)
             })
@@ -57,17 +72,16 @@ function CommentCard(props) {
                 console.log(error);
             }) 
     }
-    
     return (
         <>
         <div key={comment} className={`commentCard ${props.nestReply && "commentCard_nest"}`}>
-            <Avatar className={`commentCard_avatar ${props.nestReply && "commentCard_nest"}`} src={comment.userAvatar}/>
+            <Avatar className={`commentCard_avatar ${props.nestReply && "commentCard_nest"}`} src={Author.avatar}/>
             <div className="commentCard_textContainer">
-                <div className="commentCard_authorInfo">{comment.username} {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</div>
+                <div className="commentCard_authorInfo">{Author.username} {time.time} {time.unit}{time.time > 1 ? "s" :""} ago</div>
                 <div className="commentCard_comment">{comment.comment}</div>
                     <div className="commentCard_likeDislikesContainer">
-                        <ThumbUpAltIcon onClick={()=>likeComment(comment)} className={`commentCard_likeIcon ${comment.likes.includes(user.username) && "likeDislike"} `} /><span>{comment.likes.length}</span>
-                        <ThumbDownAltIcon onClick={()=>dislikeComment(comment)} className={`commentCard_likeIcon ${comment.dislikes.includes(user.username) && "likeDislike"} `} /><span>{comment.dislikes.length}</span>
+                        <ThumbUpAltIcon onClick={()=>likeComment(comment)} className={`commentCard_likeIcon ${comment.likes.includes(user._id) && "likeDislike"} `} /><span>{comment.likes.length}</span>
+                        <ThumbDownAltIcon onClick={()=>dislikeComment(comment)} className={`commentCard_likeIcon ${comment.dislikes.includes(user._id) && "likeDislike"} `} /><span>{comment.dislikes.length}</span>
                         <span onClick={()=>setReplyButton(true)}>Reply</span>
                     </div>
                     <div className={`commentCard_newComment ${!replyButton && 'hidden'}`}>
