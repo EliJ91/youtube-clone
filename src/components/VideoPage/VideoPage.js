@@ -9,10 +9,14 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Avatar from '@material-ui/core/Avatar'
 import axios from 'axios'
 import CommentSection from './CommentSection/CommentSection'
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {LOGGED_IN} from '../../redux/actions'
+
+
 
 
 function VideoPage(props) {
+    const dispatch = useDispatch()
     const movieId = props.match.params.movieId
     const moviePlaceholder = {
         authorId:null,
@@ -30,7 +34,7 @@ function VideoPage(props) {
         },
         _id: ""
     }
-    
+
     const [movie,setMovie]=useState(moviePlaceholder)
     const [author, setAuthor]=useState({subscribers:[]})
 
@@ -83,7 +87,18 @@ function VideoPage(props) {
                 .catch(function (error) {
                   console.log(error);
                 }) 
-      }
+    }
+
+    async function subscribe(){
+        await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/subscribe",{userId:user._id,authorId:author.userId},{withCredentials:true}) 
+              .then(function (response) {
+                  setAuthor(response.data[1])
+                  dispatch(LOGGED_IN(response.data[0]))
+                })
+                .catch(function (error) {
+                  console.log(error);
+                }) 
+    }
             
         return (   
             <div className="videoPage">
@@ -116,7 +131,8 @@ function VideoPage(props) {
                             </div>
                         </div>
                         <div className="videoPage_subscribe">
-                            <div className="videoPage_button">SUBSCRIBE</div>
+                            {author.subscribers.includes(user._id) ?
+                            <div onClick={()=>subscribe()} className="videoPage_button">SUBSCRIBED</div> : <div onClick={()=>subscribe()} className="videoPage_button">SUBSCRIBE</div>}
                         </div>
                     </div>
                     
