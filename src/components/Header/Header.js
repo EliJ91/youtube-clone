@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
 import './Header.scss'
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search'
 import VideoCallIcon from '@material-ui/icons/VideoCall'
 import AppsIcons from '@material-ui/icons/Apps'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import Avatar from '@material-ui/core/Avatar'
 import Logo from './img/logo.svg'
@@ -17,12 +17,25 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 
+var prevScrollpos = window.pageYOffset;
+
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("header").style.top = "0";
+  } else {
+    document.getElementById("header").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
 
 
 function Header() {
 
     const [uploadVideo, setUploadVideo] = useState(false)
     const [login, setLogin] = useState(false)
+    const [mobileSearchMenu, setMobileSearchMenu]=useState(false)
     const dispatch = useDispatch()
 
    
@@ -52,17 +65,23 @@ function Header() {
 
     return (
         <>
-        <div className="header">
+        <div id="header" className="header">
 
-            <div className="header_left">
+            <div className={`header_left ${mobileSearchMenu ? "hide": ""}`}>
                 <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
             </div>
 
-            <div className="header_input">
-                <input placeholder="Search" type="text"></input>
-                <SearchIcon className="header_inputButton"/>
+            <div className="header_searchInput">
+                <input className="searchInputField" placeholder="Search" type="text"></input>
+                <SearchIcon className="header_searchButton"/>
             </div>
-            <MenuIcon className="header_menuIcon"/>
+            <div className="header_menu_mobile">
+                <ArrowBackIcon onClick={()=>{setMobileSearchMenu(false)}} className={`header_searchBackButton ${mobileSearchMenu ? "": "hide"}`}/>
+                <input className={` searchInputField ${mobileSearchMenu ? "": "hide"}`} placeholder="Search" type="text"></input>
+                <SearchIcon className="header_searchButton" onClick={()=>{setMobileSearchMenu(true)}} />
+                <Avatar onClick={logout} className={`header_avatar ${mobileSearchMenu ? "hide": ""}`} src={avatar} />
+            </div>
+    
             <div className="header_icons">
                 <VideoCallIcon className="header_icon header_uploadVideo" onClick={()=>setUploadVideo(true)}/>
                 <span className="header_uploadTooltip">Upload Video</span>
