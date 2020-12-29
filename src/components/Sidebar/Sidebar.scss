@@ -1,6 +1,9 @@
 .sidebar{
-    flex: 0.15;
+    position: sticky;
     border-bottom: 1.5px solid rgb(209, 209, 209);
+    align-self: flex-start;
+    height: auto;
+    top: 0;
 
     & hr{
       border:thin solid #ebebeb ;

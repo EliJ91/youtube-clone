@@ -1,12 +1,15 @@
 @import "../../../Utils/variables";
 
-
+.commentSection{
+    padding: 10px;
+}
 .commentSection_commentHeader{
     font-size: 16px;
     color: black;
     font-weight: 500;
     margin-top: 15px;
     display: flex;
+    margin: 10px;
     
 
     & > .commentSection_sortByContainer{

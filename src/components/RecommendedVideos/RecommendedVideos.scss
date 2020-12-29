@@ -1,9 +1,7 @@
 .recommendedVideos{
-    flex: 1;
     background: ghostwhite;
     padding: 40px 20px;
     padding-bottom: 0;
-    height: 100vh;
 
     & > h2{
         margin-left: 5px;
@@ -21,7 +19,8 @@
     }
     & .recommendedVideos_videosContainer{
         display: grid;
-        grid-template-columns: repeat( 4,1fr );
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr) );
+        grid-template-rows: repeat(auto-fit, minmax(160px, 1fr) );
         padding: 10px
     }
 }

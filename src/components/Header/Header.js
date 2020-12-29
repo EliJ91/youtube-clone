@@ -18,17 +18,17 @@ import {Link} from 'react-router-dom'
 
 
 var prevScrollpos = window.pageYOffset;
-
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("header").style.top = "0";
-  } else {
-    document.getElementById("header").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
+if( window.innerWidth<800){
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("header").style.top = "0";
+    } else {
+        document.getElementById("header").style.top = "-50px";
+    }
+    prevScrollpos = currentScrollPos;
+    }
 }
-
 
 
 function Header() {
@@ -66,20 +66,27 @@ function Header() {
     return (
         <>
         <div id="header" className="header">
+            {window.innerWidth < 800 ? 
+            <div className="header_menu_mobile">
+                <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
+                <div className="spacer"/>
+                <SearchIcon className="header_searchButton" onClick={()=>{setMobileSearchMenu(true)}} />
+                <Avatar onClick={logout} className="header_avatar" src={avatar} />
 
-            <div className={`header_left ${mobileSearchMenu ? "hide": ""}`}>
+                <div className={`header_search_mobile ${mobileSearchMenu ? "": "hide"}`}>
+                    <ArrowBackIcon onClick={()=>{setMobileSearchMenu(false)}} className="header_searchBackButton" />
+                    <input className="searchInputField" placeholder="Search" type="text"></input>
+                    <SearchIcon className="header_searchButton" onClick={()=>{setMobileSearchMenu(true)}} />
+                </div>
+            </div>
+            : <>
+            <div className="header_left">
                 <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
             </div>
 
             <div className="header_searchInput">
                 <input className="searchInputField" placeholder="Search" type="text"></input>
                 <SearchIcon className="header_searchButton"/>
-            </div>
-            <div className="header_menu_mobile">
-                <ArrowBackIcon onClick={()=>{setMobileSearchMenu(false)}} className={`header_searchBackButton ${mobileSearchMenu ? "": "hide"}`}/>
-                <input className={` searchInputField ${mobileSearchMenu ? "": "hide"}`} placeholder="Search" type="text"></input>
-                <SearchIcon className="header_searchButton" onClick={()=>{setMobileSearchMenu(true)}} />
-                <Avatar onClick={logout} className={`header_avatar ${mobileSearchMenu ? "hide": ""}`} src={avatar} />
             </div>
     
             <div className="header_icons">
@@ -96,7 +103,7 @@ function Header() {
                 <p className="header_loginText" onClick={()=>setLogin(true)}>Log in</p>
                 }   
             </div>
-                        
+        </>}
         </div> 
         <Upload open={uploadVideo} onClose={()=>setUploadVideo(false)}/>
         <Login open={login} onClose={()=>setLogin(false)} test={setLogin}/>

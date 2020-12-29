@@ -1,3 +1,4 @@
+
 .header {
     position: relative;
     display:flex;
@@ -7,12 +8,11 @@
     top: 0;
     z-index: 10;
     background-color: white;
-    width: 100%;
 
     & .header_left{
         & .header_logo{
             height: 24px;
-            width: 80px;
+            width: 75px;
             object-fit: contain;
             margin-left: 20px;
             cursor: pointer;
@@ -60,9 +60,6 @@
         & .header_icon{
             margin-right: 30px;
             cursor: pointer;
-            max-height: 35px;
-            max-width: 35px;
-            padding: 10px;
         }
 
         & .header_uploadVideo{
@@ -155,37 +152,34 @@
 
 
 
+
 @media only screen and (max-width: 800px) {
     .header{
         transition: top 0.3s;
         padding-top: 5px;
         height: 35px;
-        & .header_searchInput{
-            display: none;
-        }
-        & .header_logo{
-            margin: 3px;
-            margin-left: 5px !important;
-            &:active{
-                transform: scale(.9);
-            }
-        }
+        
         
         & .header_menu_mobile{
             display: flex;
-            & .header_searchBackButton{
-                margin: 5px;
-                &.hide{
-                    display: none;
+            flex: 1;
+            align-items: center;
+            & .header_logo{
+                width: 75px;
+                margin-left: 3px;
+                cursor: pointer;
+
+                &:active{
+                transform: scale(.9);
                 }
             }
-            &>input.searchInputField{
-                width: 290px;
-                border: 0;
-                border-bottom: 1px solid grey;
-                margin: 5px 0px;
-                outline: none;
+            & .spacer{
+                flex: 1;
             }
+            & .header_searchButton{
+                margin: 5px;
+            }
+            
             & .header_avatar{
                 margin: 5px;
                 width: 25px;
@@ -194,21 +188,33 @@
                     display: none;
                 }
             }
+        }
+        & .header_search_mobile{
+            display: flex;
+            position: absolute;
+            background-color: white;
+            width: 100%;
+            &>input.searchInputField{
+                flex: 1;
+                border: 0;
+                border-bottom: 1px solid grey;
+                margin: 5px 0px;
+                outline: none;
+            }
             & .header_searchButton{
                 margin: 5px;
             }
-        }
-        & .header_icons{
-            display: none;
-        }
-
-        
-    }
-    
-    
-    
-    
-    
+            & .header_searchBackButton{
+                margin: 5px;
+                &.hide{
+                    display: none;
+                }
+            }
+            &.hide{
+                display: none;
+            }
+        }  
+    } 
   }
   
 
