@@ -9,7 +9,7 @@ function NewLoginUi({onOff, toggle}){
     return (
         <div className={`nLoginUi_Background ${onOff ? "":"hide"}`} onClick={(e)=>{e.target.classList.contains("nLoginUi_Background") && toggle(false)}}>
             
-            <div className="nLoginUi_Container" .,>
+            <div className="nLoginUi_Container" >
             <HighlightOffIcon className="nLoginUi_closeButton" onClick={()=>toggle(false)}/>
                 <div className="nLoginUi_UiContainer">
                     <input className="nLoginUi_username" placeholder="Username" type="text"/>

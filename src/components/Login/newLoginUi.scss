@@ -28,9 +28,9 @@
     margin-right: auto;
     padding: 10px;
     box-shadow: 0px 0px 100px 1px rgba(0, 0, 0, 0.5);
+    position: relative;
 
     & .nLoginUi_UiContainer{
-        //border: 1px solid black;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -77,6 +77,7 @@
             letter-spacing: 1px;
             background-color: $YTred ;
             border: 0;
+            font-size: 1em;
         }
     }
 
@@ -93,6 +94,9 @@
     }
 
     & .nLoginUi_closeButton{
+        position: absolute;
+        right: 5px;
+        top: 5px;
         float: right;
         color: $light-grey;
         opacity: .3;
@@ -111,6 +115,10 @@
 @media only screen and (max-width: 800px) {
     .nLoginUi_Container{
         width: 50%;
-
+        & .nLoginUi_UiContainer{
+            & .nLoginUi_submit{
+                width: 50%;
+            }
+        }
     }
 }
