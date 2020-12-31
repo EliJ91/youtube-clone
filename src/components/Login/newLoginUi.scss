@@ -1,0 +1,116 @@
+@import "../../Utils/variables";
+
+
+
+.nLoginUi_Background{
+    background-color: rgba(128, 128, 128, 0.7);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: grid;
+    z-index: 1;
+    align-content: center;
+    transition: top 1s;
+
+    &.hide{
+        top: 100%
+    }
+}
+
+.nLoginUi_Container{
+    border: 2px solid $off-black;
+    border-radius: 10px;
+    width: 30%;
+    height: 100%;
+    background-color: $off-white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    box-shadow: 0px 0px 100px 1px rgba(0, 0, 0, 0.5);
+
+    & .nLoginUi_UiContainer{
+        //border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        min-height: 200px;
+        justify-content: space-evenly;
+        & .nLoginUi_username{
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0;
+            outline: 0;
+            background-color: $off-white;
+            border-bottom: 1px solid $light-grey;
+
+            &:focus{
+                border-bottom: 1px solid $off-black;
+            }
+
+        }
+        & .nLoginUi_password{
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5px;
+            border: 0;
+            outline: 0;
+            background-color: $off-white;
+            border-bottom: 1px solid $light-grey;
+
+            &:focus{
+                border-bottom: 1px solid $off-black;
+            }
+        }
+        & .nLoginUi_submit{
+            width: 25%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            border-radius: 10px;
+            padding: 3px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background-color: $YTred ;
+            border: 0;
+        }
+    }
+
+    & .nLoginUi_createAccount{
+        margin: 0;
+        text-align: center;
+        color: $dark-blue;
+        font-size: 10px;
+        font-weight: 0;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    & .nLoginUi_closeButton{
+        float: right;
+        color: $light-grey;
+        opacity: .3;
+        transition: color 1s;
+        transition: opacity 1s;
+
+
+        &:hover{
+            cursor: pointer;
+            color: $dark-grey;
+            opacity: 1;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .nLoginUi_Container{
+        width: 50%;
+
+    }
+}

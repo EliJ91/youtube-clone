@@ -15,6 +15,8 @@ import {LOGGED_IN} from '../../redux/actions'
 import {defaultState} from '../../redux/reducer'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import NewLoginUi from '../Login/newLoginUi'
+import '../Login/newLoginUi.scss'
 
 
 var prevScrollpos = window.pageYOffset;
@@ -37,6 +39,7 @@ function Header() {
     const [login, setLogin] = useState(false)
     const [mobileSearchMenu, setMobileSearchMenu]=useState(false)
     const dispatch = useDispatch()
+    const [onOff, setOnOff] = useState(false)
 
    
     const loggedIn = useSelector(store=>store.username)
@@ -66,12 +69,20 @@ function Header() {
     return (
         <>
         <div id="header" className="header">
+            <NewLoginUi onOff={onOff} toggle={setOnOff}/>
             {window.innerWidth < 800 ? 
             <div className="header_menu_mobile">
                 <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
                 <div className="spacer"/>
                 <SearchIcon className="header_searchButton" onClick={()=>{setMobileSearchMenu(true)}} />
-                <Avatar onClick={logout} className="header_avatar" src={avatar} />
+                {loggedIn !== null ? 
+                <>
+                    <Avatar onClick={logout} className="header_avatar" src={avatar} />
+                    <span className="header_logoutTooltip">Log Out</span>
+                </>:
+                <p className="header_loginText" onClick={()=>setOnOff(true)}>Log in</p>
+                }
+                
 
                 <div className={`header_search_mobile ${mobileSearchMenu ? "": "hide"}`}>
                     <ArrowBackIcon onClick={()=>{setMobileSearchMenu(false)}} className="header_searchBackButton" />
@@ -100,7 +111,7 @@ function Header() {
                     <Avatar onClick={logout} className="header_avatar" src={avatar} />
                     <span className="header_logoutTooltip">Log Out</span>
                 </>:
-                <p className="header_loginText" onClick={()=>setLogin(true)}>Log in</p>
+                <p className="header_loginText" onClick={()=>setOnOff(true)}>Log in</p>
                 }   
             </div>
         </>}
