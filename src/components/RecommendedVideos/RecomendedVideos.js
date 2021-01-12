@@ -25,7 +25,7 @@ function RecomendedVideos() {
     document.title = "Not YouTube"
     return (
         <div className="recommendedVideos">
-            {allVideos.length === 0 ? <h2>Server starting. Please refresh page in 5 seconds.</h2> : <h2>Recomended</h2> }
+            {allVideos.length === 0 && <h2>Server starting. Please refresh page in 5 seconds.</h2>}
             <div className="recommendedVideos_videosContainer">
                 {allVideos.map((videoObject)=>
                     <div key={videoObject._id}  className="recommendedVideos_videos">

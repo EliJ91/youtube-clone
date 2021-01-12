@@ -8,13 +8,18 @@
     top: 0;
     z-index: 10;
     background-color: white;
+    padding: 10px;
 
     & .header_left{
+        & .header_menuIcon{
+            margin: 0px 15px;
+            font-size: 25px;
+        }
         & .header_logo{
-            height: 24px;
-            width: 75px;
+            height: 20px;
+            margin-left: 15px;
             object-fit: contain;
-            margin-left: 20px;
+            
             cursor: pointer;
 
             &:active{

@@ -1,8 +1,10 @@
 .sidebarRow{
     display: flex;
+    flex-direction: column;
     align-items: center;
     color: rgb(54, 54, 54);
     padding: 5px 20px ;
+    margin-top: 15px;
 
     &:hover{
         background-color: rgba(211, 211, 211, 0.3);
@@ -15,18 +17,20 @@
 
     & .sidebarRow_title{
         flex: 1;
-        font-size: 15px;
+        margin-top: 5px;
+        font-size: 10px;
         font-weight: 400;
-        margin-left: 20px;
     }
 
     & .sidebarRow_icon{
-    font-size: larger;
+    font-size: 25px;
     color: rgb(87, 87, 87);
     }
 
     &.sidebarRow_selected{
-        background-color: lightgray;
+        & .sidebarRow_icon{
+            color: red;
+        }
     }
 }
 

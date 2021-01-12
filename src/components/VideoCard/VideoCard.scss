@@ -7,14 +7,16 @@ a{
 
 .videoCard{
     cursor: pointer;
+    width: 275px;
 
     & .videoCard_thumbnailContainer{
         text-align: center;  
-        height: 150px;
+        height: 155px;
         background-color: rgb(0, 0, 0);
-        box-shadow: 0px 0px 10px 1px black;
         display: flex;
         align-items: center;
+        overflow: hidden;
+        
 
         & .videoCard_thumbnail{
             width: 100%;     

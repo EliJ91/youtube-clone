@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 function Sidebar() {
     return (
         <div className="sidebar">
-            <SidebarRow selected Icon={HomeIcon} title="Home"/>
+            {/* <SidebarRow selected Icon={HomeIcon} title="Home"/>
             <SidebarRow Icon={WhatshotIcon} title="Trending"/>
             <SidebarRow Icon={SubscriptionsIcon} title="Subscription"/>
             <hr/>
@@ -24,7 +24,14 @@ function Sidebar() {
             <SidebarRow Icon={TheatersIcon} title="Your movies"/>
             <SidebarRow Icon={WatchLaterIcon} title="Watch later"/>
             <SidebarRow Icon={ExpandMoreIcon} title="Show more"/>
-            <hr/>
+            <hr/> */}
+
+            <SidebarRow selected Icon={HomeIcon} title="Home"/>
+            <SidebarRow Icon={WhatshotIcon} title="Trending"/>
+            <SidebarRow Icon={SubscriptionsIcon} title="Subscription"/>
+            <SidebarRow Icon={OndemandVideoOutlinedIcon} title="Originals"/>
+            <SidebarRow Icon={VideoLibraryIcon} title="Library"/>
+            
         </div>
     )
 }

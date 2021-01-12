@@ -1,15 +1,11 @@
 .recommendedVideos{
     background: ghostwhite;
-    padding: 40px 20px;
+    padding-left: 5px;
     padding-bottom: 0;
-
-    & > h2{
-        margin-left: 5px;
-        margin-bottom: 20px;
-    }
+    margin-left: 4.5em;
 
     & .recommendedVideos_videos{
-        margin: 10px;
+        margin: 0px;
         & a{
             color: black;
             & :active{
@@ -19,9 +15,11 @@
     }
     & .recommendedVideos_videosContainer{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr) );
+        grid-template-columns: repeat(4, auto);
+        // grid-template-columns: repeat(auto-fit, minmax(275px, 275px) );
         grid-template-rows: repeat(auto-fit, minmax(160px, 1fr) );
-        padding: 10px
+        padding: 20px;
+        grid-gap: 10px;
     }
 }
 

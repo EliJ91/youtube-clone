@@ -1,15 +1,11 @@
 .sidebar{
-    position: sticky;
+    position: fixed;
     border-bottom: 1.5px solid rgb(209, 209, 209);
     align-self: flex-start;
-    height: auto;
-    top: 0;
+    height: 100%;
+    width: 75px;
+    background-color: white;
 
-    & hr{
-      border:thin solid #ebebeb ;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    }
 }
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
-import './App.css';
+import './App.scss';
 import RecomendedVideos from './components/RecommendedVideos/RecomendedVideos';
 import VideoPage from './components/VideoPage/VideoPage'
 import NewLoginUi from './components/Login/newLoginUi'

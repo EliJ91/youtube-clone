@@ -17,6 +17,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import NewLoginUi from '../Login/newLoginUi'
 import '../Login/newLoginUi.scss'
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 var prevScrollpos = window.pageYOffset;
@@ -92,6 +93,7 @@ function Header() {
             </div>
             : <>
             <div className="header_left">
+                <MenuIcon className="header_menuIcon"/>
                 <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
             </div>
 
