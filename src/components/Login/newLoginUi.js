@@ -33,7 +33,7 @@ function NewLoginUi({onOff, toggle}){
                     <input className="nLoginUi_username" placeholder="Username" type="text" onChange={(e)=>{setUsername(e.target.value)}} value={username}/>
                     <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                     {newAccount && <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword2(e.target.value)}}/>}
-                    <button className="nLoginUi_submit"  onClick={()=> log_in(username,password)}>Log In</button>
+                    <button className="nLoginUi_submit"  onClick={()=> log_in(username,password)}>{newAccount ?  "Create Account" : "Log In"}</button>
                 </div>
                 {newAccount ? 
                 <p className="nLoginUi_createAccount" onClick={()=>setNewAccount(false)} >Have an account?</p>

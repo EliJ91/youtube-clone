@@ -2,19 +2,9 @@
 
 .videoSideBar{
     flex: 1;
-    background: ghostwhite;
-    padding: 40px 20px;
+    //padding: 40px 20px;
     padding-bottom: 0;
     height: 100vh;
-    & .videoSideBar_topContainer{
-        display: flex;
-        justify-content: space-between;
-        & > h2{
-            margin-left: 5px;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-    }
     & .videoSideBar_videosContainer{
         display: grid;
         padding: 10px;

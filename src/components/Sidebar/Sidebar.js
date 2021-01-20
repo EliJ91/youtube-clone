@@ -1,6 +1,6 @@
 import React from 'react'
-import SidebarRow from './SidebarRow/SidebarRow'
 import './Sidebar.scss'
+import SidebarRow from './SidebarRow/SidebarRow'
 import HomeIcon from '@material-ui/icons/Home'
 import WhatshotIcon from '@material-ui/icons/Whatshot'
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions'
@@ -10,6 +10,8 @@ import OndemandVideoOutlinedIcon from '@material-ui/icons/OndemandVideoOutlined'
 import TheatersIcon from '@material-ui/icons/Theaters';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
 
 function Sidebar() {
     return (
