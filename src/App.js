@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import './App.scss';
@@ -9,10 +9,10 @@ import {BrowserRouter as Router,  Route} from "react-router-dom"
 
 
 
-function appContainer() {
+function AppContainer(props) {
   return (
     <div className="app__page">
-      <Sidebar/>
+      <Sidebar expandSidebar={props.expandSidebar}/>
       <RecomendedVideos/>      
     </div>
   )
@@ -22,15 +22,16 @@ function appContainer() {
 
 
 function App() {
-  
+  const[expandSidebar,setExpandSidebar]=useState(false)
 
 
   return (
     <div className="app">   
 
       <Router>
-      <Header/>
-        <Route path="/" exact component={appContainer} />
+      <Header setExpandSidebar={setExpandSidebar} expandSidebar={expandSidebar}/>
+        {/* <Route path="/" exact component={appContainer(type)} /> */}
+        <Route path="/" exact render={(props)=><AppContainer expandSidebar={expandSidebar}/>} />
         <Route path="/watch/:movieId" render={(props)=><VideoPage {...props}/>} />
         <Route path="/login" render={NewLoginUi}/>
       </Router>

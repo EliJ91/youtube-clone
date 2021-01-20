@@ -34,6 +34,20 @@ function RecomendedVideos() {
                         </Link>
                     </div>
                 )}
+                {allVideos.map((videoObject)=>
+                    <div key={videoObject._id}  className="recommendedVideos_videos">
+                        <Link to={{pathname:"/watch/"+videoObject._id , state:{videoObject}}}>
+                            <VideoCard type="videoCard" video={videoObject.video} authorId={videoObject.authorId}/>
+                        </Link>
+                    </div>
+                )}
+                {allVideos.map((videoObject)=>
+                    <div key={videoObject._id}  className="recommendedVideos_videos">
+                        <Link to={{pathname:"/watch/"+videoObject._id , state:{videoObject}}}>
+                            <VideoCard type="videoCard" video={videoObject.video} authorId={videoObject.authorId}/>
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     )

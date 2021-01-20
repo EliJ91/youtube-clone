@@ -1,13 +1,10 @@
 @import "../../Utils/variables";
 
 .videoSideBar{
-    flex: 1;
-    //padding: 40px 20px;
     padding-bottom: 0;
     height: 100vh;
     & .videoSideBar_videosContainer{
         display: grid;
-        padding: 10px;
         & > a{
             text-decoration: none;
             color: black;
@@ -16,7 +13,8 @@
                 }
         }
         &.videoSideBar_videos{
-            max-width: 500px;
+            //max-width: 500px;
+            border: 5px solid red;
         }
     }
 }

@@ -34,7 +34,7 @@ if( window.innerWidth<800){
 }
 
 
-function Header() {
+function Header(props) {
 
     const [uploadVideo, setUploadVideo] = useState(false)
     const [login, setLogin] = useState(false)
@@ -93,7 +93,7 @@ function Header() {
             </div>
             : <>
             <div className="header_left">
-                <MenuIcon className="header_menuIcon"/>
+                <MenuIcon className="header_menuIcon" onClick={()=>{props.setExpandSidebar(!props.expandSidebar)}}/>
                 <Link to='/' ><img className="header_logo" src={Logo} alt=""/></Link>
             </div>
 

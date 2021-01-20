@@ -1,7 +1,6 @@
 .sidebar{
     position: fixed;
     border-bottom: 1.5px solid rgb(209, 209, 209);
-    align-self: flex-start;
     height: 100vh;
     width: 75px;
     background-color: white;
@@ -15,4 +14,10 @@
     }
   }
 
-  
+.expanded{
+  overflow-y: scroll;
+  z-index: 1;
+  width: 200px;
+  background-color: white;
+  padding-left: 20px;
+}
