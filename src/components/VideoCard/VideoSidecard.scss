@@ -1,41 +1,58 @@
+
 .videoSidecard{
     cursor: pointer;
     display: flex;
-    margin-top: 20px;
+    margin-bottom: 10px;
     & .videoSidecard_thumbnailContainer{
         text-align: center;
-        width: 175px;
-        height: 100px;
+        width: 100%;
+        height: 7em;
         background-color: rgb(0, 0, 0);
-        margin-right: 10px;
+        margin-right: 5px;
         align-content: center;
         & .videoSidecard_thumbnail{
-            width: 100%;
-            height: 100%;
+            width:100%;
+            height:100%;
             object-fit: contain;
         }
     }
     & .videoSidecard_videoDataContainer{
-        width: 150px;
+        width: 100%;
+        & .videoSidecard_avatar{
+            display: none;
+        }
         & .videoSidecard_videoData{ 
             display: grid;
             & > h1{
-                font-weight: 500;
-                font-size: 1em;
+                font-weight: bold;
+                font-size: 14px;
             }
             & .videoSidecard_dataText{
+                padding-top: 10px;
                 & > h1{       
                     font-weight: 500;
                     font-size: .8em;
                     color: rgb(133, 133, 133);
                 
-            }
+                }
                 & > h2{       
                     font-weight: 500;
                     font-size: .8em;
                     color: rgb(133, 133, 133);
                 
-            }
+                }
+                & .videoSidecard_videoStats{
+                    display: flex;
+                    & > h2{
+                        padding-top: 5px;
+                        display: flex;
+                        padding-right: 5px;
+                        font-size: .8em ;
+                        font-weight: 100;
+                        color: rgb(133, 133, 133);
+                    }
+                }
+                
             }
         }
     }   
@@ -45,43 +62,43 @@
 
 
 
-@media only screen and (max-width: 1600px) {
-    .videoSidecard{
-        display: inline-block;
-        & .videoSidecard_thumbnailContainer{
-            text-align: center;
-            background-color: rgb(0, 0, 0);
-            margin-right: 10px;
-            align-content: center;
-            & .videoSidecard_thumbnail{
-                object-fit: contain;                
-            }
-        }
-        & .videoSidecard_videoDataContainer{
-            vertical-align: text-top;
-            & .videoSidecard_videoData{
-                & > h1{
-                    margin-top: 5px;
-                    font-weight: 500;
-                    font-size: 1rem;
-                }
-                & .videoSidecard_dataText{
-                    display: flex; 
-                    & > h1{     
-                        padding-right: 10px;                       
-                        font-weight: 500;
-                        font-size: .8rem;
-                        color: rgb(133, 133, 133);
-                        line-height: 1;
-                    }
-                    & > h2{     
-                        display: none;
-                    } 
-                }
+// @media only screen and (max-width: 1600px) {
+//     .videoSidecard{
+//         display: inline-block;
+//         & .videoSidecard_thumbnailContainer{
+//             text-align: center;
+//             background-color: rgb(0, 0, 0);
+//             margin-right: 10px;
+//             align-content: center;
+//             & .videoSidecard_thumbnail{
+//                 object-fit: contain;                
+//             }
+//         }
+//         & .videoSidecard_videoDataContainer{
+//             vertical-align: text-top;
+//             & .videoSidecard_videoData{
+//                 & > h1{
+//                     margin-top: 5px;
+//                     font-weight: 500;
+//                     font-size: 1rem;
+//                 }
+//                 & .videoSidecard_dataText{
+//                     display: flex; 
+//                     & > h1{     
+//                         padding-right: 10px;                       
+//                         font-weight: 500;
+//                         font-size: .8rem;
+//                         color: rgb(133, 133, 133);
+//                         line-height: 1;
+//                     }
+//                     & > h2{     
+//                         display: none;
+//                     } 
+//                 }
                                
-            }
-        }   
-    }
+//             }
+//         }   
+//     }
     
-}
+// }
 

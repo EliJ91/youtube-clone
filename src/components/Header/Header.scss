@@ -9,11 +9,20 @@
     z-index: 10;
     background-color: white;
     padding: 10px;
+    height: 50px;
 
     & .header_left{
         & .header_menuIcon{
             margin: 0px 15px;
             font-size: 25px;
+            cursor: pointer;
+
+            &:active{
+                padding: 0;
+                border-radius: 50%;
+                background-color: rgba(128, 128, 128, 0.233);
+                overflow: visible;
+            }
         }
         & .header_logo{
             height: 20px;

@@ -1,10 +1,10 @@
 @import "../../Utils/variables";
 
 .videoPage{
-    padding: 10px 5em;
+    padding: 20px;
     display: grid;
-    grid-gap: 40px;
-    grid-template-columns: 6fr 2fr;
+    grid-gap: 30px;
+    grid-template-columns: 6fr 2.5fr;
     & .videoPage_videoData{
         & .videoPage_videoContainer{
             padding: 0;
@@ -13,8 +13,6 @@
             text-align: center;
             & .video{
                max-width: 100%;
-               max-height: 450px;
-               width: fit-content;
             }
         }
         & > h1{

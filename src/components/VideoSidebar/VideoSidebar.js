@@ -26,15 +26,6 @@ function VideoSidebar() {
     },[])
     return (
         <div className="videoSideBar">
-            <div className="videoSideBar_topContainer">
-                <h2>Up Next</h2>
-                <Switch
-                checked={button}
-                onChange={(e)=>{setButton(!button)}}
-                style={{color:"blue"}}
-                name="checkedB"
-                inputProps={{ 'aria-label': 'primary checkbox' }}/>
-            </div>
             <div className="videoSideBar_videosContainer">
                 {allVideos.map((videoObject)=>
                 <Link key={videoObject._id} to={{pathname: "/watch/"+videoObject._id, state: {videoObject}}}>

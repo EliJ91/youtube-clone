@@ -3,8 +3,23 @@
     flex-direction: column;
     align-items: center;
     color: rgb(54, 54, 54);
-    padding: 5px 20px ;
+    padding: 5px 10px ;
     margin-top: 15px;
+
+    &.expanded{
+        flex-direction: row;
+        padding-top: 4px;
+        padding-left: 25px;
+        & .sidebarRow_icon{
+            
+        }
+        & > h2{
+            padding-bottom: 5px;
+            padding-left: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+    }
 
     &:hover{
         background-color: rgba(211, 211, 211, 0.3);
@@ -23,7 +38,7 @@
     }
 
     & .sidebarRow_icon{
-    font-size: 25px;
+    font-size: 23px;
     color: rgb(87, 87, 87);
     }
 
@@ -33,4 +48,6 @@
         }
     }
 }
+
+
 
