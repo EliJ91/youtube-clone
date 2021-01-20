@@ -1,12 +1,43 @@
 .sidebar{
-    position: fixed;
+    position: sticky;
+    top: 50px;
     border-bottom: 1.5px solid rgb(209, 209, 209);
-    height: 100vh;
-    width: 75px;
+    height: calc(100vh - 50px);
     background-color: white;
+
+    &.expanded{
+      position: sticky;
+      width: 250px;
+      background-color: white;
+      overflow-y: scroll;
+    
+    &:hover::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar {
+        width: 0px;
+      }
+    &::-webkit-scrollbar-track {
+      //box-shadow: inset 0 0 5px grey; 
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(148, 148, 148, 0.514); 
+    }
+    // &::-webkit-scrollbar-thumb:hover {
+    //   background: #b30000; 
+    // }
+    
+    }
 
 }
 
+hr{
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.144);
+  height: .5px;
+  border: none;
+}
 
 @media only screen and (max-width: 800px) {
     .sidebar {
@@ -14,10 +45,3 @@
     }
   }
 
-.expanded{
-  overflow-y: scroll;
-  z-index: 1;
-  width: 200px;
-  background-color: white;
-  padding-left: 20px;
-}
