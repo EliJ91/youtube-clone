@@ -8,9 +8,8 @@ import axios from 'axios'
 
 function RecomendedVideos(props) {
     const [allVideos, setAllVideos]=useState([])
-
+    
     useEffect(()=>{
-        props.setExpandSidebar(false)
         async function fetchData(){
             await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/allvideos") 
             .then(function (response) {
@@ -22,7 +21,7 @@ function RecomendedVideos(props) {
             
         }
         fetchData()                       
-    },[props])
+    },[])
     document.title = "Not YouTube"
     return (
         <div className="recommendedVideos">
