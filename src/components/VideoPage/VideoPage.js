@@ -9,13 +9,28 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Avatar from '@material-ui/core/Avatar'
 import CommentSection from './CommentSection/CommentSection'
 import useVideoPageLogic from './VideoPageLogic'
-
-
+import Sidebar from '../Sidebar/Sidebar'
+import Logo from '../Header/img/logo.svg'
+import MenuIcon from '@material-ui/icons/Menu';
+import {Link} from 'react-router-dom'
 
 function VideoPage(props) {
-    const {movie,author,video,user,MMM,dd,yyyy,likeVideo,dislikeVideo,subscribe} = useVideoPageLogic(props.match.params.movieId)
-
+    const {movie,author,video,user,MMM,dd,yyyy,likeVideo,dislikeVideo,subscribe} = useVideoPageLogic(props.match.params.movieId,props.expandSidebar,props.setExpandSidebar)
+    document.body.style.overflow = "visible"
         return (   
+            <>
+            {/* Header */}
+            <div className={`videoPage_Sidebar_Background ${props.expandSidebar && "expanded"}`} onClick={()=>{props.setExpandSidebar(false)}}></div>
+            <div className={`videoPage_Sidebar ${props.expandSidebar && "expanded"}`}>
+                <div className="videoPage_Sidebar_header">
+                    <MenuIcon className="videoPage_Sidebar_menuIcon" onClick={()=>{props.setExpandSidebar(!props.expandSidebar)}}/>
+                    <Link to='/' ><img className="videoPage_Sidebar_logo" src={Logo} alt=""/></Link>
+                </div>
+                
+                <Sidebar  expandSidebar={true} />
+            </div>
+            
+            {/* Main Page */}
             <div className="videoPage">
                 <div className="videoPage_videoData">   
                 <div className="videoPage_videoContainer">
@@ -58,6 +73,7 @@ function VideoPage(props) {
                     <VideoSidebar/>
             </div>
         </div>
+        </>
         )
 }
                  
