@@ -1,5 +1,69 @@
 @import "../../Utils/variables";
 
+.videoPage_Sidebar_Background{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: -100vw;
+    background-color: black;
+    opacity: 0;
+    transition: opacity .3s ease-in;
+
+    &.expanded{
+        left: 0;
+        opacity: .4;
+        z-index: 1;
+        & + body{
+            overflow: hidden;
+        }
+    }
+}
+.videoPage_Sidebar{
+    position: fixed;
+    z-index: 1;
+    left: -220px;
+    transition: left .3s;
+    top: 0;
+    &.expanded{
+        left: 0;
+        top: 0;
+        position: fixed;
+    }
+    & .videoPage_Sidebar_header{
+        padding: 10px;
+        height: 50px;
+        background-color: white;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.192);
+        & .videoPage_Sidebar_menuIcon{
+            margin: 0px 15px;
+            font-size: 25px;
+            cursor: pointer;
+    
+            &:active{
+                padding: 0;
+                border-radius: 50%;
+                background-color: rgba(128, 128, 128, 0.233);
+                overflow: visible;
+            }
+        }
+        & .videoPage_Sidebar_logo{
+            height: 20px;
+            margin-left: 15px;
+            object-fit: contain;
+            
+            cursor: pointer;
+    
+            &:active{
+            transform: scale(.9);
+            }
+        }
+    }
+}
+
+
+
+
 .videoPage{
     padding: 20px;
     display: grid;

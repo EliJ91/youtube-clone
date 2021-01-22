@@ -4,7 +4,7 @@ import axios from 'axios'
 import {LOGGED_IN} from '../../redux/actions'
 
 
-const useVideoPageLogic = (movieID) =>{
+const useVideoPageLogic = (movieID,expandSidebar,setExpandSidebar) =>{
     const dispatch = useDispatch()
     const movieId = movieID
     const moviePlaceholder = {
@@ -26,7 +26,14 @@ const useVideoPageLogic = (movieID) =>{
     const [movie,setMovie]=useState(moviePlaceholder)
     const [author, setAuthor]=useState({subscribers:[]})
 
+    if(expandSidebar){
+        document.body.style.overflow = "hidden"
+    }else{
+        document.body.style.overflow = "visible"
+    }
+
     useEffect(()=>{
+        setExpandSidebar(false)
         async function fetchData(){
             await axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/getVideo",{
                 params:{

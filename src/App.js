@@ -13,7 +13,7 @@ function AppContainer(props) {
   return (
     <div className="app__page">
       <Sidebar  expandSidebar={props.expandSidebar}/>
-      <RecomendedVideos />      
+      <RecomendedVideos setExpandSidebar={props.setExpandSidebar}/>      
     </div>
   )
 }
@@ -31,8 +31,8 @@ function App() {
       <Router>
       <Header setExpandSidebar={setExpandSidebar} expandSidebar={expandSidebar}/>
         {/* <Route path="/" exact component={appContainer(type)} /> */}
-        <Route path="/" exact render={(props)=><AppContainer expandSidebar={expandSidebar}/>} />
-        <Route path="/watch/:movieId" render={(props)=><VideoPage {...props}/>} />
+        <Route path="/" exact render={(props)=><AppContainer expandSidebar={expandSidebar} setExpandSidebar={setExpandSidebar}/>} />
+        <Route path="/watch/:movieId" render={(props)=><VideoPage setExpandSidebar={setExpandSidebar} expandSidebar={expandSidebar} {...props}/>} />
         <Route path="/login" render={NewLoginUi}/>
       </Router>
       

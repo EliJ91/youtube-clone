@@ -27,6 +27,18 @@ function Sidebar(props) {
                 <SidebarRow Expand={props.expandSidebar} Icon={ExpandMoreIcon} title="Show more"/>
             </>}
             {props.expandSidebar && <hr/>}
+            {props.expandSidebar && <> 
+                <SidebarRow Expand={props.expandSidebar} Icon={HistoryIcon} title="History"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={OndemandVideoOutlinedIcon} title="Your movies"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={WatchLaterIcon} title="Watch later"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={ExpandMoreIcon} title="Show more"/>
+            </>}
+            {props.expandSidebar && <> 
+                <SidebarRow Expand={props.expandSidebar} Icon={HistoryIcon} title="History"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={OndemandVideoOutlinedIcon} title="Your movies"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={WatchLaterIcon} title="Watch later"/>
+                <SidebarRow Expand={props.expandSidebar} Icon={ExpandMoreIcon} title="Show more"/>
+            </>}
         </div>
     )
 }
