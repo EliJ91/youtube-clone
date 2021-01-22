@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import {useEffect,useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios'
 import {LOGGED_IN} from '../../redux/actions'
@@ -51,7 +51,7 @@ const useVideoPageLogic = (movieID,expandSidebar,setExpandSidebar) =>{
         axios.get(process.env.REACT_APP_API_PREFIX+"/api/video/addView",{params:{movieId: movieID}}) 
             
         fetchData()                       
-    },[movieID]) 
+    },[setExpandSidebar,movieID]) 
 
    
                      

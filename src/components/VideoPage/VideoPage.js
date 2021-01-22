@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import React from 'react'
 import './VideoPage.scss'
 import VideoSidebar from '../VideoSidebar/VideoSidebar'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';

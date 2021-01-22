@@ -2,14 +2,12 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './VideoSidebar.scss'
 import axios from 'axios'
-import Switch from '@material-ui/core/Switch';
 import VideoCard from '../VideoCard/VideoCard'
 
 
 
 function VideoSidebar() {
     const [allVideos, setAllVideos]=useState([])
-    const [button,setButton]=useState(true)
 
     useEffect(()=>{
         async function fetchData(){

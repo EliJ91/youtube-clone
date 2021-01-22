@@ -9,11 +9,11 @@ function NewLoginUi({onOff, toggle}){
 
     const [username, setUsername] =useState("")
     const [password, setPassword] =useState("")
-    const [password2, setPassword2] =useState("")
-    const [avatarImg, setAvatarImg] =useState("")
+    // const [password2, setPassword2] =useState("")
+    // const [avatarImg, setAvatarImg] =useState("")
 
-    const [createAccount, setCreateAccount]=useState(false)
-    const [accountCreated, setAccountCreated]=useState(false)
+    // const [createAccount, setCreateAccount]=useState(false)
+    // const [accountCreated, setAccountCreated]=useState(false)
 
     const[newAccount, setNewAccount] = useState(false)
 
@@ -32,7 +32,7 @@ function NewLoginUi({onOff, toggle}){
                 <div className="nLoginUi_UiContainer">
                     <input className="nLoginUi_username" placeholder="Username" type="text" onChange={(e)=>{setUsername(e.target.value)}} value={username}/>
                     <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                    {newAccount && <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword2(e.target.value)}}/>}
+                    {/* {newAccount && <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword2(e.target.value)}}/>} */}
                     <button className="nLoginUi_submit"  onClick={()=> log_in(username,password)}>{newAccount ?  "Create Account" : "Log In"}</button>
                 </div>
                 {newAccount ? 

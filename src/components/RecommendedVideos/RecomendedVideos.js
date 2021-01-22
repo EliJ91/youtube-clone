@@ -22,7 +22,7 @@ function RecomendedVideos(props) {
             
         }
         fetchData()                       
-    },[])
+    },[props])
     document.title = "Not YouTube"
     return (
         <div className="recommendedVideos">
