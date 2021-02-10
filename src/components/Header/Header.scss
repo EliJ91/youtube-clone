@@ -7,10 +7,10 @@
     position: sticky;
     top: 0;
     background-color: white;
-    padding: 10px;
     height: 50px;
 
     & .header_left{
+        margin-left: 10px;
         & .header_menuIcon{
             margin: 0px 15px;
             font-size: 25px;
@@ -66,37 +66,76 @@
     .header_icons{
         display: flex;
         align-items: center;
-        position: relative;
-        margin: 3px;
-        margin-right: 20px;
+        position: unset;
+        margin-right: 10px;
+        
 
-        & .header_icon{
-            margin-right: 30px;
+        & .icon_container{
+            margin-right: 20px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
             cursor: pointer;
-        }
-
-        & .header_uploadVideo{
-            border-radius: 50%;
-
+            &:active{
+                transform: scale(.9);}
             &:hover{
                 transition-duration: 0.5s;
                 transition-property: background-color;
                 background-color:rgb(207, 207, 207);
                 border-radius: 50%;
                 
-
-                & + .header_uploadTooltip{
-                    opacity: 1;
-                }
-            }
-            &:active{
-                color: white;
             }
         }
+
+        & .header_icon{
+            margin-top: 9px;
+            
+        }
+
+        & .header_uploadVideo{
+            border-radius: 50%; 
+        }
+        .uploadContainer{
+            &:hover + .header_uploadTooltip{
+                opacity: 1;
+            }
+        }
+
+        .appsContainer{
+            &:hover + .header_appsTooltip{
+                opacity: 1;
+            }
+        }
+
+        .notificationsContainer{
+            &:hover + .header_notificationsTooltip{
+                opacity: 1;
+            }
+        }
+
+        .avatarContainer{
+            width: 80px;
+            padding-right: 20px;
+            white-space: nowrap;
+
+            &:hover + .header_logoutTooltip{
+                opacity: 1;
+            }
+        }
+
+        .header_avatar{
+            cursor: pointer;
+            position: inherit;
+            margin-left: auto;
+            margin-right: auto;
+    
+            
+        }
+
         & .header_uploadTooltip{
             opacity: 0;
             width: 120px;
-            background-color: rgba(0, 0, 0, 0.432);
+            background-color: rgb(22, 22, 22);
             color: #fff;
             text-align: center;
             border-radius: 6px;
@@ -107,55 +146,79 @@
         
             position: absolute;
             z-index: 1;
-            top: 125%;
-            left: 7%;
+            top: 50px;
+            right: 185px;
+            margin-left: -60px;
+        }
+        & .header_appsTooltip{
+            opacity: 0;
+            width: 120px;
+            background-color: rgb(22, 22, 22);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            transition-duration: 0.5s;
+            transition-property: opacity;
+            
+        
+            position: absolute;
+            z-index: 1;
+            top: 50px;
+            right: 130px;
+            margin-left: -60px;
+        }
+        & .header_notificationsTooltip{
+            opacity: 0;
+            width: 120px;
+            background-color: rgb(22, 22, 22);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            transition-duration: 0.5s;
+            transition-property: opacity;
+            
+        
+            position: absolute;
+            z-index: 1;
+            top: 50px;
+            right: 70px;
             margin-left: -60px;
         }
     }
 
-    & .header_avatar{
-        margin-right: 30px;
-
-        &:hover + .header_logoutTooltip{
-            opacity: 1;
-        }
-    }
+    
 
     & .header_logoutTooltip{
         opacity: 0;
         width: 120px;
-        background-color: rgba(0, 0, 0, 0.432);
+        background-color: rgb(22, 22, 22);
         color: #fff;
         text-align: center;
         border-radius: 6px;
         padding: 5px 0;
         transition-duration: 0.5s;
         transition-property: opacity;
-        
     
         position: absolute;
         z-index: 1;
-        top: 125%;
-        left: 75%;
+        top: 50px;
+        right: 0px;
         margin-left: -60px;
     }
 
     & .header_loginText{
         font-size: 15px;
         font-weight: bold;
-        margin-right: 30px;
         cursor: pointer;
         max-height: 35px;
         padding: 10px 15px;
+        text-align: center;
+        
     
-        &:hover{
-            transition-duration: 0.5s;
-            transition-property: background-color;
-            background-color:rgb(207, 207, 207);
-            border-radius: 10px;
-        }
         &:active{
-            color: white;
+            transform: scale(.9);
         }
     }
 }

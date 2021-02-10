@@ -8,7 +8,6 @@ import NewLoginUi from './components/Login/newLoginUi'
 import {BrowserRouter as Router,  Route} from "react-router-dom"
 
 
-
 function AppContainer(props) {
   return (
     <div className="app__page">
