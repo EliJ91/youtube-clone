@@ -13,7 +13,6 @@ const useLoginInterface = (toggle) => {
   const [avatarImg, setAvatarImg] =useState("")
   const [createNew, setCreateNew] = useState(false)
 
-  const [accountCreated, setAccountCreated]=useState(false)
 
   function newAccount(username, password, password2, avatar){
     if(username === "" ){
@@ -36,7 +35,6 @@ const useLoginInterface = (toggle) => {
     })
     .then(function (response) {
       if(response.status === 201){
-        setAccountCreated(true) 
         setCreateNew(false)
         setUsername("")
         setPassword("")

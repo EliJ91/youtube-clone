@@ -33,7 +33,7 @@ if( window.innerWidth<800){
 
 function Header(props) {
 
-    const {uploadVideo, setUploadVideo, login, logout, setLogin, mobileSearchMenu, setMobileSearchMenu, onOff, setOnOff, loggedIn, avatar} = useHeaderLogic()
+    const {uploadVideo, setUploadVideo, logout, mobileSearchMenu, setMobileSearchMenu, onOff, setOnOff, loggedIn, avatar} = useHeaderLogic()
 
     
 
