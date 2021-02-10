@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './Header.scss'
 import SearchIcon from '@material-ui/icons/Search'
 import VideoCallIcon from '@material-ui/icons/VideoCall'
@@ -7,17 +7,13 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import Avatar from '@material-ui/core/Avatar'
 import Logo from './img/logo.svg'
-import {useState} from 'react';
 import Upload from '../Upload/Upload'
-import Login from '../Login/Login'
-import {useSelector, useDispatch} from 'react-redux';
-import {LOGGED_IN} from '../../redux/actions'
-import {defaultState} from '../../redux/reducer'
-import axios from 'axios'
+
 import {Link} from 'react-router-dom'
 import NewLoginUi from '../Login/newLoginUi'
 import '../Login/newLoginUi.scss'
 import MenuIcon from '@material-ui/icons/Menu';
+import useHeaderLogic from './HeaderLogic'
 
 
 var prevScrollpos = window.pageYOffset;
@@ -37,34 +33,7 @@ if( window.innerWidth<800){
 
 function Header(props) {
 
-    const [uploadVideo, setUploadVideo] = useState(false)
-    const [login, setLogin] = useState(false)
-    const [mobileSearchMenu, setMobileSearchMenu]=useState(false)
-    const dispatch = useDispatch()
-    const [onOff, setOnOff] = useState(false)
-
-   
-    const loggedIn = useSelector(store=>store.username)
-    const avatar = useSelector(store=>store.avatar)
-
-    
-    useEffect(()=>{
-        async function fetchData(){
-            const user = await axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/stayLogged",{}, {withCredentials: true}) 
-            if(!user){
-                console.log("Not logged in.")
-            }
-            dispatch(LOGGED_IN(user.data))       
-        }
-        fetchData()                       
-    },[dispatch])
-
-    function logout(e){
-        e.preventDefault()
-        dispatch(LOGGED_IN(defaultState))
-        axios.post(process.env.REACT_APP_API_PREFIX+"/api/user/logout",{},{withCredentials: true})
-        
-      }
+    const {uploadVideo, setUploadVideo, logout, mobileSearchMenu, setMobileSearchMenu, onOff, setOnOff, loggedIn, avatar} = useHeaderLogic()
 
     
 
@@ -104,23 +73,24 @@ function Header(props) {
             </div>
     
             <div className="header_icons">
-                <VideoCallIcon className="header_icon header_uploadVideo" onClick={()=>setUploadVideo(true)}/>
-                <span className="header_uploadTooltip">Upload Video</span>
-                <AppsIcons  className="header_icon"/>
-                <NotificationsIcon className="header_icon"/>
+                <div className="uploadContainer icon_container" onClick={()=>setUploadVideo(true)}><VideoCallIcon className="header_icon header_uploadVideo" /></div>
+                    <span className="header_uploadTooltip">Upload Video</span>
+                <div className="appsContainer icon_container"><AppsIcons  className="header_icon header_apps"/></div>
+                    <span className="header_appsTooltip">Apps</span>
+                <div className="notificationsContainer icon_container"><NotificationsIcon className="header_icon header_notifications"/></div>
+                    <span className="header_notificationsTooltip">Notifications</span>
 
                 {loggedIn !== null ? 
                 <>
-                    <Avatar onClick={logout} className="header_avatar" src={avatar} />
+                    <div className="avatarContainer "><Avatar onClick={logout} className="header_avatar" src={avatar} /></div>
                     <span className="header_logoutTooltip">Log Out</span>
                 </>:
-                <p className="header_loginText" onClick={()=>setOnOff(true)}>Log in</p>
+                <div className="avatarContainer "><p className="header_loginText" onClick={()=>setOnOff(true)}>Log in</p></div>
                 }   
             </div>
         </>}
         </div> 
         <Upload open={uploadVideo} onClose={()=>setUploadVideo(false)}/>
-        <Login open={login} onClose={()=>setLogin(false)} test={setLogin}/>
         </>       
     )
 }

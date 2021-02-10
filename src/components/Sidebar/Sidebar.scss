@@ -4,6 +4,7 @@
     border-bottom: 1.5px solid rgb(209, 209, 209);
     height: calc(100vh - 50px);
     background-color: white;
+    z-index: -1;
 
     &.expanded{
       position: sticky;

@@ -3,7 +3,7 @@ import './LoginUi.scss'
 import axios from 'axios'
 
 import {useDispatch} from 'react-redux'
-import {LOGGED_IN} from '../../../redux/actions'
+import {LOGGED_IN} from '../../../../redux/actions'
 
 // const axios = Axios.create({
 //   withCredentials: true

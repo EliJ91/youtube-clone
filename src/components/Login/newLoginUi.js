@@ -1,28 +1,22 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux'
-import {LOGGED_IN} from '../../redux/actions'
+import React from 'react';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import './newLoginUi.scss'
-import {login} from './loginLogic'
+import useLoginInterface from './loginLogic';
+import {useSelector} from 'react-redux';
+
+
 function NewLoginUi({onOff, toggle}){
-    const dispatch= useDispatch()
+    const {
+        username, setUsername,
+        password, setPassword,
+        password2, setPassword2,
+        avatarImg, setAvatarImg,
+        createNew, setCreateNew,
+        login,
+        newAccount} = useLoginInterface(toggle)
 
-    const [username, setUsername] =useState("")
-    const [password, setPassword] =useState("")
-    // const [password2, setPassword2] =useState("")
-    // const [avatarImg, setAvatarImg] =useState("")
 
-    // const [createAccount, setCreateAccount]=useState(false)
-    // const [accountCreated, setAccountCreated]=useState(false)
-
-    const[newAccount, setNewAccount] = useState(false)
-
-    function log_in(username,password){
-        let user = login(username,password)
-        console.log(user)
-        dispatch(LOGGED_IN(user))
-        
-    }
+        const store = useSelector(store=>store)
   
     return (
         <div className={`nLoginUi_Background ${onOff ? "":"hide"}`} onClick={(e)=>{e.target.classList.contains("nLoginUi_Background") && toggle(false)}}>
@@ -32,13 +26,18 @@ function NewLoginUi({onOff, toggle}){
                 <div className="nLoginUi_UiContainer">
                     <input className="nLoginUi_username" placeholder="Username" type="text" onChange={(e)=>{setUsername(e.target.value)}} value={username}/>
                     <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                    {/* {newAccount && <input className="nLoginUi_password" placeholder="Password" type="password" value={password} onChange={(e)=>{setPassword2(e.target.value)}}/>} */}
-                    <button className="nLoginUi_submit"  onClick={()=> log_in(username,password)}>{newAccount ?  "Create Account" : "Log In"}</button>
+                    {createNew && <><input className="nLoginUi_password" placeholder="Password" type="password" value={password2} onChange={(e)=>{setPassword2(e.target.value)}}/>
+                    <input className="nLoginUi_password" placeholder="Image URL" type="text" value={avatarImg} onChange={(e)=>{setAvatarImg(e.target.value)}}/>
+                    </>}
+                    {createNew ? <button className="nLoginUi_submit"  onClick={()=> newAccount(username,password,password2)}>Create Account</button>:
+                    <button className="nLoginUi_submit"  onClick={()=> login(username,password)}>Log In</button> 
+                    }
                 </div>
-                {newAccount ? 
-                <p className="nLoginUi_createAccount" onClick={()=>setNewAccount(false)} >Have an account?</p>
-                :<p className="nLoginUi_createAccount" onClick={()=>setNewAccount(true)}>Need an account?</p>
+                {createNew ? 
+                <p className="nLoginUi_createAccount" onClick={()=>setCreateNew(false)} >Have an account?</p>
+                :<p className="nLoginUi_createAccount" onClick={()=>setCreateNew(true)}>Need an account?</p>
                 }
+                <button onClick={()=>{console.log(store)}}>test</button>
             </div>
         </div>
     );

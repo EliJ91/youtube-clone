@@ -1,3 +1,4 @@
+
 .recommendedVideos{
     background: ghostwhite;
     padding-left: 5px;
@@ -17,8 +18,9 @@
         display: grid;
         grid-template-columns: repeat(4, minMax(200px,22.5vw));
         padding: 20px;
-        grid-gap: 10px;
+        grid-gap: 20px;
         width: 100%;
+        justify-content: center;
     }
 }
 
